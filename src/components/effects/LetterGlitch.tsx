@@ -287,7 +287,6 @@ const LetterGlitch = ({
       }
       window.removeEventListener('resize', handleResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth, useBrandTokens]);
 
   return (

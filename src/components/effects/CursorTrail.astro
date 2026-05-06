@@ -61,27 +61,27 @@ const PARTICLE_COUNT = 16;
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var dot = document.getElementById('cursor-dot');
-    var ringWrap = document.getElementById('cursor-ring-wrap');
-    var ring = document.getElementById('cursor-ring');
+    const dot = document.getElementById('cursor-dot');
+    const ringWrap = document.getElementById('cursor-ring-wrap');
+    const ring = document.getElementById('cursor-ring');
     if (!dot || !ringWrap || !ring) return;
 
     // Build particle pool with per-particle state
-    var particleEls = document.querySelectorAll('.cursor-trail-particle');
-    var particles = [];
-    for (var i = 0; i < particleEls.length; i++) {
+    const particleEls = document.querySelectorAll('.cursor-trail-particle');
+    const particles = [];
+    for (let i = 0; i < particleEls.length; i++) {
       particles.push({ el: particleEls[i], life: 0, x: 0, y: 0 });
     }
-    var particleIdx = 0;
-    var lastSpawn = 0;
-    var SPAWN_INTERVAL = 22; // ms between particle spawns
-    var FADE_RATE = 0.025;   // life lost per frame (60fps → ~0.66s lifespan)
+    let particleIdx = 0;
+    let lastSpawn = 0;
+    const SPAWN_INTERVAL = 22; // ms between particle spawns
+    const FADE_RATE = 0.025;   // life lost per frame (60fps → ~0.66s lifespan)
 
-    var INTERACTIVE = 'a, button, [role="button"], input:not([type="hidden"]), textarea, select, summary, label[for]';
-    var mouseX = -100, mouseY = -100;
-    var ringX = -100, ringY = -100;
-    var visible = false;
-    var hovering = null;
+    const INTERACTIVE = 'a, button, [role="button"], input:not([type="hidden"]), textarea, select, summary, label[for]';
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
+    let visible = false;
+    let hovering = null;
 
     function onMove(e) {
       mouseX = e.clientX;
@@ -95,10 +95,10 @@ const PARTICLE_COUNT = 16;
       dot.style.transform = 'translate(' + (mouseX - 5) + 'px,' + (mouseY - 5) + 'px)';
 
       // Spawn a particle, throttled
-      var now = performance.now();
+      const now = performance.now();
       if (now - lastSpawn >= SPAWN_INTERVAL) {
         lastSpawn = now;
-        var p = particles[particleIdx];
+        const p = particles[particleIdx];
         p.x = mouseX;
         p.y = mouseY;
         p.life = 1;
@@ -113,7 +113,7 @@ const PARTICLE_COUNT = 16;
     }
 
     function syncHover(e) {
-      var target = e.target.closest ? e.target.closest(INTERACTIVE) : null;
+      const target = e.target.closest ? e.target.closest(INTERACTIVE) : null;
       if (target !== hovering) {
         hovering = target;
         ring.classList.toggle('is-hovering', !!target);
@@ -128,13 +128,13 @@ const PARTICLE_COUNT = 16;
       ringWrap.style.transform = 'translate(' + (ringX - 20) + 'px,' + (ringY - 20) + 'px)';
 
       // Age and render particles
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         if (p.life <= 0) continue;
         p.life -= FADE_RATE;
         if (p.life < 0) p.life = 0;
-        var op = p.life * 0.7; // peak 0.7
-        var sc = 0.4 + p.life * 0.6; // shrink as it fades
+        const op = p.life * 0.7; // peak 0.7
+        const sc = 0.4 + p.life * 0.6; // shrink as it fades
         p.el.style.opacity = String(op);
         p.el.style.transform =
           'translate(' + (p.x - 3) + 'px,' + (p.y - 3) + 'px) scale(' + sc + ')';
