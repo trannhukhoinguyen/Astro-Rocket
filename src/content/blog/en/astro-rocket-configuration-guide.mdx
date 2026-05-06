@@ -68,21 +68,28 @@ blogImageOverlay: true,
 
 When `true`, a translucent brand-colour tint is applied over blog cover images. This helps images blend with your theme if they have neutral or mismatched colours. Set it to `false` if your images are already on-brand or if you prefer photographs to appear unaltered.
 
-### Dark mode default
+### Colour mode default
 
-The default mode is set directly in the HTML element in `src/layouts/BaseLayout.astro`:
-
-```html
-<html lang="en" class="scroll-smooth dark" data-theme="indigo">
-```
-
-The `dark` class is what activates dark mode on first load. Remove it to default to light:
+Astro Rocket uses a 3-state colour-mode system — **System / Light / Dark** — instead of a binary toggle. Defaults are declared on the `<html>` element in `src/layouts/BaseLayout.astro`:
 
 ```html
-<html lang="en" class="scroll-smooth" data-theme="indigo">
+<html lang="en" class="scroll-smooth dark" data-theme="blue" data-theme-mode="system">
 ```
 
-The user's preference during their session is stored in `sessionStorage` — so it persists while the tab is open but resets when they open a new tab. This is intentional for a portfolio or marketing site. If you want it to persist across sessions, swap the `sessionStorage` calls for `localStorage` in the same file.
+Three pieces of state cooperate:
+
+- `class="dark"` is the SSR fallback for visitors with JavaScript disabled — Tailwind's dark variant keys off it.
+- `data-theme-mode="system"` mirrors the user's saved choice and drives the icon shown in the header pill.
+- `data-theme="blue"` is the default colour palette.
+
+For visitors with JavaScript enabled, the inline bootstrap script in `<head>` runs before body paint and reconciles all three values from storage:
+
+- `localStorage.theme` ∈ `'system' | 'light' | 'dark'` — the user's saved colour mode (default `'system'`)
+- `sessionStorage['color-theme']` — the active colour palette (default `'blue'`, resets per tab session)
+
+Under `'system'`, the bootstrap also subscribes to `window.matchMedia('(prefers-color-scheme: dark)')` once and re-applies on every OS flip. The full design — including the no-flash bootstrap, view-transition handling, and the header pill — is written up in [System, Light, Dark — How Astro Rocket's Colour-Mode System Works](/blog/colour-mode-system).
+
+To change the SSR default colour mode, edit the seed attribute. Set `data-theme-mode="light"` (and remove `class="dark"`) to default new visitors to light; set `data-theme-mode="dark"` to default to dark. The user's saved preference always wins once the bootstrap runs.
 
 ### Structured data: schema switches
 
@@ -180,7 +187,7 @@ Available values — all 12 themes:
 
 ### The live theme selector
 
-All 12 themes appear as colour swatches in the header dropdown (desktop) and in the mobile menu when `showThemeSelector` is enabled on the `<Header>` component. The visitor's choice is saved to `sessionStorage` and persists for the duration of the tab session — consistent with how the dark/light mode preference is stored.
+All 12 themes appear as colour swatches in the header dropdown (desktop) and in the mobile menu when `showThemeSelector` is enabled on the `<Header>` component. The visitor's choice is saved to `sessionStorage` and persists for the duration of the tab session — every new tab resets to the configured default. This is intentional for a portfolio or marketing site: first impressions stay on-brand. (The colour mode — System / Light / Dark — is stored separately in `localStorage` and *does* persist across reloads and new tabs; see [the colour-mode post](/blog/colour-mode-system) for that side of the system.)
 
 The `themes` array in `src/components/layout/ThemeSelector.astro` controls which swatches are shown and in what order. The current set:
 
@@ -377,7 +384,7 @@ All Header props and what they do:
 | `variant` | `default` `solid` `transparent` | `solid` | Background fill |
 | `colorScheme` | `default` `invert` | `default` | Use inverted colours — for dark hero backgrounds |
 | `layout` | `default` `centered` `minimal` | `default` | Logo and nav arrangement |
-| `showThemeToggle` | `true` `false` | `true` | Dark/light mode toggle button |
+| `showThemeToggle` | `true` `false` | `true` | Colour-mode pill (System / Light / Dark dropdown) — desktop pill + mobile-menu row |
 | `showThemeSelector` | `true` `false` | `false` | Colour theme swatch picker (desktop dropdown + mobile menu) |
 | `showSocialLinks` | `true` `false` | `false` | Social icon links (desktop only, reads from `siteConfig.socialLinks`) |
 | `showCta` | `true` `false` | `false` | CTA button in the header |

@@ -74,9 +74,13 @@ The full setup — what each piece does, how to configure it, and what rich resu
 
 A full technical breakdown of every animation layer — spring curve, stagger logic, observer tuning, and the reason view transitions are intentionally disabled — is in the [Animations in Astro Rocket](/blog/animations-in-astro-rocket) post.
 
-## Dark Mode — Done Right
+## Colour Mode — System, Light, Dark
 
-Dark mode uses `sessionStorage` rather than `localStorage`. The difference: every new tab resets to the intended theme. A visitor who switched modes out of curiosity arrives back in the right one. First impressions are intentional, every time.
+The colour-mode picker is a true 3-state system rather than a binary toggle. The user can pin **Light** or **Dark** explicitly, or pick **System** to delegate to the operating system — and when 'System' is active, the page tracks `prefers-color-scheme` live, flipping the moment the OS does without a reload. The choice persists in `localStorage`, so it survives reloads and new tabs.
+
+The picker lives in the header as a pill-shaped dropdown — a single rounded-full button next to the colour-theme pill. It shows the icon for the *currently chosen mode* (monitor, sun, or moon), so the user can always see what they picked at a glance. Clicking opens a dropdown with three rows, each showing the icon, label, and an active checkmark; the System row carries a small "Currently dark/light" sub-line that updates live when the OS preference flips. Below the `md` breakpoint both pills hide from the header bar and reappear inside the mobile menu — the colour-mode pill keeps its dropdown, and the colour-theme picker becomes a flat row of swatches. Selecting a mode in one instance updates the other instantly.
+
+A small inline bootstrap script in `<head>` runs synchronously before body paint to apply the saved mode and resolve the `.dark` class, so there is never a flash of the wrong theme — even across view transitions. The full implementation, the storage contract, and the no-flash bootstrap are written up in [System, Light, Dark — How Astro Rocket's Colour-Mode System Works](/blog/colour-mode-system).
 
 ## Lighthouse: 100 Across the Board
 
