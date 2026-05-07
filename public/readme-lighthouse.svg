@@ -1,0 +1,98 @@
+<svg width="880" height="220" viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lighthouse 100/100/100/100 — Performance, Accessibility, Best Practices, SEO">
+  <title>Lighthouse 100/100/100/100</title>
+  <desc>Animated Lighthouse scores: Performance 100, Accessibility 100, Best Practices 100, SEO 100.</desc>
+
+  <defs>
+    <style>
+      .label { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 14px; fill: #334155; }
+      .score { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 800; font-size: 30px; fill: #0a7c3e; }
+      .heading { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 16px; fill: #0f172a; letter-spacing: 0.2px; }
+      .ring-track { stroke: #d1fadf; }
+      .ring-fill { stroke: #0cce6b; }
+    </style>
+  </defs>
+
+  <!-- Card background -->
+  <rect x="0.5" y="0.5" width="879" height="219" rx="16" ry="16" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <!-- Heading -->
+  <text x="40" y="44" class="heading">Lighthouse — 100 / 100 / 100 / 100 on mobile and desktop</text>
+  <line x1="40" y1="58" x2="840" y2="58" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- 4 score gauges, evenly spaced -->
+  <!-- Performance -->
+  <g transform="translate(110,135)">
+    <circle r="48" fill="none" stroke-width="8" class="ring-track"/>
+    <circle r="48" fill="none" stroke-width="8" class="ring-fill"
+            stroke-dasharray="0 301.6" stroke-linecap="round"
+            transform="rotate(-90)">
+      <animate attributeName="stroke-dasharray" from="0 301.6" to="301.6 0" begin="0.1s" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.22 1 0.36 1"/>
+    </circle>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2">
+      <tspan>0</tspan>
+      <animate attributeName="opacity" from="1" to="0" dur="0.01s" begin="1.5s" fill="freeze"/>
+    </text>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2" opacity="0">
+      100
+      <animate attributeName="opacity" from="0" to="1" dur="0.01s" begin="1.5s" fill="freeze"/>
+    </text>
+    <text x="0" y="78" text-anchor="middle" class="label">Performance</text>
+  </g>
+
+  <!-- Accessibility -->
+  <g transform="translate(330,135)">
+    <circle r="48" fill="none" stroke-width="8" class="ring-track"/>
+    <circle r="48" fill="none" stroke-width="8" class="ring-fill"
+            stroke-dasharray="0 301.6" stroke-linecap="round"
+            transform="rotate(-90)">
+      <animate attributeName="stroke-dasharray" from="0 301.6" to="301.6 0" begin="0.25s" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.22 1 0.36 1"/>
+    </circle>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2">
+      <tspan>0</tspan>
+      <animate attributeName="opacity" from="1" to="0" dur="0.01s" begin="1.65s" fill="freeze"/>
+    </text>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2" opacity="0">
+      100
+      <animate attributeName="opacity" from="0" to="1" dur="0.01s" begin="1.65s" fill="freeze"/>
+    </text>
+    <text x="0" y="78" text-anchor="middle" class="label">Accessibility</text>
+  </g>
+
+  <!-- Best Practices -->
+  <g transform="translate(550,135)">
+    <circle r="48" fill="none" stroke-width="8" class="ring-track"/>
+    <circle r="48" fill="none" stroke-width="8" class="ring-fill"
+            stroke-dasharray="0 301.6" stroke-linecap="round"
+            transform="rotate(-90)">
+      <animate attributeName="stroke-dasharray" from="0 301.6" to="301.6 0" begin="0.4s" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.22 1 0.36 1"/>
+    </circle>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2">
+      <tspan>0</tspan>
+      <animate attributeName="opacity" from="1" to="0" dur="0.01s" begin="1.8s" fill="freeze"/>
+    </text>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2" opacity="0">
+      100
+      <animate attributeName="opacity" from="0" to="1" dur="0.01s" begin="1.8s" fill="freeze"/>
+    </text>
+    <text x="0" y="78" text-anchor="middle" class="label">Best Practices</text>
+  </g>
+
+  <!-- SEO -->
+  <g transform="translate(770,135)">
+    <circle r="48" fill="none" stroke-width="8" class="ring-track"/>
+    <circle r="48" fill="none" stroke-width="8" class="ring-fill"
+            stroke-dasharray="0 301.6" stroke-linecap="round"
+            transform="rotate(-90)">
+      <animate attributeName="stroke-dasharray" from="0 301.6" to="301.6 0" begin="0.55s" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.22 1 0.36 1"/>
+    </circle>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2">
+      <tspan>0</tspan>
+      <animate attributeName="opacity" from="1" to="0" dur="0.01s" begin="1.95s" fill="freeze"/>
+    </text>
+    <text text-anchor="middle" dominant-baseline="central" class="score" y="2" opacity="0">
+      100
+      <animate attributeName="opacity" from="0" to="1" dur="0.01s" begin="1.95s" fill="freeze"/>
+    </text>
+    <text x="0" y="78" text-anchor="middle" class="label">SEO</text>
+  </g>
+</svg>
