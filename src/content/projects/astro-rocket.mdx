@@ -125,7 +125,9 @@ The closing call-to-action on the homepage, projects index, and about page uses 
 
 Astro Rocket scores **100 on every Lighthouse category — on both mobile and desktop** — Performance, Accessibility, Best Practices, and SEO — on the live demo at [astrorocket.dev](https://astrorocket.dev). That's not a tuned benchmark page; it's the full site with animations, a theme switcher, typed headlines, a contact form, the cursor trail, and the LetterGlitch CTA.
 
-<LighthouseScoresGrid staggered={false} />
+<div class="my-10">
+  <LighthouseScoresGrid staggered={false} />
+</div>
 
 Lighthouse runs in a sandboxed Chromium environment with throttled CPU and network, so individual scores can vary a point or two from run to run depending on the host machine, network conditions, and which extensions or processes are competing for resources. The numbers above reflect the typical result on the live demo on both mobile and desktop, not a guaranteed ceiling.
 
