@@ -33,16 +33,21 @@ const {
 
 const items = headings.filter((h) => h.depth >= 2 && h.depth <= maxDepth);
 const shouldRender = items.length >= minHeadings;
+// Unique heading id per instance — multiple TOCs can mount on the same
+// page (e.g. layout: 'auto' renders both inline + sidebar variants and
+// CSS swaps which is visible). Duplicate `id` attributes would be invalid
+// HTML and break aria-labelledby.
+const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 {shouldRender && (
   <nav
     class:list={['toc not-prose', sticky && 'toc-sticky']}
-    aria-labelledby="toc-heading"
+    aria-labelledby={headingId}
     data-toc
   >
     <p
-      id="toc-heading"
+      id={headingId}
       class="text-xs font-semibold uppercase tracking-wider text-foreground-muted mb-3"
     >
       {title}
@@ -88,8 +93,13 @@ const shouldRender = items.length >= minHeadings;
 <script>
   // Scroll-spy: highlight the link whose heading is currently in view.
   // Tiny, no dependencies — uses IntersectionObserver.
-  const toc = document.querySelector<HTMLElement>('[data-toc]');
-  if (toc) {
+  // Multiple TOC instances can be on the same page (e.g. layout: 'auto'
+  // renders an inline TOC for narrow viewports and a sidebar TOC for
+  // xl+, with CSS hiding whichever isn't appropriate). Each instance
+  // gets its own setup so highlighting works regardless of which is
+  // currently visible.
+  const tocs = document.querySelectorAll<HTMLElement>('[data-toc]');
+  for (const toc of tocs) {
     const links = Array.from(
       toc.querySelectorAll<HTMLAnchorElement>('[data-toc-link]'),
     );
@@ -98,38 +108,38 @@ const shouldRender = items.length >= minHeadings;
       .map((s) => document.getElementById(s))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (headings.length > 0) {
-      let active = '';
-      const setActive = (slug: string) => {
-        if (slug === active) return;
-        active = slug;
-        for (const a of links) {
-          a.setAttribute(
-            'data-active',
-            a.getAttribute('data-toc-link') === slug ? 'true' : 'false',
+    if (headings.length === 0) continue;
+
+    let active = '';
+    const setActive = (slug: string) => {
+      if (slug === active) return;
+      active = slug;
+      for (const a of links) {
+        a.setAttribute(
+          'data-active',
+          a.getAttribute('data-toc-link') === slug ? 'true' : 'false',
+        );
+      }
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        // Pick the topmost heading currently intersecting the upper part
+        // of the viewport. Falls back to the last one above the fold.
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) =>
+              a.target.getBoundingClientRect().top -
+              b.target.getBoundingClientRect().top,
           );
+        if (visible.length > 0 && visible[0].target.id) {
+          setActive(visible[0].target.id);
         }
-      };
+      },
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 },
+    );
 
-      const io = new IntersectionObserver(
-        (entries) => {
-          // Pick the topmost heading currently intersecting the upper part
-          // of the viewport. Falls back to the last one above the fold.
-          const visible = entries
-            .filter((e) => e.isIntersecting)
-            .sort(
-              (a, b) =>
-                a.target.getBoundingClientRect().top -
-                b.target.getBoundingClientRect().top,
-            );
-          if (visible.length > 0 && visible[0].target.id) {
-            setActive(visible[0].target.id);
-          }
-        },
-        { rootMargin: '-80px 0px -70% 0px', threshold: 0 },
-      );
-
-      for (const h of headings) io.observe(h);
-    }
+    for (const h of headings) io.observe(h);
   }
 </script>
