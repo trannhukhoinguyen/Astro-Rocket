@@ -21,7 +21,6 @@ interface Props {
   includeOrgSchema?: boolean;
   includePersonSchema?: boolean;
   includeProfessionalServiceSchema?: boolean;
-  morphToBar?: boolean;
 }
 
 const {
@@ -34,7 +33,6 @@ const {
   includeOrgSchema = false,
   includePersonSchema = false,
   includeProfessionalServiceSchema = false,
-  morphToBar = false,
 } = Astro.props;
 ---
 
@@ -62,7 +60,6 @@ const {
     autoHide={false}
     scrollProgressPosition="top"
     invertOnReturn={false}
-    morphToBar={morphToBar}
   />
 
   <slot />

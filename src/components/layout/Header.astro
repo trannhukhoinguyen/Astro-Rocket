@@ -70,7 +70,6 @@ interface Props extends HTMLAttributes<'header'> {
   scrollProgressPosition?: 'top' | 'bottom';
   autoHide?: boolean;
   invertOnReturn?: boolean;
-  morphToBar?: boolean;
 }
 
 const {
@@ -94,7 +93,6 @@ const {
   scrollProgressPosition = 'bottom',
   autoHide = true,
   invertOnReturn = true,
-  morphToBar = false,
   logoText,
   hideLogo = false,
   class: className,
@@ -156,7 +154,6 @@ const buttonId = `${menuId}-button`;
   data-header-color-scheme={colorScheme}
   data-header-auto-hide={autoHide ? 'true' : 'false'}
   data-header-invert-on-return={invertOnReturn ? 'true' : 'false'}
-  data-morph-to-bar={morphToBar ? 'true' : 'false'}
   {...attrs}
 >
   <div class={cn(innerClasses, 'hdr-inner')}>
@@ -553,12 +550,39 @@ const buttonId = `${menuId}-button`;
 </script>
 
 <script>
+  // Header scroll behaviour + scroll-progress bar driven by a single rAF.
+  // All layout reads are taken before any DOM writes, and `docMaxScrollY`
+  // is cached via ResizeObserver so the scroll path never reads
+  // `scrollHeight` — which would force a synchronous layout recompute
+  // after attribute writes earlier in the same frame.
   const SCROLL_THRESHOLD = 60;
   const AUTO_HIDE_THRESHOLD = 150;
   const BAR_SCROLLED_CLASSES = ['bg-background/80', 'backdrop-blur-lg', 'border-b', 'border-border/50'];
 
-  function initScrollWatcher() {
-    const scrollHeaders = document.querySelectorAll<HTMLElement>('header[data-header-shape="floating"], header[data-header-shape="bar"]');
+  let docMaxScrollY = 0;
+  let docMetricsInited = false;
+  function updateDocMaxScrollY() {
+    docMaxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+  }
+  function initDocMetrics() {
+    if (docMetricsInited) return;
+    docMetricsInited = true;
+    updateDocMaxScrollY();
+    window.addEventListener('resize', updateDocMaxScrollY, { passive: true });
+    window.addEventListener('load', updateDocMaxScrollY);
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(updateDocMaxScrollY).observe(document.documentElement);
+    }
+  }
+
+  function initScrollDriven() {
+    initDocMetrics();
+
+    const scrollHeaders = document.querySelectorAll<HTMLElement>(
+      'header[data-header-shape="floating"], header[data-header-shape="bar"]'
+    );
+    const progressBar = document.getElementById('scroll-progress-bar');
+
     scrollHeaders.forEach((header) => {
       if (header.dataset.scrollInit) return;
       header.dataset.scrollInit = 'true';
@@ -576,11 +600,14 @@ const buttonId = `${menuId}-button`;
         ticking = true;
 
         requestAnimationFrame(() => {
+          // ── READS (gather everything before touching the DOM) ──
           const currentScrollY = window.scrollY;
           const menuId = header.dataset.menuId;
           const menu = menuId ? document.getElementById(menuId) : null;
           const menuOpen = menu && !menu.classList.contains('hidden');
+          const wasHidden = header.hasAttribute('data-header-hidden');
 
+          // ── WRITES ──
           if (currentScrollY > SCROLL_THRESHOLD) {
             header.setAttribute('data-scrolled', '');
             if (isTransparentBar) {
@@ -606,9 +633,11 @@ const buttonId = `${menuId}-button`;
                   header.setAttribute('data-header-hidden', '');
                 }
               } else {
-                if (header.hasAttribute('data-header-hidden')) {
-                  const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
-                  lastShownAtY = Math.min(currentScrollY, Math.max(0, maxScrollY - AUTO_HIDE_THRESHOLD));
+                if (wasHidden) {
+                  lastShownAtY = Math.min(
+                    currentScrollY,
+                    Math.max(0, docMaxScrollY - AUTO_HIDE_THRESHOLD),
+                  );
                   header.setAttribute('data-header-returned', '');
                 }
                 header.removeAttribute('data-header-hidden');
@@ -620,6 +649,13 @@ const buttonId = `${menuId}-button`;
             }
           }
 
+          // Drive the scroll-progress bar in the same frame, using the
+          // already-read currentScrollY and the cached docMaxScrollY.
+          if (progressBar) {
+            const pct = docMaxScrollY > 0 ? (currentScrollY / docMaxScrollY) * 100 : 0;
+            progressBar.style.width = `${pct}%`;
+          }
+
           lastScrollY = currentScrollY;
           ticking = false;
         });
@@ -628,79 +664,34 @@ const buttonId = `${menuId}-button`;
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     });
-  }
 
-  initScrollWatcher();
-</script>
-
-<script>
-  function initScrollProgress() {
-    const bar = document.getElementById('scroll-progress-bar');
-    if (!bar) return;
-    if (bar.dataset.progressInit) return;
-    bar.dataset.progressInit = 'true';
-
-    let ticking = false;
-
-    function update() {
-      if (!bar) return;
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      bar!.style.width = `${pct}%`;
-      ticking = false;
+    // Edge case: a progress bar exists without a header scroll-watcher.
+    // Drive it with its own minimal rAF so the bar still updates.
+    if (progressBar && scrollHeaders.length === 0 && !progressBar.dataset.progressInit) {
+      progressBar.dataset.progressInit = 'true';
+      let pTicking = false;
+      const updateProgress = () => {
+        const pct = docMaxScrollY > 0 ? (window.scrollY / docMaxScrollY) * 100 : 0;
+        progressBar.style.width = `${pct}%`;
+        pTicking = false;
+      };
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!pTicking) {
+            pTicking = true;
+            requestAnimationFrame(updateProgress);
+          }
+        },
+        { passive: true },
+      );
+      updateProgress();
     }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    }, { passive: true });
-
-    update();
   }
 
-  initScrollProgress();
-  document.addEventListener('astro:page-load', initScrollProgress);
-  document.addEventListener('astro:after-swap', initScrollProgress);
-</script>
-
-<script>
-  import { navigate } from 'astro:transitions/client';
-
-  function initNavMorph() {
-    const header = document.querySelector<HTMLElement>(
-      'header[data-morph-to-bar="true"][data-header-shape="floating"]'
-    );
-    if (!header) return;
-    if (header.dataset.navMorphInit) return;
-    header.dataset.navMorphInit = 'true';
-
-    header.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
-      link.addEventListener('click', async (e) => {
-        const href = link.getAttribute('href');
-        if (
-          !href ||
-          href.startsWith('#') ||
-          href.startsWith('http') ||
-          href.startsWith('//') ||
-          href.startsWith('mailto:') ||
-          href.startsWith('tel:')
-        ) return;
-        if (href === window.location.pathname) return;
-        if (header.hasAttribute('data-scrolled')) return; // already bar shape, navigate normally
-
-        e.preventDefault();
-        header.setAttribute('data-scrolled', '');
-        await new Promise((r) => setTimeout(r, 300));
-        navigate(href);
-      });
-    });
-  }
-
-  initNavMorph();
-  document.addEventListener('astro:page-load', initNavMorph);
+  initScrollDriven();
+  document.addEventListener('astro:page-load', initScrollDriven);
+  document.addEventListener('astro:after-swap', initScrollDriven);
 </script>
 
 <style is:global>
@@ -725,13 +716,6 @@ const buttonId = `${menuId}-button`;
     backdrop-filter: blur(24px);
     border-color: var(--color-border);
     box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.14), 0 2px 8px -2px rgba(0, 0, 0, 0.08);
-  }
-
-  [data-header-shape="floating"][data-morph-to-bar="true"][data-scrolled] {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 0;
-    margin-top: 0;
   }
 
   [data-header-shape="floating"] .hdr-inner {
@@ -814,12 +798,6 @@ const buttonId = `${menuId}-button`;
     }
     [data-header-shape="floating"][data-header-hidden] {
       translate: -50% calc(-100% - 1.5rem) !important;
-    }
-    [data-header-shape="floating"][data-morph-to-bar="true"][data-scrolled] {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 0;
-      margin-top: 0;
     }
   }
 
