@@ -75,6 +75,8 @@ interface Props extends HTMLAttributes<'footer'> {
   hideLogo?: boolean;
   /** Tagline text under logo */
   tagline?: string;
+  /** Max width of the inner container. Defaults to `'6xl'`. */
+  maxWidth?: '4xl' | '5xl' | '6xl' | '7xl' | 'full';
 }
 
 const {
@@ -90,9 +92,18 @@ const {
   legalLinks,
   hideLogo = false,
   tagline,
+  maxWidth = '6xl',
   class: className,
   ...attrs
 } = Astro.props;
+
+const maxWidthClass = {
+  '4xl': 'max-w-4xl',
+  '5xl': 'max-w-5xl',
+  '6xl': 'max-w-6xl',
+  '7xl': 'max-w-7xl',
+  full: 'max-w-full',
+}[maxWidth];
 
 // Get navigation items — footer nav is configured independently from the
 // header in `nav.config.ts` (see `footerNavItems`).
@@ -137,7 +148,7 @@ function getSocialIcon(platform: string): string {
 ---
 
 <footer class={footerClasses} {...attrs}>
-  <div class="mx-auto max-w-6xl px-6">
+  <div class={cn('mx-auto px-6', maxWidthClass)}>
     {layout === 'simple' && (
       <>
       <div class="flex flex-col md:flex-row justify-between items-center gap-[var(--space-stack-lg)]">

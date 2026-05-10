@@ -70,6 +70,11 @@ interface Props extends HTMLAttributes<'header'> {
   scrollProgressPosition?: 'top' | 'bottom';
   autoHide?: boolean;
   invertOnReturn?: boolean;
+  /**
+   * Max width of the inner container (only applies when `shape='bar'`).
+   * Defaults to `'6xl'` (the historical width).
+   */
+  maxWidth?: '4xl' | '5xl' | '6xl' | '7xl' | 'full';
 }
 
 const {
@@ -95,11 +100,19 @@ const {
   invertOnReturn = true,
   logoText,
   hideLogo = false,
+  maxWidth = '6xl',
   class: className,
   ...attrs
 } = Astro.props;
 
 const isFloating = shape === 'floating';
+const maxWidthClass = {
+  '4xl': 'max-w-4xl',
+  '5xl': 'max-w-5xl',
+  '6xl': 'max-w-6xl',
+  '7xl': 'max-w-7xl',
+  full: 'max-w-full',
+}[maxWidth];
 const effectiveShowScrollProgress = showScrollProgress || (isFloating && !autoHide);
 const isInvert = colorScheme === 'invert';
 
@@ -124,7 +137,7 @@ const headerClasses = cn(
   className
 );
 
-const innerClasses = headerInnerVariants({ size, shape });
+const innerClasses = cn(headerInnerVariants({ size, shape }), !isFloating && maxWidthClass);
 
 function isActive(href: string): boolean {
   if (!showActiveState) return false;
@@ -363,7 +376,7 @@ const buttonId = `${menuId}-button`;
         >
           <div class={cn(
             'space-y-1 py-4',
-            isFloating ? 'px-4' : 'mx-auto max-w-6xl px-6'
+            isFloating ? 'px-4' : cn('mx-auto px-6', maxWidthClass)
           )}>
             {navItems.map(({ label, href }) => (
               <a
