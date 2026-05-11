@@ -1,4 +1,8 @@
 import { SITE_URL, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from 'astro:env/server';
+import i18nConfig, { type I18nConfig } from './i18n.config';
+
+export { i18nConfig };
+export type { I18nConfig };
 
 export interface SiteConfig {
   name: string;
@@ -84,6 +88,12 @@ export interface SiteConfig {
     };
   };
   /**
+   * Internationalization (i18n) — see `src/config/i18n.config.ts`.
+   * Lives in a separate file so the i18n module can be imported by
+   * unit tests without pulling in `astro:env/server`.
+   */
+  i18n?: I18nConfig;
+  /**
    * Branding configuration
    * Logo files: Replace SVGs in src/assets/branding/
    * Favicon: Replace in public/favicon.svg
@@ -166,6 +176,7 @@ const siteConfig: SiteConfig = {
       },
     },
   },
+  i18n: i18nConfig,
   branding: {
     logo: {
       alt: 'Astro Rocket',

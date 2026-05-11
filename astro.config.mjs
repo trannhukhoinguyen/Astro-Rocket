@@ -6,13 +6,33 @@ import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import netlify from '@astrojs/netlify';
+import i18nConfig from './src/config/i18n.config.ts';
 
 const isNetlify = process.env.DEPLOY_TARGET === 'netlify';
+
+/**
+ * Native Astro i18n is only wired up when the user opts in *and* has
+ * more than one locale configured. With i18n off (the default) this
+ * block is undefined and the build emits the exact same routes as
+ * before — no /en/ prefix, no extra pages.
+ */
+const i18nEnabled = i18nConfig.enabled === true && i18nConfig.locales.length > 1;
+const astroI18nOptions = i18nEnabled
+  ? {
+      defaultLocale: i18nConfig.defaultLocale,
+      locales: i18nConfig.locales,
+      routing: {
+        prefixDefaultLocale: false,
+        redirectToDefaultLocale: false,
+      },
+    }
+  : undefined;
 
 export default defineConfig({
   output: 'static',
   adapter: isNetlify ? netlify() : vercel(),
   site: process.env.SITE_URL || 'https://example.com',
+  ...(astroI18nOptions ? { i18n: astroI18nOptions } : {}),
 
   build: {
     inlineStylesheets: 'always',

@@ -6,6 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.0] — 2026-05-11
+
+### Added
+
+- **Native opt-in i18n** — internationalization is now built into the theme itself, no upstream CLI required. Locale-prefixed routes, a `LanguageSwitcher` dropdown in the header and mobile menu, `hreflang` alternates emitted from the SEO component, and a `t()` translation helper backed by JSON dictionaries (`src/i18n/<locale>.json`). English and Dutch ship out of the box; add more locales by editing `src/config/i18n.config.ts` and creating `src/i18n/<code>.json`. Resolves [#207](https://github.com/hansmartens68/Astro-Rocket/issues/207).
+- **`src/i18n/` module** with `t()`, `localizedPath()`, `swapLocaleInPath()`, `stripLocaleFromPath()`, `getLocaleFromPath()`, `isEnabled()`, and locale helpers. `t()` supports `{name}` placeholder interpolation and falls back to the default locale, then to the key itself, so partial translations are visible but non-fatal.
+- **`src/config/i18n.config.ts`** — new config file with master switch (`enabled`), `defaultLocale`, `locales[]`, `localeNames`, and `detectBrowserLocale`. Lives separately from `site.config.ts` so the i18n module can be unit-tested without pulling in `astro:env/server`.
+- **`LanguageSwitcher.astro`** — accessible pill dropdown with a globe icon, BCP 47 locale code, and full locale names. Pure HTML `<a hreflang lang>` links built via `swapLocaleInPath()` — no framework hydration, ~1 KB of inline JS for open/close. Renders nothing when i18n is disabled.
+- 10 new unit tests covering `t()` lookup, fallback, interpolation, locale validation, and `localizedPath()`.
+
+### Changed
+
+- `Header` now shows `LanguageSwitcher` by default when i18n is enabled (the existing `showLanguageSwitcher` prop now defaults to `i18nIsEnabled()` instead of `undefined`, so it auto-shows on multi-locale sites).
+- `MarketingLayout` drops the hardcoded `showLanguageSwitcher={false}` override so it inherits the new smart default.
+- `astro.config.mjs` conditionally enables Astro's native `i18n` option only when the flag is on and at least two locales are configured. Default routing matches existing behavior (`prefixDefaultLocale: false`).
+- README's i18n section rewritten: the Velocity CLI is no longer the recommended path. The warning that it overwrites existing directories remains, as a footnote for anyone who still wants to try it.
+
+### Performance
+
+Verified zero output-size delta with i18n disabled (the default):
+
+|                | i18n off (1.3.0)  | i18n off (1.2.1)  |
+|----------------|-------------------|-------------------|
+| `dist/` size   | 12 M              | 12 M              |
+| Files          | 80                | 80                |
+| `hreflang`     | 0                 | 0 (didn't exist)  |
+| LanguageSwitcher | 0 instances     | n/a               |
+
+The new code paths are gated on `i18nIsEnabled()`, which returns `false` whenever the flag is off OR `locales.length === 1`. When that returns false, the LanguageSwitcher wrapping `<div>` is skipped, the `hreflang` block compiles to an empty fragment, and `astro.config.mjs` omits the `i18n` option entirely.
+
+---
+
 ## [1.2.1] — 2026-05-10
 
 ### Fixed

@@ -31,7 +31,9 @@ import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import ThemeModeDropdown from '@/components/layout/ThemeModeDropdown.astro';
 import ThemeSelector from '@/components/layout/ThemeSelector.astro';
 import ThemeSelectorDropdown from '@/components/layout/ThemeSelectorDropdown.astro';
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher.astro';
 import siteConfig from '@/config/site.config';
+import { isEnabled as i18nIsEnabled } from '@/i18n';
 
 export interface NavItem {
   label: string;
@@ -93,6 +95,7 @@ const {
   showThemeSelector = true,
   showMobileMenu = true,
   showSocialLinks = false,
+  showLanguageSwitcher = i18nIsEnabled(),
   showActiveState = true,
   showScrollProgress = false,
   scrollProgressPosition = 'bottom',
@@ -236,6 +239,12 @@ const buttonId = `${menuId}-button`;
             {showThemeSelector && (
               <div class="hidden md:flex">
                 <ThemeSelectorDropdown class={isFloating ? 'hdr-invert-text' : undefined} />
+              </div>
+            )}
+
+            {showLanguageSwitcher && (
+              <div class="hidden md:flex">
+                <LanguageSwitcher class={isFloating ? 'hdr-invert-text' : undefined} />
               </div>
             )}
 
@@ -418,6 +427,15 @@ const buttonId = `${menuId}-button`;
                 <div class="flex items-center justify-between px-1">
                   <span class="text-sm text-foreground-muted">Colour theme</span>
                   <ThemeSelector />
+                </div>
+              </div>
+            )}
+
+            {showLanguageSwitcher && (
+              <div class="border-border mt-3 border-t pt-3">
+                <div class="flex items-center justify-between px-1">
+                  <span class="text-sm text-foreground-muted">Language</span>
+                  <LanguageSwitcher />
                 </div>
               </div>
             )}

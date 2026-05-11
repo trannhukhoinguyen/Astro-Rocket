@@ -83,27 +83,81 @@ The following changes were made to the free Velocity theme to create Astro Rocke
 
 ### Internationalization (i18n)
 
-The base theme is i18n-ready with locale-aware content collection schemas. Full i18n support — locale-prefixed routes, a `LanguageSwitcher` component, translated navigation, and `hreflang` SEO tags — can be added via the **[create-velocity-astro](https://github.com/southwellmedia/create-velocity-astro)** CLI from Southwell Media.
+Astro Rocket ships with **native, opt-in i18n** since 1.3.0. When the flag is off (the default) the build is byte-for-byte identical to a single-locale Astro Rocket site — no `/en/` prefix, no `LanguageSwitcher`, no `hreflang`, no JS for locale routing. Turn it on and you get locale-prefixed routes, an accessible `LanguageSwitcher` dropdown in the header (and mobile menu), `hreflang` SEO tags, and a `t()` translation helper backed by JSON dictionaries.
 
-#### Enabling full i18n
+#### Enabling i18n
 
-Scaffold a fresh project with i18n turned on:
+Open `src/config/i18n.config.ts` and flip the flag:
 
-```bash
-# Pick your package manager
-npm create velocity-astro@latest my-site -- --i18n
-pnpm create velocity-astro my-site --i18n
-yarn create velocity-astro my-site --i18n
+```ts
+const i18nConfig: I18nConfig = {
+  enabled: true,                     // master switch
+  defaultLocale: 'en',               // stays at the site root (/about)
+  locales: ['en', 'nl'],             // additional locales live at /nl/about
+  localeNames: {
+    en: 'English',
+    nl: 'Nederlands',
+    // …add more as needed; any BCP 47 code works
+  },
+  detectBrowserLocale: false,
+};
 ```
 
-Omit `--i18n` to be prompted interactively. The CLI then adds:
+Astro's native i18n is wired up automatically when `enabled: true` AND `locales.length > 1`. With `prefixDefaultLocale: false`, the default locale stays at the site root and additional locales live under `/<locale>/`.
 
-- Locale-prefixed routes (`/en/`, `/es/`, `/fr/`, …)
-- A `LanguageSwitcher` component wired into the header
-- Translated navigation and example content per locale
-- `hreflang` SEO tags on every page
+#### Adding a page in another language
 
-For the full list of options and prompts, see the [create-velocity-astro README](https://github.com/southwellmedia/create-velocity-astro). The CLI is maintained by Southwell Media and is the source of truth for i18n setup.
+Astro is filesystem-routed, so a Dutch "About" page is just a new file:
+
+```
+src/pages/about.astro          →  /about      (English, default)
+src/pages/nl/about.astro       →  /nl/about   (Dutch — you create this)
+```
+
+The simplest approach is to import a shared template component and pass the locale as a prop:
+
+```astro
+---
+// src/pages/nl/about.astro
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+
+<AboutPage locale="nl" />
+```
+
+…or just write a Dutch version of the page directly. The `LanguageSwitcher` automatically builds links to `/nl/<current-path>` for every configured locale, so as soon as the file exists, visitors can switch to it.
+
+#### Translating UI strings
+
+UI strings (button labels, "Read more", "Published on", etc.) live in `src/i18n/<locale>.json`. Astro Rocket ships English (`en.json`) and Dutch (`nl.json`) out of the box. Use the `t()` helper in any `.astro` file:
+
+```astro
+---
+import { t, getLocaleFromPath } from '@/i18n';
+const locale = getLocaleFromPath(Astro.url.pathname);
+---
+
+<a href="/blog">{t('common.readMore', locale)}</a>
+```
+
+To add another language, drop a new `src/i18n/<code>.json` mirroring the structure of `en.json` and import it in `src/i18n/index.ts`. Missing keys fall back to the default locale's value, then to the key itself — so partial translations are safe.
+
+#### Content collections
+
+Blog posts and pages already carry a `locale` field on their schema (`src/content.config.ts`). Organize translated content by locale folder:
+
+```
+src/content/blog/en/hello-world.mdx
+src/content/blog/nl/hallo-wereld.mdx
+```
+
+#### Performance
+
+The whole system is build-time. No client-side routing, no framework hydration for the `LanguageSwitcher` — just static HTML and a tiny vanilla-JS open/close handler for the dropdown panel. Verified zero output-size delta on the disabled path between 1.2.1 and 1.3.0.
+
+#### Comparing to Southwell Media's CLI
+
+[`create-velocity-astro`](https://github.com/southwellmedia/create-velocity-astro) is the upstream Velocity CLI for scaffolding a fresh project with i18n. **It is not needed for Astro Rocket** — the equivalent feature is built in here. If you ever do run it, run it in an **empty directory**: it scaffolds a fresh Velocity project and will overwrite an existing directory (including a cloned Astro Rocket repo) if you confirm the "Directory already exists" prompt.
 
 ---
 
