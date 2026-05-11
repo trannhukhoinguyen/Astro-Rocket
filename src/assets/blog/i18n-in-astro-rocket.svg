@@ -6,14 +6,11 @@
     .cor { stroke: var(--brand-300); stroke-width: 1.5; fill: none; stroke-opacity: 0.45; }
   </style>
   <rect width="1200" height="630" class="bg"/>
-  <!-- Lucide Languages -->
+  <!-- Lucide Globe -->
   <g transform="translate(540, 205) scale(5)" class="ico" opacity="0.9">
-    <path d="m5 8 6 6"/>
-    <path d="m4 14 6-6 2-3"/>
-    <path d="M2 5h12"/>
-    <path d="M7 2h1"/>
-    <path d="m22 22-5-10-5 10"/>
-    <path d="M14 18h6"/>
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+    <path d="M2 12h20"/>
   </g>
   <text x="600" y="435" font-size="92" text-anchor="middle" letter-spacing="-3" class="txt">i18n</text>
   <path d="M 36 60 L 36 36 L 60 36" class="cor"/>
