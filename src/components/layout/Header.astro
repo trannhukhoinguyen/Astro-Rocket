@@ -1186,6 +1186,15 @@ const buttonId = `${menuId}-button`;
     }
   }
 
+  /* The stagger animation leaves `transform: translateY(0)` on each row,
+     which creates a stacking context per row. Without lifting the row that
+     owns an open dropdown, the panel's z-50 is trapped inside that row's
+     context and gets covered by later siblings (e.g. the colour-theme
+     swatches below it). */
+  .mobile-menu-stagger:has(.ttg-panel:not(.hidden)) {
+    z-index: 60;
+  }
+
   @keyframes mobileMenuItemIn {
     from {
       opacity: 0;
