@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const allProjects = await getCollection('projects', ({ data }) => {
+    if (data.placeholder) return false;
     return import.meta.env.PROD ? data.draft !== true : true;
   });
 
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { project, related } = Astro.props;
-const { Content } = await render(project);
+const { Content, headings } = await render(project);
 ---
 
 <ProjectLayout
@@ -29,13 +30,17 @@ const { Content } = await render(project);
   client={project.data.client}
   role={project.data.role}
   services={project.data.services}
+  meta={project.data.meta}
   url={project.data.url}
   repo={project.data.repo}
   tags={project.data.tags}
   image={project.data.image}
   imageAlt={project.data.imageAlt}
+  gallery={project.data.gallery}
   slug={project.id.replace(/\.mdx?$/, '')}
   related={related}
+  headings={headings}
+  toc={project.data.toc}
 >
   <Content />
 </ProjectLayout>

@@ -78,6 +78,15 @@ const projects = defineCollection({
       repo: z.string().url().optional(),
       image: image().optional(),
       imageAlt: z.string().optional(),
+      /** Optional gallery — when provided, renders a swipeable carousel in the hero in place of the single `image`. */
+      gallery: z
+        .array(
+          z.object({
+            src: image(),
+            alt: z.string(),
+          })
+        )
+        .default([]),
       tags: z.array(z.string()).default([]),
       featured: z.boolean().default(false),
       order: z.number().default(99),
@@ -85,7 +94,12 @@ const projects = defineCollection({
       client: z.string().optional(),
       role: z.string().optional(),
       services: z.array(z.string()).default([]),
+      /** Optional editorial tagline — short facts rendered as a single line under the hero description with brand-coloured dot separators. */
+      meta: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
+      placeholder: z.boolean().default(false),
+      /** Per-project override: hide table of contents on this project */
+      toc: z.boolean().optional(),
     }),
 });
 
