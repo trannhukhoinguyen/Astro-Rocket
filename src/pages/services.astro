@@ -1,0 +1,404 @@
+---
+/**
+ * Services page
+ * URL: /services
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import { Hero } from '@/components/hero';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+---
+<PageLayout
+  title="Services — Web Design, Development & Performance"
+  description="Three core services for modern websites: thoughtful design, clean Astro development, and measurable performance & SEO."
+>
+  <Hero layout="centered" size="sm">
+    <Badge slot="badge" variant="brand" pill>
+      <Icon name="sparkles" size="sm" />
+      Services
+    </Badge>
+    <h1 slot="title">
+      <span class="text-foreground">What I offer —</span><br />
+      <span class="text-brand-500">designed, built, and tuned.</span>
+    </h1>
+
+    <p slot="description">
+      Three core services, one consistent standard. From the first
+      wireframe to the final Lighthouse score, every project gets the
+      same attention to detail.
+    </p>
+
+    <Fragment slot="actions">
+      <Button variant="outline" href="#design">
+        Web Design
+        <Icon name="arrow-down" size="sm" />
+      </Button>
+      <Button variant="outline" href="#development">
+        Development
+        <Icon name="arrow-down" size="sm" />
+      </Button>
+      <Button variant="outline" href="#performance">
+        SEO & Performance
+        <Icon name="arrow-down" size="sm" />
+      </Button>
+    </Fragment>
+  </Hero>
+
+  <!-- Design -->
+  <section id="design" class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Text -->
+        <div class="flex flex-col justify-center gap-4" data-reveal="right" data-reveal-ease="smooth">
+          <Badge variant="brand" pill class="self-start">
+            <Icon name="layout" size="sm" />
+            Web Design
+          </Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            Design with intention
+          </h2>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Great design starts with the people who'll use it. I design layouts shaped around your content and your audience, not around trends that age badly. Typography, spacing, and colour are chosen for clarity — not novelty.
+          </p>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Every screen is considered: desktop, tablet, and the phone someone holds at the bus stop. The brand stays consistent across the whole experience, and the small details are treated as part of the design, not the polish.
+          </p>
+          <Button variant="outline" href="/contact" class="self-start mt-2">
+            Discuss a design project
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+        <!-- Card -->
+        <div data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
+          <Card variant="elevated" padding="lg" class="h-full">
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                <Icon name="layout" size="md" />
+              </div>
+              <h3 class="font-display text-base font-semibold text-foreground">What's included</h3>
+            </div>
+            <ul class="flex flex-col gap-3">
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Bespoke layouts</span> — built for your content, not from a template.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Responsive across breakpoints</span> — phone, tablet, desktop, ultrawide.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Typography systems</span> — readable, scaleable, on-brand.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Light & dark themes</span> — one design, two moods, user's choice.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Considered motion</span> — interactions that guide, never distract.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Accessibility baked in</span> — contrast, focus, semantic structure.
+                </p>
+              </li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development -->
+  <section id="development" class="py-[var(--space-section-md)] bg-background border-t border-border">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Text -->
+        <div class="flex flex-col justify-center gap-4 lg:order-1" data-reveal="left" data-reveal-ease="smooth">
+          <Badge variant="brand" pill class="self-start">
+            <Icon name="code" size="sm" />
+            Web Development
+          </Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            Code that earns its place
+          </h2>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            I build with Astro because it ships what's needed and nothing else. The result is sites that score well in audits, feel fast in the hand, and don't grow brittle over time.
+          </p>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Architecture matters as much as output: typed content, predictable component boundaries, and a build pipeline a future developer (or future you) can pick up without a guided tour.
+          </p>
+          <Button variant="outline" href="/projects" class="self-start mt-2">
+            See recent projects
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+        <!-- Card -->
+        <div class="lg:order-2" data-reveal="right" data-reveal-delay="1" data-reveal-ease="smooth">
+          <Card variant="elevated" padding="lg" class="h-full">
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                <Icon name="code" size="md" />
+              </div>
+              <h3 class="font-display text-base font-semibold text-foreground">What's included</h3>
+            </div>
+            <ul class="flex flex-col gap-3">
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Astro + Tailwind</span> — modern stack, minimal JavaScript, clean HTML.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Typed content collections</span> — structured blog, projects, and data.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Forms & integrations</span> — protected, GDPR-aware, hooked into your tools.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Hosting & deploy</span> — Netlify, Vercel, Cloudflare, or your own infra.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Version control & CI</span> — git-based workflow, repeatable deploys.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Handover documentation</span> — code, keys, and a README you can actually read.
+                </p>
+              </li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance -->
+  <section id="performance" class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Text -->
+        <div class="flex flex-col justify-center gap-4" data-reveal="right" data-reveal-ease="smooth">
+          <Badge variant="brand" pill class="self-start">
+            <Icon name="zap" size="sm" />
+            Performance
+          </Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            Fast pages, found pages
+          </h2>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Speed and search visibility aren't features to add at the end — they're constraints to honour from the first commit. Every second a page loads costs attention, ranking, and trust.
+          </p>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            I work to measurable targets, not vibes. Core Web Vitals, technical SEO, and accessibility are tracked, tuned, and verified before launch — and the dashboards stay yours after handover.
+          </p>
+          <Button variant="outline" href="/contact" class="self-start mt-2">
+            Start a project
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+        <!-- Card -->
+        <div data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
+          <Card variant="elevated" padding="lg" class="h-full">
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                <Icon name="zap" size="md" />
+              </div>
+              <h3 class="font-display text-base font-semibold text-foreground">What's included</h3>
+            </div>
+            <ul class="flex flex-col gap-3">
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Core Web Vitals</span> — LCP, INP, and CLS held to Google's thresholds.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Image pipeline</span> — modern formats, responsive sizes, lazy loading.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Technical SEO</span> — metadata, sitemaps, structured data, OG images.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Accessibility</span> — WCAG-aware markup and verified focus order.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Lighthouse audits</span> — measurable scores delivered with the site.
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                <p class="text-sm text-foreground-muted leading-relaxed">
+                  <span class="font-semibold text-foreground">Privacy-friendly analytics</span> — useful data, no cookie banner.
+                </p>
+              </li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-[var(--space-section-md)] bg-background border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
+        <div class="flex flex-col items-center gap-6">
+          <Badge variant="brand" pill>How it works</Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            A clear, honest process
+          </h2>
+        </div>
+        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
+          Four stages, one point of contact, no surprises.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card hover data-reveal>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
+              1
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Discovery</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                A conversation about your goals, your audience, and what success looks like. No obligation.
+              </p>
+            </div>
+          </div>
+        </Card>
+        <Card hover data-reveal data-reveal-delay="1">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
+              2
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Proposal</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                A clear scope, timeline, and cost. One page, plain language, fixed price.
+              </p>
+            </div>
+          </div>
+        </Card>
+        <Card hover data-reveal data-reveal-delay="2">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
+              3
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Design & Build</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                Short cycles with regular check-ins. You see the site evolve as it's built.
+              </p>
+            </div>
+          </div>
+        </Card>
+        <Card hover data-reveal data-reveal-delay="3">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
+              4
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Launch & Support</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                Deploy, hand over, stay available. Iteration after launch is straightforward.
+              </p>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <!-- Mobile: flat section, no card -->
+    <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
+      <Badge variant="brand" pill class="mb-6">Let's talk</Badge>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
+        Have a project in mind?
+      </h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">
+        Send a short note about what you're building and what you need. I read every message and reply within a working day.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" href="/contact" class="cta-btn-brand">
+          Start a project
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+        <Button size="lg" variant="outline" href="/about">
+          More about me
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </div>
+
+    <!-- Desktop: contained LetterGlitch band with glass card -->
+    <LetterGlitchBand>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
+        Have a project in mind?
+      </h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">
+        Send a short note about what you're building and what you need. I read every message and reply within a working day.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" href="/contact" class="hero-btn-brand">
+          Start a project
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+        <Button size="lg" variant="outline" href="/about">
+          More about me
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </LetterGlitchBand>
+  </section>
+</PageLayout>
+
+<style is:global>
+  /* Page-local override: anchor links on /services should land the
+     section's coloured edge flush against the fixed header. */
+  html { scroll-padding-top: 4rem; }
+  @media (max-height: 600px) { html { scroll-padding-top: 4rem; } }
+  @media (min-width: 1024px) { html { scroll-padding-top: 4rem; } }
+</style>

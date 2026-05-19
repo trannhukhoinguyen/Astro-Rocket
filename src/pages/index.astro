@@ -73,9 +73,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-6 sm:grid-cols-3">
         <!-- Web Design -->
-        <Card hover data-reveal>
+        <Card hover href="/services#design" class="group flex flex-col" data-reveal>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="layout" size="sm" />
@@ -83,14 +83,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="flex-1 min-w-0">
               <h3 class="text-base font-semibold text-foreground">Web Design</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Clean, modern interfaces that look great on every screen. Focused on clarity, usability, and your brand identity.
+                Thoughtful layouts that put your content first. Designed for clarity, balance, and the way people actually read on the web.
               </p>
+              <span class="inline-flex items-center gap-1 text-sm font-medium text-brand-500 mt-3 group-hover:gap-2 transition-all">
+                Learn more
+                <Icon name="arrow-right" size="sm" />
+              </span>
             </div>
           </div>
         </Card>
 
         <!-- Web Development -->
-        <Card hover data-reveal data-reveal-delay="1">
+        <Card hover href="/services#development" class="group flex flex-col" data-reveal data-reveal-delay="1">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="code" size="sm" />
@@ -98,23 +102,31 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="flex-1 min-w-0">
               <h3 class="text-base font-semibold text-foreground">Web Development</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Fast, accessible websites built with modern tooling. Astro, Tailwind, and best-practice architecture from day one.
+                Modern sites built with Astro and Tailwind. Lean, accessible, and ready to scale with your business — no template lock-in.
               </p>
+              <span class="inline-flex items-center gap-1 text-sm font-medium text-brand-500 mt-3 group-hover:gap-2 transition-all">
+                Learn more
+                <Icon name="arrow-right" size="sm" />
+              </span>
             </div>
           </div>
         </Card>
 
-        <!-- Performance -->
-        <Card hover data-reveal data-reveal-delay="2">
+        <!-- SEO & Performance -->
+        <Card hover href="/services#performance" class="group flex flex-col" data-reveal data-reveal-delay="2">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="zap" size="sm" />
             </div>
             <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">Performance Optimization</h3>
+              <h3 class="text-base font-semibold text-foreground">SEO & Performance</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Core Web Vitals, SEO, and page speed — built in from the start, not bolted on at the end.
+                Pages that load instantly and rank well from launch. Core Web Vitals, metadata, and structured data, done properly.
               </p>
+              <span class="inline-flex items-center gap-1 text-sm font-medium text-brand-500 mt-3 group-hover:gap-2 transition-all">
+                Learn more
+                <Icon name="arrow-right" size="sm" />
+              </span>
             </div>
           </div>
         </Card>
