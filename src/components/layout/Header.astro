@@ -162,6 +162,7 @@ function getNavIcon(href: string): string {
   if (href === '/' || href === '') return 'home';
   if (href.startsWith('/blog'))     return 'pen-line';
   if (href.startsWith('/projects')) return 'layers';
+  if (href.startsWith('/services')) return 'sparkles';
   if (href.startsWith('/about'))    return 'user';
   if (href.startsWith('/contact'))  return 'mail';
   if (href.startsWith('#'))         return 'hash';
