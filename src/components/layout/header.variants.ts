@@ -39,7 +39,7 @@ export const headerVariants = cva('z-50', {
 });
 
 export const headerInnerVariants = cva(
-  'flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]',
+  'flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]',
   {
     variants: {
       size: {

@@ -201,7 +201,7 @@ const buttonId = `${menuId}-button`;
             <span
               class={cn(
                 'font-display text-xl font-bold tracking-tight',
-                isFloating ? 'hdr-logo-text' : (isInvert ? 'text-brand-600 dark:text-foreground md:text-on-invert' : 'text-brand-600 dark:text-foreground')
+                isFloating ? 'hdr-logo-text' : (isInvert ? 'text-brand-600 dark:text-foreground lg:text-on-invert' : 'text-brand-600 dark:text-foreground')
               )}
             >
               {logoText || siteConfig.name}
@@ -213,11 +213,11 @@ const buttonId = `${menuId}-button`;
     {
       layout !== 'minimal' &&
         (hasNavSlot ? (
-          <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+          <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
             <slot name="nav" />
           </nav>
         ) : (
-          <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+          <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
             {navItems.map(({ label, href }) => (
               <a
                 href={href.startsWith('#') && !isLandingPage ? `/${href}` : href}
@@ -249,25 +249,25 @@ const buttonId = `${menuId}-button`;
         ) : (
           <>
             {showThemeToggle && (
-              <div class="hidden md:flex">
+              <div class="hidden lg:flex">
                 <ThemeModeDropdown class={isFloating ? 'hdr-invert-text' : undefined} />
               </div>
             )}
 
             {showThemeSelector && (
-              <div class="hidden md:flex">
+              <div class="hidden lg:flex">
                 <ThemeSelectorDropdown class={isFloating ? 'hdr-invert-text' : undefined} />
               </div>
             )}
 
             {showLanguageSwitcher && (
-              <div class="hidden md:flex">
+              <div class="hidden lg:flex">
                 <LanguageSwitcher class={isFloating ? 'hdr-invert-text' : undefined} />
               </div>
             )}
 
             {showSocialLinks && siteConfig.socialLinks.length > 0 && (
-              <div class="hidden md:flex items-center gap-0.5">
+              <div class="hidden lg:flex items-center gap-0.5">
                 {siteConfig.socialLinks.map((url) => {
                   const { icon, label } = getSocialIconData(url);
                   return (
@@ -307,7 +307,7 @@ const buttonId = `${menuId}-button`;
             ))}
 
             {showCta && (
-              <div class="hidden md:flex">
+              <div class="hidden lg:flex">
                 <Button
                   size="sm"
                   href={ctaHref}
@@ -330,7 +330,7 @@ const buttonId = `${menuId}-button`;
             type="button"
             id={buttonId}
             class={cn(
-              'hdr-hamburger inline-flex items-center justify-center rounded-md p-2 md:hidden',
+              'hdr-hamburger inline-flex items-center justify-center rounded-md p-2 lg:hidden',
               'text-brand-600 dark:text-foreground',
               'transition-colors',
               'focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none',
@@ -379,7 +379,7 @@ const buttonId = `${menuId}-button`;
         <div
           id={menuId}
           class={cn(
-            'hidden origin-top scale-y-0 opacity-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)] md:hidden',
+            'hidden origin-top scale-y-0 opacity-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)] lg:hidden',
             isFloating
               ? 'rounded-b-2xl bg-background/95 backdrop-blur-xl'
               : 'border-border bg-background border-t'
@@ -393,7 +393,7 @@ const buttonId = `${menuId}-button`;
         <div
           id={menuId}
           class={cn(
-            'hidden origin-top scale-y-0 opacity-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)] md:hidden',
+            'hidden origin-top scale-y-0 opacity-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)] lg:hidden',
             isFloating
               ? 'rounded-b-2xl bg-background/95 backdrop-blur-xl'
               : 'border-border bg-background border-t'
@@ -521,7 +521,7 @@ const buttonId = `${menuId}-button`;
   showMobileMenu && layout !== 'minimal' && (
     <div
       id={`${menuId}-backdrop`}
-      class="pointer-events-none fixed inset-0 z-40 opacity-0 transition-opacity duration-200 md:hidden"
+      class="pointer-events-none fixed inset-0 z-40 opacity-0 transition-opacity duration-200 lg:hidden"
       aria-hidden="true"
     />
   )
@@ -997,7 +997,7 @@ const buttonId = `${menuId}-button`;
     color: var(--color-foreground);
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="invert"] .hdr-logo-text {
       color: var(--color-brand-500);
     }
