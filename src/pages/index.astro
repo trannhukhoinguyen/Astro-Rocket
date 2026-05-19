@@ -75,7 +75,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
       <div class="grid gap-6 sm:grid-cols-3">
         <!-- Web Design -->
-        <Card hover href="/services#design" class="group flex flex-col" data-reveal>
+        <Card hover href="/services" class="group flex flex-col" data-reveal>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="layout" size="sm" />
@@ -94,7 +94,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         </Card>
 
         <!-- Web Development -->
-        <Card hover href="/services#development" class="group flex flex-col" data-reveal data-reveal-delay="1">
+        <Card hover href="/services" class="group flex flex-col" data-reveal data-reveal-delay="1">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="code" size="sm" />
@@ -113,7 +113,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         </Card>
 
         <!-- SEO & Performance -->
-        <Card hover href="/services#performance" class="group flex flex-col" data-reveal data-reveal-delay="2">
+        <Card hover href="/services" class="group flex flex-col" data-reveal data-reveal-delay="2">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="zap" size="sm" />
