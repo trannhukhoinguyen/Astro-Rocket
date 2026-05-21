@@ -129,7 +129,7 @@ const siteConfig: SiteConfig = {
   email: 'hello@hansmartens.dev',
   address: {
     street: '',
-    city: 'Veghel',
+    city: 'Eindhoven',
     state: '',
     zip: '',
     country: 'the Netherlands',
