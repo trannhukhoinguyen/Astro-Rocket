@@ -70,11 +70,15 @@ const showToc = !!tocConfig?.enabled && tocOverride !== false;
 const showComments = !!commentsConfig?.enabled && commentsOverride !== false;
 
 // TOC layout: 'inline' (top-of-article card), 'sidebar' (xl+ sticky aside,
-// hidden below xl), or 'auto' (sidebar on xl+, inline card below xl).
+// hidden below xl), or 'auto' (sidebar on xl+; inline opt-in elsewhere).
 // `sidebarActive` controls whether we render the wider grid wrapper.
-const tocLayout = tocConfig?.layout ?? 'inline';
+const tocLayout = tocConfig?.layout ?? 'auto';
 const sidebarActive = showToc && (tocLayout === 'sidebar' || tocLayout === 'auto');
-const inlineActive = showToc && (tocLayout === 'inline' || tocLayout === 'auto');
+// Inline TOC is now opt-in: 'auto' shows only the desktop sidebar so the
+// mobile/landscape/tablet experience isn't dominated by a TOC card the
+// majority of visitors don't use. Posts that want the inline TOC visible
+// everywhere can set `toc.layout: 'inline'` in frontmatter.
+const inlineActive = showToc && tocLayout === 'inline';
 const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 
 // Prefer the post's own image; otherwise serve the per-post dynamic OG image
@@ -166,10 +170,7 @@ const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema]
       <Breadcrumbs items={breadcrumbs} class="mb-8" />
 
       {inlineActive && (
-        <div class:list={[
-          'mb-10 rounded-xl border border-border bg-background-secondary p-5',
-          tocLayout === 'auto' && 'xl:hidden',
-        ]}>
+        <div class="mb-10 rounded-xl border border-border bg-background-secondary p-5">
           <TableOfContents
             headings={headings}
             maxDepth={tocConfig?.maxDepth ?? 3}

@@ -39,26 +39,26 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
   <!-- About me -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-12 lg:grid-cols-2">
+      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12">
         <!-- Left: text -->
-        <div class="flex flex-col justify-center gap-4" data-reveal="right" data-reveal-ease="smooth">
-          <div class="flex flex-col gap-6">
-            <Badge variant="brand" pill class="self-start">Building since 2010</Badge>
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+        <div class="flex flex-col justify-center gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal="right" data-reveal-ease="smooth">
+          <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
+            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">Building since 2010</Badge>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground text-balance">
               Sixteen years of hands‑on craft
             </h2>
           </div>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             I'm a web designer and developer with 16 years of hands‑on experience, based in Amsterdam and working worldwide. Design and the code beneath it aren't separate jobs to me — they're one craft, kept with the same person from first sketch to final deploy.
           </p>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             The result is fast, maintainable sites built with intention — and a direct line to the person actually doing the work, from the first conversation to launch.
           </p>
         </div>
         <!-- Right: personal facts card -->
         <div class="flex flex-col h-full" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="flex-1 flex flex-col justify-center">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-x-6 gap-y-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 glitch:grid-cols-2 gap-x-6 gap-y-8">
               <div class="flex flex-col items-center text-center gap-3">
                 <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
                   <Icon name="map-pin" size="md" />
@@ -145,9 +145,9 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
           These aren't aspirations — they're the constraints every project is held to, from the first conversation to the final handover.
         </p>
       </div>
-      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+      <div class="grid gap-6 sm:gap-8 sm:grid-cols-3">
         <Card hover data-reveal>
-          <div class="flex items-start gap-4 landscape:max-lg:flex-col landscape:max-lg:items-center landscape:max-lg:text-center">
+          <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
             <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="zap" size="md" />
             </div>
@@ -160,7 +160,7 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
           </div>
         </Card>
         <Card hover data-reveal data-reveal-delay="1">
-          <div class="flex items-start gap-4 landscape:max-lg:flex-col landscape:max-lg:items-center landscape:max-lg:text-center">
+          <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
             <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="award" size="md" />
             </div>
@@ -173,7 +173,7 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
           </div>
         </Card>
         <Card hover data-reveal data-reveal-delay="2">
-          <div class="flex items-start gap-4 landscape:max-lg:flex-col landscape:max-lg:items-center landscape:max-lg:text-center">
+          <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
             <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="rocket" size="md" />
             </div>
@@ -331,24 +331,24 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
   <!-- More about me -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-10 lg:grid-cols-2">
+      <div class="grid gap-8 sm:gap-10 glitch:grid-cols-2 glitch:items-center">
         <!-- Text -->
-        <div class="flex flex-col justify-center gap-4" data-reveal="right" data-reveal-ease="smooth">
-          <Badge variant="brand" pill class="self-start">Backstory</Badge>
+        <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:justify-center glitch:text-left" data-reveal="right" data-reveal-ease="smooth">
+          <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">Backstory</Badge>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
             The longer story
           </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             You've seen the work, the process, and the tools. If you'd like to know the person behind them, I've put the whole story in one place.
           </p>
-          <Button variant="outline" size="lg" href="https://hansmartens.dev/blog/hans-martens-web-designer-veghel" target="_blank" rel="noopener noreferrer" class="self-start mt-2">
+          <Button variant="outline" size="lg" href="https://hansmartens.dev/blog/hans-martens-web-designer-veghel" target="_blank" rel="noopener noreferrer" class="self-start sm:self-center glitch:self-start mt-2 sm:hidden glitch:inline-flex">
             Read the full story
             <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
 
         <!-- Image -->
-        <div class="mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
+        <div class="mx-auto w-full max-w-sm sm:max-w-md glitch:mx-0 glitch:max-w-none" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
           <a
             href="https://hansmartens.dev/blog/hans-martens-web-designer-veghel"
             target="_blank"
@@ -360,6 +360,12 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
               <BlogImageSVG slug="hi-im-hans-martens" title="Hi, I'm Hans Martens — the longer story" />
             </div>
           </a>
+        </div>
+        <div class="hidden sm:flex justify-center glitch:hidden" data-reveal data-reveal-delay="2">
+          <Button size="lg" variant="outline" href="https://hansmartens.dev/blog/hans-martens-web-designer-veghel" target="_blank" rel="noopener noreferrer">
+            Read the full story
+            <Icon name="arrow-right" size="sm" />
+          </Button>
         </div>
       </div>
     </div>

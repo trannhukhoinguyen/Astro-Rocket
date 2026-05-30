@@ -22,7 +22,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
     return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
   })
-  .slice(0, 3);
+  .slice(0, 4);
 ---
 
 <LandingLayout
@@ -73,10 +73,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
       </div>
 
-      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div class="grid gap-6 sm:grid-cols-3">
         <!-- Web Design -->
         <Card hover href="/services" class="group flex flex-col" data-reveal>
-          <div class="flex items-start gap-4 landscape:max-lg:flex-col landscape:max-lg:items-center landscape:max-lg:text-center">
+          <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="layout" size="sm" />
             </div>
@@ -95,7 +95,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
         <!-- Web Development -->
         <Card hover href="/services" class="group flex flex-col" data-reveal data-reveal-delay="1">
-          <div class="flex items-start gap-4 landscape:max-lg:flex-col landscape:max-lg:items-center landscape:max-lg:text-center">
+          <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="code" size="sm" />
             </div>
@@ -114,7 +114,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
         <!-- SEO & Performance -->
         <Card hover href="/services" class="group flex flex-col" data-reveal data-reveal-delay="2">
-          <div class="flex items-start gap-4 landscape:max-lg:flex-col landscape:max-lg:items-center landscape:max-lg:text-center">
+          <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
               <Icon name="zap" size="sm" />
             </div>
@@ -269,29 +269,29 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- About Teaser -->
   <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-12 lg:grid-cols-2">
-        <div class="flex flex-col justify-center" data-reveal="right" data-reveal-ease="smooth">
-          <div class="flex flex-col gap-6 mb-6">
-            <Badge variant="brand" pill class="self-start">About me</Badge>
+      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12">
+        <div class="flex flex-col justify-center sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal="right" data-reveal-ease="smooth">
+          <div class="flex flex-col gap-6 mb-6 sm:items-center glitch:items-start">
+            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">About me</Badge>
             <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
               Designer, developer,<br />
               <span class="text-brand-500">and blogger.</span>
             </h2>
           </div>
-          <p class="text-lg text-foreground-muted leading-relaxed mb-4">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty mb-4 sm:mb-0 sm:max-w-xl glitch:mb-4 glitch:max-w-none">
            Sixteen years of hands-on experience{siteConfig.address?.city ? `, based in ${siteConfig.address.city}${siteConfig.address.country ? `, ${siteConfig.address.country}` : ''}` : ''} and available for clients worldwide. I build with Astro because it aligns with how I think about the web: lean, purposeful, and built to last.
           </p>
-          <p class="text-lg text-foreground-muted leading-relaxed mb-8">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty mb-8 sm:max-w-xl glitch:max-w-none sm:hidden glitch:block">
            On the blog, I share the ideas and decisions that shape my work.
           </p>
-           <Button variant="outline" href="/about" class="self-start">
+           <Button variant="outline" href="/about" class="self-start sm:self-center glitch:self-start sm:hidden glitch:inline-flex">
             More about me
             <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
         <Card variant="elevated" padding="lg" class="h-full flex flex-col" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
-          <p class="text-sm text-foreground mb-5 text-center">A few things about me.</p>
-          <div class="grid grid-cols-2 gap-3 flex-1 auto-rows-fr">
+          <p class="text-sm text-foreground mb-5 text-center sm:hidden glitch:block">A few things about me.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 glitch:grid-cols-2 gap-3 flex-1 auto-rows-fr">
             <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
               <Icon name="history" class="w-10 h-10 text-brand-500" />
               <p class="text-sm font-semibold text-foreground">16 Years Experience</p>
@@ -313,6 +313,12 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             </div>
           </div>
         </Card>
+        <div class="hidden sm:flex justify-center glitch:hidden" data-reveal data-reveal-delay="2">
+          <Button variant="outline" href="/about">
+            More about me
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -327,8 +333,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         </h2>
       </div>
 
-      <div class="grid gap-6 lg:grid-cols-3">
-        {posts.map((post) => (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post, index) => (
           <BlogCard
             title={post.data.title}
             description={post.data.description}
@@ -338,6 +344,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             author={post.data.author}
             image={post.data.image}
             svgSlug={post.data.svgSlug}
+            class={index === 3 ? 'hidden sm:block lg:hidden' : undefined}
           />
         ))}
       </div>
@@ -426,5 +433,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
   initCountup();
 </script>
+
+<style is:global>
+  /* Widen the homepage hero description from md upward so the paragraph
+     reads on two lines instead of three on landscape phones, tablets,
+     and all laptop/desktop sizes. Scoped via the unique
+     .hero-dark-gradient class so other heroes keep the default
+     max-w-xl reading measure. */
+  @media (min-width: 768px) {
+    .hero-dark-gradient .hero-title-slot + div {
+      max-width: 48rem;
+    }
+  }
+</style>
 
 </LandingLayout>

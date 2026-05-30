@@ -50,31 +50,33 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
   <!-- Design -->
   <section id="design" class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-12 lg:grid-cols-2">
+      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12 glitch:items-start">
         <!-- Text -->
-        <div class="flex flex-col justify-center gap-4" data-reveal="right" data-reveal-ease="smooth">
-          <Badge variant="brand" pill class="self-start">
-            <Icon name="layout" size="sm" />
-            Web Design
-          </Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Design with intention
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+        <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal="right" data-reveal-ease="smooth">
+          <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
+            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+              <Icon name="layout" size="sm" />
+              Web Design
+            </Badge>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Design with intention
+            </h2>
+          </div>
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             Great design starts with the people who'll use it. I design layouts shaped around your content and your audience, not around trends that age badly. Typography, spacing, and colour are chosen for clarity — not novelty.
           </p>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             Every screen is considered: desktop, tablet, and the phone someone holds at the bus stop. The brand stays consistent across the whole experience, and the small details are treated as part of the design, not the polish.
           </p>
-          <Button variant="outline" href="/contact" class="self-start mt-2">
+          <Button variant="outline" href="/contact" class="self-start sm:self-center glitch:self-start mt-2 sm:hidden glitch:inline-flex">
             Discuss a design project
             <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
         <!-- Card -->
-        <div data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
+        <div class="sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="h-full flex flex-col justify-center">
-            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border sm:justify-center glitch:justify-start">
               <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
                 <Icon name="layout" size="md" />
               </div>
@@ -120,6 +122,12 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
             </ul>
           </Card>
         </div>
+        <div class="hidden sm:flex justify-center glitch:hidden" data-reveal data-reveal-delay="2">
+          <Button variant="outline" href="/contact">
+            Discuss a design project
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -127,31 +135,33 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
   <!-- Development -->
   <section id="development" class="py-[var(--space-section-md)] bg-background border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-12 lg:grid-cols-2">
+      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12 glitch:items-start">
         <!-- Text -->
-        <div class="flex flex-col justify-center gap-4 lg:order-2" data-reveal="left" data-reveal-ease="smooth">
-          <Badge variant="brand" pill class="self-start">
-            <Icon name="code" size="sm" />
-            Web Development
-          </Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Code that earns its place
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+        <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:order-2 glitch:items-start glitch:text-left" data-reveal="left" data-reveal-ease="smooth">
+          <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
+            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+              <Icon name="code" size="sm" />
+              Web Development
+            </Badge>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Code that earns its place
+            </h2>
+          </div>
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             I build with Astro because it ships what's needed and nothing else. The result is sites that score well in audits, feel fast in the hand, and don't grow brittle over time.
           </p>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             Architecture matters as much as output: typed content, predictable component boundaries, and a build pipeline a future developer (or future you) can pick up without a guided tour.
           </p>
-          <Button variant="outline" href="/projects" class="self-start mt-2">
+          <Button variant="outline" href="/projects" class="self-start sm:self-center glitch:self-start mt-2 sm:hidden glitch:inline-flex">
             See recent projects
             <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
         <!-- Card -->
-        <div class="lg:order-1" data-reveal="right" data-reveal-delay="1" data-reveal-ease="smooth">
+        <div class="sm:max-w-xl sm:mx-auto glitch:order-1 glitch:max-w-none glitch:mx-0" data-reveal="right" data-reveal-delay="1" data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="h-full flex flex-col justify-center">
-            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border sm:justify-center glitch:justify-start">
               <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
                 <Icon name="code" size="md" />
               </div>
@@ -197,6 +207,12 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
             </ul>
           </Card>
         </div>
+        <div class="hidden sm:flex justify-center glitch:hidden" data-reveal data-reveal-delay="2">
+          <Button variant="outline" href="/projects">
+            See recent projects
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -204,31 +220,33 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
   <!-- Performance -->
   <section id="performance" class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-12 lg:grid-cols-2">
+      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12 glitch:items-start">
         <!-- Text -->
-        <div class="flex flex-col justify-center gap-4" data-reveal="right" data-reveal-ease="smooth">
-          <Badge variant="brand" pill class="self-start">
-            <Icon name="zap" size="sm" />
-            Performance
-          </Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Fast pages, found pages
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+        <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal="right" data-reveal-ease="smooth">
+          <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
+            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+              <Icon name="zap" size="sm" />
+              Performance
+            </Badge>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Fast pages, found pages
+            </h2>
+          </div>
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             Speed and search visibility aren't features to add at the end — they're constraints to honour from the first commit. Every second a page loads costs attention, ranking, and trust.
           </p>
-          <p class="text-lg text-foreground-muted leading-relaxed">
+          <p class="text-lg text-foreground-muted leading-relaxed text-pretty sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             I work to measurable targets, not vibes. Core Web Vitals, technical SEO, and accessibility are tracked, tuned, and verified before launch — and the dashboards stay yours after handover.
           </p>
-          <Button variant="outline" href="/contact" class="self-start mt-2">
+          <Button variant="outline" href="/contact" class="self-start sm:self-center glitch:self-start mt-2 sm:hidden glitch:inline-flex">
             Start a project
             <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
         <!-- Card -->
-        <div data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
+        <div class="sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="h-full flex flex-col justify-center">
-            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+            <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border sm:justify-center glitch:justify-start">
               <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
                 <Icon name="zap" size="md" />
               </div>
@@ -274,6 +292,12 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
             </ul>
           </Card>
         </div>
+        <div class="hidden sm:flex justify-center glitch:hidden" data-reveal data-reveal-delay="2">
+          <Button variant="outline" href="/contact">
+            Start a project
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -295,11 +319,11 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <Card hover data-reveal>
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center text-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
               1
             </div>
-            <div class="flex-1 min-w-0">
+            <div>
               <h3 class="text-base font-semibold text-foreground">Discovery</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
                 A conversation about your goals, your audience, and what success looks like. No obligation.
@@ -308,11 +332,11 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
           </div>
         </Card>
         <Card hover data-reveal data-reveal-delay="1">
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center text-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
               2
             </div>
-            <div class="flex-1 min-w-0">
+            <div>
               <h3 class="text-base font-semibold text-foreground">Proposal</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
                 A clear scope, timeline, and cost. One page, plain language, fixed price.
@@ -321,11 +345,11 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
           </div>
         </Card>
         <Card hover data-reveal data-reveal-delay="2">
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center text-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
               3
             </div>
-            <div class="flex-1 min-w-0">
+            <div>
               <h3 class="text-base font-semibold text-foreground">Design & Build</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
                 Short cycles with regular check-ins. You see the site evolve as it's built.
@@ -334,11 +358,11 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
           </div>
         </Card>
         <Card hover data-reveal data-reveal-delay="3">
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center text-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 font-bold text-base shrink-0">
               4
             </div>
-            <div class="flex-1 min-w-0">
+            <div>
               <h3 class="text-base font-semibold text-foreground">Launch & Support</h3>
               <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
                 Deploy, hand over, stay available. Iteration after launch is straightforward.

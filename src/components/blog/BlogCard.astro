@@ -15,6 +15,7 @@ interface Props {
   author?: string;
   image?: ImageMetadata;
   svgSlug?: string;
+  class?: string;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   author,
   image,
   svgSlug,
+  class: className,
 } = Astro.props;
 
 // Estimate reading time (rough estimate based on average words)
@@ -34,7 +36,7 @@ const estimatedWords = description.split(' ').length * 10; // Rough estimate
 const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
 ---
 
-<article class="group rounded-lg border border-brand-500/30 bg-background p-6 shadow-md ring-1 ring-brand-500/20 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-brand-500 hover:shadow-lg" data-reveal>
+<article class:list={["group rounded-lg border border-brand-500/30 bg-background p-6 shadow-md ring-1 ring-brand-500/20 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-brand-500 hover:shadow-lg", className]} data-reveal>
 
   <a href={href} class="block">
     <div
