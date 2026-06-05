@@ -1,6 +1,6 @@
 ---
 title: "Hans Martens Dev"
-description: "My portfolio and personal proving ground — designed and coded by me on Astro Rocket, the Astro 6 starter I built. A locked brand-violet identity, a real 3-state colour mode, LetterGlitch CTAs, and a clean 100/100/100/100 Lighthouse run on mobile and desktop."
+description: "My portfolio and personal proving ground — designed and coded by me on Astro Rocket, the Astro 6 starter I built. A locked brand-blue identity, a real 3-state colour mode, LetterGlitch CTAs, and a clean 100/100/100/100 Lighthouse run on mobile and desktop."
 url: "https://hansmartens.dev"
 tags: ["Astro", "TypeScript", "Tailwind CSS", "Personal Site"]
 featured: true
@@ -11,7 +11,7 @@ services: ["Web Design", "Web Development", "Performance"]
 meta: ["Personal site", "Built on Astro Rocket", "Astro 6", "Lighthouse 4×100"]
 icon: "code"
 image: "../../assets/projects/hansmartensdev-website.jpg"
-imageAlt: "The Hans Martens Dev homepage — a brand-violet hero fading to black, shown in a browser window."
+imageAlt: "The Hans Martens Dev homepage — a brand-blue hero fading to black, shown in a browser window."
 ---
 
 import LighthouseScoresGrid from '@/components/landing/LighthouseScoresGrid.astro';
@@ -50,11 +50,11 @@ Same component, same motion, opposite palette. It's the kind of thing you don't 
 
 The hero is where the brand has to land, so it gets two completely different treatments depending on the page.
 
-**The homepage hero is locked.** It's a single vertical wash of colour — brand violet at the top, sinking down to true black at the foot — and it renders *identically* whether your machine is set to light or dark. That's on purpose. The first screen is the brand's one chance to make an impression, and I didn't want the OS preference quietly changing the mood of my front door. The headline sits in a soft, brand-tinted near-white so it never shouts over the gradient, and the floating capsule rests on top like frosted glass.
+**The homepage hero is locked.** It's a single vertical wash of colour — brand blue at the top, sinking down to true black at the foot — and it renders *identically* whether your machine is set to light or dark. That's on purpose. The first screen is the brand's one chance to make an impression, and I didn't want the OS preference quietly changing the mood of my front door. The headline sits in a soft, brand-tinted near-white so it never shouts over the gradient, and the floating capsule rests on top like frosted glass.
 
 **The inner pages take the opposite approach** — and this is my favourite trick on the whole site. Services, Projects, Blog, About and Contact share a quieter hero that deliberately *flips its technique* with the colour mode, both versions pure CSS that cost nothing on performance:
 
-- **In light mode**, a faint architectural grid sits behind the heading — 56px cells, like pale blueprint paper, brightest just under the header and dissolving out to plain white at the corners, with the lines subtly *lighting up* in brand violet toward the centre.
+- **In light mode**, a faint architectural grid sits behind the heading — 56px cells, like pale blueprint paper, brightest just under the header and dissolving out to plain white at the corners, with the lines subtly *lighting up* in brand blue toward the centre.
 - **In dark mode**, the grid gives way to a **beam** — a soft pool of brand light spilling down from the top edge, as if it's falling from the underside of the fixed header, fading out before it reaches the headline so the title stays crisp on the dark.
 
 In light mode the structure is *drawn in lines*; in dark mode it's *painted in light*. Same anchor, same brand colour, two opposite moods from one idea.
@@ -65,11 +65,11 @@ The colour-mode control in the header is a real **three-state switch**, not a bi
 
 The detail I'm quietly proud of: there's never a flash of the wrong theme. A tiny script runs in the page head *before* the body paints, reads your saved preference, and applies dark mode up front — so a dark-mode visitor never catches a single white frame, not on first load and not when moving between pages. I wrote the whole thing up in [System, Light, Dark — How the Colour-Mode System Works](/blog/colour-mode-system).
 
-One restraint worth mentioning: Astro Rocket can offer twelve switchable accent colours, but on this site I've turned that off. Violet is the brand. The dial still works underneath — I've just locked it, because my own portfolio shouldn't be inviting you to redecorate it.
+One restraint worth mentioning: Astro Rocket can offer twelve switchable accent colours, but on this site I've turned that off. Blue is the brand. The dial still works underneath — I've just locked it, because my own portfolio shouldn't be inviting you to redecorate it.
 
 ## The CTA you keep scrolling back to
 
-Every page that wants to convert ends on the same closing note: a contained band with the **LetterGlitch** effect running behind it — a field of brand-violet characters flickering and cycling on a canvas — with a brand-tinted glass card floating on top to keep the headline and buttons perfectly readable. There's a soft halo bleeding out behind the rounded band so it feels like it's glowing rather than just sitting there.
+Every page that wants to convert ends on the same closing note: a contained band with the **LetterGlitch** effect running behind it — a field of brand-blue characters flickering and cycling on a canvas — with a brand-tinted glass card floating on top to keep the headline and buttons perfectly readable. There's a soft halo bleeding out behind the rounded band so it feels like it's glowing rather than just sitting there.
 
 It's intentionally a **desktop moment**. On a phone the band would squeeze into something tense and unreadable, so small screens get a calm, flat version of the same call-to-action instead — same words, same buttons, no canvas. It's a little flourish of texture in an otherwise restrained layout, and that contrast is exactly why it works. The full build, component and all, is in [Add a LetterGlitch Effect to Your Astro 6 Site](https://hansmartens.dev/blog/letter-glitch-astro-6).
 
@@ -79,7 +79,7 @@ Nothing on this site moves to show off. The animation layer is there to make thi
 
 - **A spring, not an ease.** Entrances ride a `cubic-bezier` curve tuned to overshoot a few pixels and settle back, so elements land with a tiny bounce instead of stopping dead. It feels like a physics spring — but it's pure CSS, no animation library shipped to your browser.
 - **Things reveal as you reach them.** Sections fade and lift into place as they scroll into view; grids of cards cascade in one after another instead of all at once.
-- **A cursor that leaves a trail.** On desktop, a brand-violet dot tracks your pointer, a soft ring chases it and blooms over anything clickable, and a comet of fading particles follows fast movements.
+- **A cursor that leaves a trail.** On desktop, a brand-blue dot tracks your pointer, a soft ring chases it and blooms over anything clickable, and a comet of fading particles follows fast movements.
 - **A reading progress ring.** A thin arc draws itself clockwise around the back-to-top button as you move down a page — empty at the top, a full circle at the bottom.
 - **A headline that types itself** without ever shifting the layout around it, because the line is pre-measured to its longest phrase before the animation starts.
 
