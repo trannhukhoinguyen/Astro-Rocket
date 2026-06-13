@@ -350,8 +350,13 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 
           if (!els.length) return;
 
+          // Non-eager pages trigger a bit deeper in the viewport (-15% bottom)
+          // so a block is comfortably on-screen before it rises — its slide-up
+          // plays in front of the reader instead of being masked by the scroll
+          // as it peeks in at the bottom edge. Eager pages keep the earlier -5%
+          // so their first above-fold cards still reveal promptly.
           const eager = document.body.hasAttribute('data-eager-reveal');
-          const belowFoldMargin = eager ? '0px 0px -5% 0px' : '0px 0px -10% 0px';
+          const belowFoldMargin = eager ? '0px 0px -5% 0px' : '0px 0px -15% 0px';
 
           // Two scroll-triggered observers for below-fold elements. Tall
           // elements (taller than ~85% of the viewport) use threshold 0 so
@@ -407,7 +412,60 @@ const locale = getLocaleFromPath(Astro.url.pathname);
             });
           }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
 
-          els.forEach(function (el) { firstPass.observe(el); });
+          // Cards flagged data-reveal-eager (the first card on a listing page)
+          // reveal on load with the normal animation instead of waiting for
+          // scroll. On mobile the centered hero can push the first card below
+          // firstPass's fold line, which would otherwise leave it hidden until
+          // the reader scrolls — unlike pages with no heading above the grid
+          // (e.g. projects), where the first card sits above the fold and
+          // animates on load. The 250ms delay mirrors firstPass's base reveal
+          // timing so the entrance matches, and lets the opacity:0 frame paint
+          // first so the transition plays.
+          //
+          // On a multi-column grid the eager card's same-row neighbours would
+          // otherwise ride the scroll observers on a different clock, so a
+          // side-by-side pair enters visibly out of sync. Group each eager card
+          // with its same-row [data-reveal] siblings and reveal them in one
+          // tick. "Same row" is detected by a shared offsetTop, so on a stacked
+          // single-column layout (mobile) nothing qualifies and the existing
+          // top-to-bottom stagger is left untouched. The offsetTop reads happen
+          // in a single pass with no interleaved writes, so they share one
+          // layout flush rather than thrashing.
+          const eagerGroups = new Map();
+          const syncedSiblings = new Set();
+          els.forEach(function (el) {
+            if (!el.hasAttribute('data-reveal-eager')) return;
+            const group = [el];
+            const parent = el.parentElement;
+            if (parent) {
+              const top = el.offsetTop;
+              Array.prototype.forEach.call(parent.children, function (sib) {
+                if (
+                  sib !== el &&
+                  sib.hasAttribute('data-reveal') &&
+                  !sib.hasAttribute('data-reveal-eager') &&
+                  Math.abs(sib.offsetTop - top) <= 1
+                ) {
+                  group.push(sib);
+                  syncedSiblings.add(sib);
+                }
+              });
+            }
+            eagerGroups.set(el, group);
+          });
+
+          els.forEach(function (el) {
+            if (el.hasAttribute('data-reveal-eager')) {
+              const group = eagerGroups.get(el);
+              setTimeout(function () {
+                group.forEach(function (node) { node.classList.add('is-visible'); });
+              }, 250);
+              return;
+            }
+            // Already revealed in lockstep with its eager row-mate above.
+            if (syncedSiblings.has(el)) return;
+            firstPass.observe(el);
+          });
         }
 
         if (document.readyState === 'loading') {

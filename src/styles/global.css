@@ -1044,11 +1044,15 @@
    transition shorthand is always valid.
    ------------------------------------------------------------------------- */
 
-/* Clean ease-out curve: elements slide up and decelerate to a smooth stop
-   on entrance, with no overshoot or bounce. */
+/* Clean ease-out curve: elements slide up and decelerate to a smooth stop on
+   entrance, no overshoot. This fade-in is for the non-LCP hero elements (badge,
+   description, actions); the LCP hero title uses the transform-only keyframe
+   below so it never fades, keeping its first paint at full opacity. The 0.01
+   start (not 0) keeps these faded elements as paint candidates so none is
+   misread as a late LCP if it ever becomes the largest element. */
 @keyframes hero-slide-up {
   from {
-    opacity: 0;
+    opacity: 0.01;
     transform: translateY(80px);
   }
   to {
@@ -1203,6 +1207,21 @@
 [data-reveal-content] > *.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* In-page anchor jumps (e.g. the services hero section buttons) tag their
+   destination with .reveal-instant so the content is already in its final
+   position when the smooth-scroll lands, instead of sliding in mid-jump.
+   Natural scrolling is untouched and still animates. */
+.reveal-instant[data-reveal],
+.reveal-instant [data-reveal],
+.reveal-instant[data-reveal-children] > *,
+.reveal-instant [data-reveal-children] > *,
+.reveal-instant[data-reveal-content] > *,
+.reveal-instant [data-reveal-content] > * {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
