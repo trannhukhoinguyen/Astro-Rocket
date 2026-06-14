@@ -4,16 +4,15 @@
  * URL: /projects/tag/<slug>
  */
 import PageLayout from '@/layouts/PageLayout.astro';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
 import ProjectTagList from '@/components/projects/ProjectTagList.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
-import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import {
   collectProjectTags,
   collectTopProjectTags,
-  getProjectSlug,
   getVisibleProjects,
   tagToSlug,
 } from '@/lib/projects';
@@ -85,38 +84,7 @@ const { tag, projects, visibleTags } = Astro.props;
       {projects.length > 0 ? (
         <div class="grid gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
-            <Card
-              variant="elevated"
-              hover
-              padding="none"
-              href={project.data.placeholder ? undefined : `/projects/${getProjectSlug(project.id)}`}
-              class="group flex flex-col"
-              data-reveal
-              data-reveal-delay={i % 2 || undefined}
-            >
-              <div class="flex flex-1 flex-col p-6">
-                <div class="mb-3 flex items-start justify-between gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                    <Icon name="layers" size="sm" />
-                  </div>
-                  <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
-                </div>
-                <div class="mb-2 flex items-baseline gap-2">
-                  <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
-                  {project.data.year && (
-                    <span class="text-xs text-foreground-muted">{project.data.year}</span>
-                  )}
-                </div>
-                <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1">{project.data.description}</p>
-                {project.data.tags && project.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-1.5">
-                    {project.data.tags.map((t) => (
-                      <Badge variant="brand">#{t}</Badge>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </Card>
+            <ProjectCard project={project} index={i} />
           ))}
         </div>
       ) : (

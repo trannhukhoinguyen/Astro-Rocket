@@ -13,6 +13,9 @@ export { tagToSlug, findTagBySlug } from '@/lib/tags';
 /** How many of the most-used tags to surface in a project tag cloud. */
 export const PROJECT_TAG_CLOUD_LIMIT = 10;
 
+/** Number of projects shown per page on the projects listing. */
+export const PROJECTS_PER_PAGE = 12;
+
 /** Strip the `.md`/`.mdx` extension from a project id to get its URL slug. */
 export function getProjectSlug(projectId: string): string {
   return projectId.replace(/\.mdx?$/, '');
