@@ -20,7 +20,7 @@ import {
 const TAG_CLOUD_LIMIT = 10;
 
 export async function getStaticPaths() {
-  const posts = await getPublishedPosts('en');
+  const posts = await getPublishedPosts();
   const nonFeatured = posts.filter((p) => !p.data.featured);
   const regularPostsAll = nonFeatured.length > 0 ? nonFeatured : posts;
   const totalPages = Math.max(1, Math.ceil(regularPostsAll.length / BLOG_POSTS_PER_PAGE));
@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
 const { page, totalPages } = Astro.props;
 
-const posts = await getPublishedPosts('en');
+const posts = await getPublishedPosts();
 const nonFeatured = posts.filter((p) => !p.data.featured);
 const regularPostsAll = nonFeatured.length > 0 ? nonFeatured : posts;
 

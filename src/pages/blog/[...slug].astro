@@ -3,6 +3,8 @@ import BlogLayout from '@/layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { assertNoSlugCollisions } from '@/lib/content-validation';
 import { assertValidPostUids } from '@/lib/post-links';
+import { getPostSlug } from '@/lib/blog';
+import { defaultLocale } from '@/i18n';
 import PostLink from '@/components/blog/PostLink.astro';
 
 export async function getStaticPaths() {
@@ -12,11 +14,11 @@ export async function getStaticPaths() {
   await assertValidPostUids();
 
   const posts = await getCollection('blog', ({ data }) => {
-    return data.locale === 'en' && (import.meta.env.PROD ? data.draft !== true : true);
+    return data.locale === defaultLocale && (import.meta.env.PROD ? data.draft !== true : true);
   });
 
   return posts.map((post) => ({
-    params: { slug: post.id.replace('en/', '') },
+    params: { slug: getPostSlug(post.id, post.data.locale) },
     props: { post },
   }));
 }

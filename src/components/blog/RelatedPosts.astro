@@ -1,6 +1,7 @@
 ---
 import BlogCard from './BlogCard.astro';
 import { getCollection } from 'astro:content';
+import { defaultLocale } from '@/i18n';
 
 interface Props {
   currentSlug: string;
@@ -9,7 +10,7 @@ interface Props {
   maxPosts?: number;
 }
 
-const { currentSlug, tags, locale = 'en', maxPosts = 3 } = Astro.props;
+const { currentSlug, tags, locale = defaultLocale, maxPosts = 3 } = Astro.props;
 
 // Get all published posts in the same locale
 const allPosts = await getCollection('blog', ({ data }) => {

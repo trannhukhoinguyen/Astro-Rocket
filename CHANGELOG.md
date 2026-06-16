@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - **Removed `@pagefind/default-ui` dependency** — the search modal is a theme-native UI on the Pagefind JS API, so the prebuilt widget package is no longer needed.
 
+### Fixed
+
+- **Blog now follows the configured locale instead of a hard-coded `en`** — the blog index, pagination, individual posts, tag archives, RSS feed, dynamic OG images, and the homepage "from the blog" section now read `defaultLocale` from `src/config/i18n.config.ts` rather than the literal `'en'`, and slug generation strips each post's own locale folder. Setting `defaultLocale` to a non-English locale (and moving content into the matching folder) now renders that locale's blog at the site root instead of 404ing. The locale/slug logic is centralised in `src/lib/blog.ts` so the routes can't drift apart again. All resolution is build-time only — no client JS and no change to the shipped payload for the default (English) site. (#419)
+- **Adding a locale no longer breaks the build** — the `locale` field on the blog, pages, and faqs collections is now validated against the `locales` list in `src/config/i18n.config.ts` instead of a hard-coded `z.enum(['en', 'es', 'fr'])`, so any locale you register in the i18n config is accepted by the content schema automatically. (#418)
+
 ---
 
 ## [1.6.0] — 2026-06-07

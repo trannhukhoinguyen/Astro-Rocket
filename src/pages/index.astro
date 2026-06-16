@@ -10,6 +10,8 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import StackMarquee from '@/components/landing/StackMarquee.astro';
 import { getCollection } from 'astro:content';
 import siteConfig from '@/config/site.config';
+import { getPostUrl } from '@/lib/blog';
+import { defaultLocale } from '@/i18n';
 
 const projectItems = await getCollection('projects');
 const featuredProjects = projectItems
@@ -17,7 +19,7 @@ const featuredProjects = projectItems
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 4);
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+const posts = (await getCollection('blog', ({ data }) => data.locale === defaultLocale && !data.draft))
   .sort((a, b) => {
     if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
     return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
@@ -336,7 +338,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           <BlogCard
             title={post.data.title}
             description={post.data.description}
-            href={`/blog/${post.id.replace('en/', '')}`}
+            href={getPostUrl(post.id)}
             publishedAt={post.data.publishedAt}
             tags={post.data.tags}
             author={post.data.author}

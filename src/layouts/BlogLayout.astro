@@ -18,6 +18,7 @@ import { resolveSocialLinks } from '@/lib/utils';
 import { createBlogPostSchema, createFAQSchema } from '@/lib/schema';
 import { getBlogOgPath } from '@/lib/og';
 import { getLocaleFromPath } from '@/i18n';
+import { getPostSlug } from '@/lib/blog';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 
@@ -84,7 +85,7 @@ const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 // Prefer the post's own image; otherwise serve the per-post dynamic OG image
 // generated at build time (see src/pages/og/blog/[slug].svg.ts). Falls back to
 // the site-wide default only when slug is missing.
-const ogImage = image?.src || (slug ? getBlogOgPath(slug.replace(/^en\//, '')) : siteConfig.ogImage);
+const ogImage = image?.src || (slug ? getBlogOgPath(getPostSlug(slug, locale)) : siteConfig.ogImage);
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },

@@ -22,7 +22,7 @@ const TAG_CLOUD_LIMIT = 10;
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
-const posts = await getPublishedPosts('en');
+const posts = await getPublishedPosts();
 
 // Featured posts always appear on page 1; the "All posts" grid paginates
 // the non-featured set so the first impression stays curated.

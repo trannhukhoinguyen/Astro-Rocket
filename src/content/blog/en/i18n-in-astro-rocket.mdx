@@ -114,7 +114,7 @@ src/content/blog/en/hello-world.mdx
 src/content/blog/nl/hallo-wereld.mdx
 ```
 
-In the Dutch post's frontmatter, set `locale: nl`. The collection schema currently accepts `en`, `es`, and `fr`; add your locale to the enum if you need other codes. The base theme is ready for this — the field, folder convention, and per-post type-safety are all in place.
+In the Dutch post's frontmatter, set `locale: nl`. The collection schema validates the `locale` field against the `locales` list in `src/config/i18n.config.ts`, so any locale you register there is accepted automatically — there's no separate enum to edit. The base theme is ready for this — the field, folder convention, and per-post type-safety are all in place.
 
 The folder name has to match the locale code you're using in `i18n.config.ts`. If you set `defaultLocale: 'zh-CN'`, the root posts have to live in `src/content/blog/zh-CN/`, not `src/content/blog/en/` — the folder name is what the route resolves to, not the config value alone.
 
