@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.7.0] — 2026-06-16
+
 ### Added
 
 - **Video slides in project galleries** — a gallery slide can now be a self-hosted video (`video: "/videos/demo.mp4"` + required `poster` image + `alt`) alongside image slides, in both the frontmatter hero carousel (`ProjectCarousel.astro`) and the in-body `<ProjectGallery>` component (where videos also play inside the lightbox). Built to be Lighthouse-neutral: `preload="none"` means zero video bytes until the visitor presses play, the poster goes through the `astro:assets` pipeline like any other slide, there is no autoplay, and swiping away from a playing video pauses it. The slide union is validated in `src/content.config.ts`, the shared `GallerySlide` type lives in the new `src/lib/gallery.ts`, and YouTube/Vimeo embeds are deliberately out of scope. Documented in the README and in a new blog post (`src/content/blog/en/project-gallery-video-slides.mdx`). (#396)
