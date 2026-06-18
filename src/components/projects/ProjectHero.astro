@@ -64,6 +64,10 @@ const hasMedia = slides.length > 0;
           {description}
         </p>
 
+        {tags.length > 0 && (
+          <ProjectTagList tags={tags} class="mb-[var(--space-stack-lg)]" />
+        )}
+
         {meta.length > 0 && (
           <p class="mb-[var(--space-stack-lg)] flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-foreground-muted">
             {meta.map((item, i) => (
@@ -75,10 +79,6 @@ const hasMedia = slides.length > 0;
               </>
             ))}
           </p>
-        )}
-
-        {tags.length > 0 && (
-          <ProjectTagList tags={tags} class="mb-[var(--space-stack-lg)]" />
         )}
 
         {(url || repo) && (
