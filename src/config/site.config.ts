@@ -88,12 +88,12 @@ export interface SiteConfig {
       /** Deepest heading level to include (2 = H2 only, 3 = H2+H3, etc.) */
       maxDepth?: 2 | 3 | 4;
     };
-    /** Comments at the bottom of blog posts (powered by Giscus) */
+    /** Comments at the bottom of blog posts (powered by Giscus or Cusdis) */
     comments?: {
       /** Master switch — set to true to enable site-wide */
       enabled: boolean;
-      /** Comments provider. Currently only 'giscus' is supported. */
-      provider?: 'giscus';
+      /** Comments provider — 'giscus' (GitHub Discussions) or 'cusdis'. */
+      provider?: 'giscus' | 'cusdis';
       /** Giscus configuration. Get values from https://giscus.app */
       giscus?: {
         repo: `${string}/${string}`;
@@ -116,6 +116,30 @@ export interface SiteConfig {
          * Giscus language. Leave empty (the default) to follow the site's
          * current locale. Set a specific Giscus lang code (e.g. 'en', 'nl')
          * to override.
+         */
+        lang?: string;
+      };
+      /** Cusdis configuration. Get your App ID from your Cusdis dashboard. */
+      cusdis?: {
+        /** Cusdis App ID (from the Cusdis dashboard's "Embed Code"). */
+        appId: string;
+        /**
+         * Cusdis instance host. Defaults to the hosted service
+         * 'https://cusdis.com'; set this to your own URL when self-hosting.
+         */
+        host?: string;
+        /**
+         * Theme. Leave empty (the default) to follow the site's own light/dark
+         * mode — resolved on the client and re-rendered when the visitor
+         * toggles (Cusdis has no live theme API, so the thread briefly reloads
+         * on toggle). Use 'auto' to follow the OS preference instead, or
+         * 'light' / 'dark' for a fixed theme.
+         */
+        theme?: '' | 'light' | 'dark' | 'auto';
+        /**
+         * Language. Leave empty (the default) to follow the site's current
+         * locale. Set a Cusdis language code to override. Availability depends
+         * on Cusdis's language packs; an unknown code falls back to English.
          */
         lang?: string;
       };
@@ -239,6 +263,15 @@ const siteConfig: SiteConfig = {
         reactionsEnabled: true,
         emitMetadata: false,
         inputPosition: 'bottom',
+        // Empty → follow the site's light/dark mode and current locale.
+        theme: '',
+        lang: '',
+      },
+      // Used when provider is 'cusdis'. Get your App ID from the Cusdis
+      // dashboard (Embed Code); `host` defaults to the hosted service.
+      cusdis: {
+        appId: '',
+        host: 'https://cusdis.com',
         // Empty → follow the site's light/dark mode and current locale.
         theme: '',
         lang: '',

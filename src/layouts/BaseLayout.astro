@@ -78,7 +78,16 @@ const locale = getLocaleFromPath(Astro.url.pathname);
     <link rel="preload" as="font" type="font/woff2" href={outfitFont} crossorigin="anonymous" />
 
     {siteConfig.articleFeatures?.comments?.enabled && (
-      <link rel="preconnect" href="https://giscus.app" crossorigin />
+      <link
+        rel="preconnect"
+        href={
+          siteConfig.articleFeatures?.comments?.provider === 'cusdis'
+            ? (siteConfig.articleFeatures?.comments?.cusdis?.host ??
+              'https://cusdis.com')
+            : 'https://giscus.app'
+        }
+        crossorigin
+      />
     )}
 
     <!-- Favicon. The SVG letter is outlined to a vector path at build time (see
