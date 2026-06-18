@@ -5,16 +5,17 @@
  * tag clouds, archives) without the two drifting apart.
  */
 import { getCollection, type CollectionEntry } from 'astro:content';
+import siteConfig from '@/config/site.config';
 
 // Re-export the shared tag-slug helpers so callers can import everything
 // project-related from one place.
 export { tagToSlug, findTagBySlug } from '@/lib/tags';
 
 /** How many of the most-used tags to surface in a project tag cloud. */
-export const PROJECT_TAG_CLOUD_LIMIT = 10;
+export const PROJECT_TAG_CLOUD_LIMIT = siteConfig.projects?.tagCloudLimit ?? 10;
 
 /** Number of projects shown per page on the projects listing. */
-export const PROJECTS_PER_PAGE = 12;
+export const PROJECTS_PER_PAGE = siteConfig.projects?.perPage ?? 12;
 
 /** Strip the `.md`/`.mdx` extension from a project id to get its URL slug. */
 export function getProjectSlug(projectId: string): string {

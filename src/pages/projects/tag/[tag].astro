@@ -11,6 +11,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import {
+  PROJECT_TAG_CLOUD_LIMIT,
   collectProjectTags,
   collectTopProjectTags,
   getVisibleProjects,
@@ -18,13 +19,9 @@ import {
 } from '@/lib/projects';
 
 export async function getStaticPaths() {
-  // Inlined because Astro's getStaticPaths runs in its own isolated
-  // scope and can't see frontmatter-level consts.
-  const TAG_CLOUD_LIMIT = 10;
-
   const projects = await getVisibleProjects();
   const tags = collectProjectTags(projects);
-  const topTags = collectTopProjectTags(projects, TAG_CLOUD_LIMIT);
+  const topTags = collectTopProjectTags(projects, PROJECT_TAG_CLOUD_LIMIT);
 
   return tags.map((tag) => {
     const projectsForTag = projects.filter((p) => p.data.tags.includes(tag));
@@ -32,7 +29,7 @@ export async function getStaticPaths() {
     // make the top N, so the page always acknowledges the tag the user picked.
     const visibleTags = topTags.includes(tag)
       ? topTags
-      : [tag, ...topTags.slice(0, TAG_CLOUD_LIMIT - 1)];
+      : [tag, ...topTags.slice(0, PROJECT_TAG_CLOUD_LIMIT - 1)];
     return {
       params: { tag: tagToSlug(tag) },
       props: { tag, projects: projectsForTag, visibleTags },

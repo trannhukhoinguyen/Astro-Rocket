@@ -6,14 +6,18 @@
  * conventions without drifting.
  */
 import { getCollection, type CollectionEntry } from 'astro:content';
+import siteConfig from '@/config/site.config';
 import { defaultLocale, localizedPath, isEnabled, getLocales } from '@/i18n';
 import { tagToSlug, findTagBySlug } from '@/lib/tags';
 
 /** Number of regular (non-featured) posts shown per blog index page. */
-export const BLOG_POSTS_PER_PAGE = 12;
+export const BLOG_POSTS_PER_PAGE = siteConfig.blog?.postsPerPage ?? 12;
 
-/** Maximum number of pages exposed for any given blog tag. */
-export const TAG_POSTS_PER_PAGE = 12;
+/**
+ * How many of the most-used tags to surface in the blog tag cloud. Single
+ * source for the index, paginated, and tag-archive routes so they can't drift.
+ */
+export const BLOG_TAG_CLOUD_LIMIT = siteConfig.blog?.tagCloudLimit ?? 10;
 
 // Tag-slug helpers live in `lib/tags` so blog and project archives share one
 // set of slug rules. Imported above so this module can build tag URLs, and

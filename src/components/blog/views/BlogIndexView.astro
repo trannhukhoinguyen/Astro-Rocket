@@ -21,6 +21,7 @@ import { resolveSocialLinks } from '@/lib/utils';
 import { defaultLocale } from '@/i18n';
 import {
   BLOG_POSTS_PER_PAGE,
+  BLOG_TAG_CLOUD_LIMIT,
   collectTopTags,
   getBlogPageUrl,
   getPostUrl,
@@ -33,9 +34,6 @@ interface Props {
 }
 
 const { locale = defaultLocale } = Astro.props;
-
-/** How many of the most-used tags to surface in the cloud. */
-const TAG_CLOUD_LIMIT = 10;
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
@@ -51,7 +49,7 @@ const regularPostsAll = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;
 const totalPages = Math.max(1, Math.ceil(regularPostsAll.length / BLOG_POSTS_PER_PAGE));
 const regularPosts = regularPostsAll.slice(0, BLOG_POSTS_PER_PAGE);
 
-const topTags = collectTopTags(posts, TAG_CLOUD_LIMIT);
+const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 ---
 
 <PageLayout title="Blog — Astro Rocket" description="Articles on web design, development, and the web by Astro Rocket." showScrollProgress eagerReveal footerBackground={featuredPosts.length > 0 ? 'default' : 'secondary'}>

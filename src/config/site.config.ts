@@ -113,6 +113,25 @@ export interface SiteConfig {
     };
   };
   /**
+   * Blog listing configuration. Counts that were previously hard-coded across
+   * `lib/blog.ts` and the route files live here so they're tunable in one
+   * place. (The existing `blogImageOverlay` / `articleFeatures` keys are left
+   * where they are for backwards compatibility and may fold in at a major.)
+   */
+  blog?: {
+    /** Regular (non-featured) posts shown per blog index page. Default 12. */
+    postsPerPage?: number;
+    /** How many of the most-used tags to surface in the blog tag cloud. Default 10. */
+    tagCloudLimit?: number;
+  };
+  /** Projects listing configuration. */
+  projects?: {
+    /** Projects shown per page on the projects listing. Default 12. */
+    perPage?: number;
+    /** How many of the most-used tags to surface in the projects tag cloud. Default 10. */
+    tagCloudLimit?: number;
+  };
+  /**
    * Internationalization (i18n) — see `src/config/i18n.config.ts`.
    * Lives in a separate file so the i18n module can be imported by
    * unit tests without pulling in `astro:env/server`.
@@ -212,6 +231,14 @@ const siteConfig: SiteConfig = {
         lang: '',
       },
     },
+  },
+  blog: {
+    postsPerPage: 12,
+    tagCloudLimit: 10,
+  },
+  projects: {
+    perPage: 12,
+    tagCloudLimit: 10,
   },
   i18n: i18nConfig,
   branding: {

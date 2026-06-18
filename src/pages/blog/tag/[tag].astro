@@ -2,6 +2,7 @@
 import BlogTagView from '@/components/blog/views/BlogTagView.astro';
 import { defaultLocale } from '@/i18n';
 import {
+  BLOG_TAG_CLOUD_LIMIT,
   collectTags,
   collectTopTags,
   getPublishedPosts,
@@ -11,13 +12,9 @@ import {
 // Tag archive pages for the default locale. Additional locales are served by
 // `src/pages/[locale]/blog/tag/[tag].astro`, which renders the same view.
 export async function getStaticPaths() {
-  // Inlined because Astro's getStaticPaths runs in its own isolated
-  // scope and can't see frontmatter-level consts.
-  const TAG_CLOUD_LIMIT = 10;
-
   const posts = await getPublishedPosts(defaultLocale);
   const tags = collectTags(posts);
-  const topTags = collectTopTags(posts, TAG_CLOUD_LIMIT);
+  const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 
   return tags.map((tag) => {
     const postsForTag = posts.filter((p) => p.data.tags.includes(tag));
@@ -26,7 +23,7 @@ export async function getStaticPaths() {
     // lands on a tag page that doesn't visually acknowledge the tag.
     const visibleTags = topTags.includes(tag)
       ? topTags
-      : [tag, ...topTags.slice(0, TAG_CLOUD_LIMIT - 1)];
+      : [tag, ...topTags.slice(0, BLOG_TAG_CLOUD_LIMIT - 1)];
     return {
       params: { tag: tagToSlug(tag) },
       props: { tag, posts: postsForTag, visibleTags },

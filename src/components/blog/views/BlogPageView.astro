@@ -20,6 +20,7 @@ import { resolveSocialLinks } from '@/lib/utils';
 import { defaultLocale } from '@/i18n';
 import {
   BLOG_POSTS_PER_PAGE,
+  BLOG_TAG_CLOUD_LIMIT,
   collectTopTags,
   getBlogBaseUrl,
   getBlogPageUrl,
@@ -38,9 +39,6 @@ interface Props {
 
 const { locale = defaultLocale, page, totalPages } = Astro.props;
 
-/** How many of the most-used tags to surface in the cloud. */
-const TAG_CLOUD_LIMIT = 10;
-
 const posts = await getPublishedPosts(locale);
 const nonFeatured = posts.filter((p) => !p.data.featured);
 const regularPostsAll = nonFeatured.length > 0 ? nonFeatured : posts;
@@ -48,7 +46,7 @@ const regularPostsAll = nonFeatured.length > 0 ? nonFeatured : posts;
 const start = (page - 1) * BLOG_POSTS_PER_PAGE;
 const pagePosts = regularPostsAll.slice(start, start + BLOG_POSTS_PER_PAGE);
 
-const topTags = collectTopTags(posts, TAG_CLOUD_LIMIT);
+const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 ---
