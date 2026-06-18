@@ -17,8 +17,8 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { resolveSocialLinks } from '@/lib/utils';
 import { createBlogPostSchema, createFAQSchema } from '@/lib/schema';
 import { getBlogOgPath } from '@/lib/og';
-import { getLocaleFromPath } from '@/i18n';
-import { getPostSlug } from '@/lib/blog';
+import { getLocaleFromPath, localizedPath } from '@/i18n';
+import { getPostSlug, getBlogBaseUrl } from '@/lib/blog';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 
@@ -88,8 +88,8 @@ const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 const ogImage = image?.src || (slug ? getBlogOgPath(getPostSlug(slug, locale)) : siteConfig.ogImage);
 
 const breadcrumbs = [
-  { label: 'Home', href: '/' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Home', href: localizedPath('/', locale) },
+  { label: 'Blog', href: getBlogBaseUrl(locale) },
   { label: title },
 ];
 
