@@ -6,7 +6,8 @@
  * conventions without drifting.
  */
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { defaultLocale } from '@/i18n';
+import { defaultLocale, localizedPath, isEnabled, getLocales } from '@/i18n';
+import { tagToSlug, findTagBySlug } from '@/lib/tags';
 
 /** Number of regular (non-featured) posts shown per blog index page. */
 export const BLOG_POSTS_PER_PAGE = 12;
@@ -15,8 +16,9 @@ export const BLOG_POSTS_PER_PAGE = 12;
 export const TAG_POSTS_PER_PAGE = 12;
 
 // Tag-slug helpers live in `lib/tags` so blog and project archives share one
-// set of slug rules. Re-exported here to keep existing import sites working.
-export { tagToSlug, findTagBySlug } from '@/lib/tags';
+// set of slug rules. Imported above so this module can build tag URLs, and
+// re-exported here to keep existing import sites working.
+export { tagToSlug, findTagBySlug };
 
 /**
  * Strip the locale prefix from a blog entry's id to get its URL slug
@@ -26,9 +28,43 @@ export function getPostSlug(postId: string, locale: string = defaultLocale): str
   return postId.replace(new RegExp(`^${locale}/`), '');
 }
 
-/** URL path for an individual blog post. */
+/**
+ * URL path for an individual blog post, locale-aware. The default locale stays
+ * at the site root (`/blog/<slug>`); additional locales are prefixed
+ * (`/<locale>/blog/<slug>`), matching `localizedPath` and the
+ * canonical-id resolver in `lib/post-links`.
+ */
 export function getPostUrl(postId: string, locale: string = defaultLocale): string {
-  return `/blog/${getPostSlug(postId, locale)}`;
+  return localizedPath(`/blog/${getPostSlug(postId, locale)}`, locale);
+}
+
+/** URL of the blog index for a locale (`/blog` or `/<locale>/blog`). */
+export function getBlogBaseUrl(locale: string = defaultLocale): string {
+  return localizedPath('/blog', locale);
+}
+
+/**
+ * URL for a blog index page number, locale-aware. Page 1 is the blog root
+ * (no `/page/1` segment), matching the routing in `blog/page/[page].astro`.
+ */
+export function getBlogPageUrl(page: number, locale: string = defaultLocale): string {
+  return page <= 1 ? getBlogBaseUrl(locale) : localizedPath(`/blog/page/${page}`, locale);
+}
+
+/** URL for a tag archive page, locale-aware. */
+export function getTagUrl(tag: string, locale: string = defaultLocale): string {
+  return localizedPath(`/blog/tag/${tagToSlug(tag)}`, locale);
+}
+
+/**
+ * The non-default locales that should get their own prefixed blog routes
+ * (`/<locale>/blog/...`). Empty when i18n is off or only one locale is
+ * configured, so the locale-prefixed `getStaticPaths` emit nothing and
+ * single-locale builds stay byte-for-byte unchanged.
+ */
+export function getSecondaryLocales(): string[] {
+  if (!isEnabled()) return [];
+  return getLocales().filter((locale) => locale !== defaultLocale);
 }
 
 /**
@@ -42,6 +78,19 @@ export async function getPublishedPosts(
     return data.locale === locale && (import.meta.env.PROD ? data.draft !== true : true);
   });
   return all.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+}
+
+/**
+ * Total number of blog index pages for a locale. Page 1 carries the featured
+ * posts plus the first slice of regular posts; pages 2..N hold the rest.
+ * Shared by the default and locale-prefixed pagination routes so they agree
+ * on the page count.
+ */
+export async function getBlogPageCount(locale: string = defaultLocale): Promise<number> {
+  const posts = await getPublishedPosts(locale);
+  const nonFeatured = posts.filter((p) => !p.data.featured);
+  const regularPostsAll = nonFeatured.length > 0 ? nonFeatured : posts;
+  return Math.max(1, Math.ceil(regularPostsAll.length / BLOG_POSTS_PER_PAGE));
 }
 
 /** All unique tags across the given posts, alphabetically sorted. */

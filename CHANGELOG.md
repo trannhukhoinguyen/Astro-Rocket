@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Localized blog routing for non-default locales** — with i18n enabled, every secondary locale now gets its own fully-functional blog: the index (`/<locale>/blog`), individual posts (`/<locale>/blog/<slug>`), pagination (`/<locale>/blog/page/N`), and tag archives (`/<locale>/blog/tag/<tag>`) are all generated, and every in-locale link (post cards, tag chips, pagination, breadcrumbs, related posts) now resolves **within** that locale instead of falling back to the default-locale URL — fixing post links that previously rendered as `/blog/<locale>/<slug>` and 404'd. The `defaultLocale` keeps its prefix-free URLs, and the new `src/pages/[locale]/blog/*` routes emit nothing when i18n is off, so single-locale and default-locale output stays byte-for-byte unchanged. The index, pagination, and tag-archive bodies were extracted into shared views (`src/components/blog/views/`) so the default and locale-prefixed routes can't drift apart, and URL construction is centralised in new `lib/blog` helpers (`getBlogBaseUrl`, `getBlogPageUrl`, `getTagUrl`, `getSecondaryLocales`) with unit tests in `src/__tests__/blog-urls.test.ts` and `blog-urls-i18n.test.ts`. A locale with no posts yet still renders a `/<locale>/blog` index (empty state) so the `LanguageSwitcher` never lands on a 404. All build-time only — no client JS. Builds on the locale-centralisation from #419. (#422)
+
 ## [1.7.0] — 2026-06-16
 
 ### Added
