@@ -1,6 +1,6 @@
 # Contributing to Astro Rocket
 
-Thank you for your interest in contributing. Astro Rocket is a free, open-source Astro 6 starter theme — every improvement, however small, makes it better for everyone who builds with it.
+Thank you for your interest in contributing. Astro Rocket is a free, open-source Astro 7 starter theme — every improvement, however small, makes it better for everyone who builds with it.
 
 ## Ways to contribute
 
