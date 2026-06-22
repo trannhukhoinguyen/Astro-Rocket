@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-  <strong>Astro Rocket</strong> — A production-ready Astro 6 starter theme. Change the text, launch your site.
+  <strong>Astro Rocket</strong> — A production-ready Astro 7 starter theme. Change the text, launch your site.
 </p>
 
 <p align="center">
-  <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-6.0-bc52ee?logo=astro&logoColor=white" alt="Astro" /></a>
+  <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-7.0-bc52ee?logo=astro&logoColor=white" alt="Astro" /></a>
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
@@ -30,7 +30,7 @@
 
 Astro Rocket is a **launch-ready starter theme** for web designers, developers, bloggers, and anyone who needs a portfolio website. Every page is already built and styled — you change the text and content, and your site is ready to go live.
 
-It ships with a full blog, a complete component library, a built-in SEO layer, dark mode, a contact form, and 12 colour themes you can switch with one click. It's built on Astro 6 and Tailwind CSS v4.
+It ships with a full blog, a complete component library, a built-in SEO layer, dark mode, a contact form, and 12 colour themes you can switch with one click. It's built on Astro 7 and Tailwind CSS v4.
 
 **[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
 
@@ -62,7 +62,7 @@ The following changes were made to the free Velocity theme to create Astro Rocke
 
 | Feature | Description |
 |---------|-------------|
-| **Astro 6** | Latest version with Content Layer API, security features, and performance optimizations |
+| **Astro 7** | Latest version with the Rust compiler, Vite 8, Content Layer API, and performance optimizations |
 | **Tailwind CSS v4** | CSS-first configuration with OKLCH color system and fluid typography |
 | **12 Colour Themes** | All 12 colour swatches are shown in the header dropdown — click one and the logo badge, blog image gradients, and every brand color update live instantly. No file edits, no rebuilds. The selector can be removed from the header once you've settled on a color. |
 | **Scroll Progress Bar** | A thin 2px brand-coloured bar on the header edge that fills as you scroll. Enabled on the homepage (above the floating header), blog index, and post pages (below the solid header). Controlled via `showScrollProgress` and `scrollProgressPosition` props on the Header component. |
@@ -196,7 +196,7 @@ The whole system is build-time. No client-side routing, no framework hydration f
 
 ### Prerequisites
 
-- **Node.js 22.12.0+** (required for Astro 6)
+- **Node.js 22.12.0+** (required for Astro 7)
 - **pnpm 9.x** (recommended) or npm/yarn
 
 ### Installation

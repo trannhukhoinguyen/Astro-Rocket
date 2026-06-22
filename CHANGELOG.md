@@ -8,6 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.9.0] — 2026-06-22
+
+### Changed
+
+- **Upgraded to Astro 7.0** — bumped `astro` from `6.4.4` to `7.0.0`, the new major release. Astro 7 ships the **Rust compiler** as the default (and only) compiler — faster builds and stricter, spec-compliant HTML parsing — and moves the build pipeline to **Vite 8** (now bundling with the Rust-based Rolldown). This theme's templates are all valid HTML, so the stricter compiler needed no markup changes: the full site builds clean on both the Vercel (default) and Netlify (`DEPLOY_TARGET=netlify`) targets, `astro check` reports 0 errors, ESLint is clean, and all 78 Vitest unit tests pass. The rendered HTML was diffed page-by-page against the 6.4.4 output and is equivalent — the only differences are cosmetic (the Rust compiler emits HTML entities and scoped-style hashes differently, e.g. `&#39;`↔`'` and `&lt;`↔`&#x3C;` inside code blocks, which render identically).
+- **Astro integrations updated for v7** — `@astrojs/mdx` `6.0.2` → `7.0.0`, `@astrojs/react` `5.0.7` → `6.0.0`, `@astrojs/vercel` `^10.0.8` → `^11.0.0`, and `@astrojs/netlify` `^7.0.12` → `^8.0.0` (each declares Astro 7 as its peer). `@astrojs/sitemap` (`^3.7.3`) and `@astrojs/check` (`0.9.9`) were already current. `eslint-plugin-astro` stays on `^1.3.0` — its v2 line requires ESLint 10, a separate upgrade out of scope here, and the `.astro` template syntax is unchanged, so linting is clean on v7.
+- **Tailwind bumped to v4.3.1 for Vite 8** — `@tailwindcss/vite` and `tailwindcss` `^4.0.0` → `^4.3.1`, the first 4.x to list Vite 8 in its peer range, clearing the sole install-time peer warning. The newer Tailwind/Lightning CSS reorders a few CSS declarations and adds its standard license banner to the inlined stylesheet — both cosmetic.
+- **`compressHTML` pinned to `true`** — Astro 7 changed the `compressHTML` default to `'jsx'`, which strips whitespace between inline elements the way React does (`<span>a</span> <em>b</em>` → `<span>a</span><em>b</em>`). Pinning it back to `true` in `astro.config.mjs` keeps this theme's v6 whitespace rendering unchanged.
+- **Markdown stays on Shiki + `github-dark`** — Astro 7 makes the Rust-based **Sätteri** processor the default Markdown engine, replacing the bundled remark/rehype `unified()` pipeline that 1.5.0 kept. Sätteri honours the existing `markdown.shikiConfig` (`theme: 'github-dark'`, `wrap: true`), so every code block still renders with the same Shiki theme, the same `.astro-code github-dark` markup, and the same soft-wrapping — verified against the 6.4.4 build (identical token spans, identical smart-quote and em-dash output). No remark/rehype plugins were in use, so the faster default engine is kept and `@astrojs/markdown-remark` is not needed.
+
+### Fixed
+
+- **Post hero SVGs no longer render as `[object Module]`** — `BlogImageSVG.astro` inlined each post's hero illustration with `import.meta.glob('…/*.svg', { as: 'raw', eager: true })`. Vite 8 (new in Astro 7) **removed** the deprecated `as: 'raw'` glob option, so the import resolved to a module object instead of a string and `set:html` stringified it to the literal text `[object Module]` on every blog post, card, and tag page (185 occurrences). Switched to the Vite 8 replacement — `{ query: '?raw', import: 'default', eager: true }` — restoring the inlined SVG markup. Caught by diffing the v7 build against 6.4.4.
+- **ESLint now ignores the Netlify adapter's build output** — `eslint.config.js` excluded the Vercel adapter's `.vercel/` directory but not Netlify's `.netlify/`, so running `pnpm lint`/`pnpm validate` after a local `DEPLOY_TARGET=netlify pnpm build` flagged hundreds of false positives in the generated SSR bundle. Added `.netlify/` alongside `.vercel/` in the ignore list. CI was unaffected (it builds the default Vercel target), but the local Netlify path — now on `@astrojs/netlify` v8 — lints clean.
+
 ## [1.8.0] — 2026-06-21
 
 ### Added
