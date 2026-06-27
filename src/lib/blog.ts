@@ -29,7 +29,12 @@ export { tagToSlug, findTagBySlug };
  * (e.g. "en/welcome" → "welcome").
  */
 export function getPostSlug(postId: string, locale: string = defaultLocale): string {
-  return postId.replace(new RegExp(`^${locale}/`), '');
+  // Strip the leading locale-folder segment, leaving a single-segment slug. The
+  // prefix is normally `locale`, but we also strip any other configured locale,
+  // so a folder/locale mismatch still yields a clean slug rather than one
+  // containing a slash (which would break single-segment `[slug]` routes).
+  const localePrefix = new RegExp(`^(${[locale, ...getLocales()].join('|')})/`);
+  return postId.replace(localePrefix, '');
 }
 
 /**

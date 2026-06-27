@@ -27,7 +27,14 @@ export const PROJECTS_PER_PAGE = siteConfig.projects?.perPage ?? 12;
  * `getPostSlug` in `./blog`.
  */
 export function getProjectSlug(projectId: string, locale: string = defaultLocale): string {
-  return projectId.replace(new RegExp(`^${locale}/`), '').replace(/\.mdx?$/, '');
+  // Strip the leading locale-folder segment and any file extension, leaving a
+  // single-segment slug. The prefix is normally `locale`, but we also strip any
+  // other configured locale, so a folder/locale mismatch (e.g. content under
+  // `en/` whose `locale` field resolved to a different default) still yields a
+  // clean slug rather than one containing a slash — which would break the
+  // single-segment `[slug]` routes such as the OG-image endpoints.
+  const localePrefix = new RegExp(`^(${[locale, ...getLocales()].join('|')})/`);
+  return projectId.replace(localePrefix, '').replace(/\.mdx?$/, '');
 }
 
 /**
