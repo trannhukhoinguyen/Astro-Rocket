@@ -64,6 +64,26 @@ if (includeProfessionalServiceSchema) {
 schemas.push(...extraSchemas);
 
 const locale = getLocaleFromPath(Astro.url.pathname);
+const commentsConfig = siteConfig.articleFeatures?.comments;
+
+let commentsPreconnectHref: string | null = null;
+
+if (commentsConfig?.enabled) {
+  if (commentsConfig.provider === 'cusdis') {
+    commentsPreconnectHref = commentsConfig.cusdis?.host ?? 'https://cusdis.com';
+  } else if (commentsConfig.provider === 'artalk') {
+    const server = commentsConfig.artalk?.server;
+    if (server) {
+      try {
+        commentsPreconnectHref = new URL(server).origin;
+      } catch {
+        commentsPreconnectHref = server;
+      }
+    }
+  } else {
+    commentsPreconnectHref = 'https://giscus.app';
+  }
+}
 ---
 
 <!doctype html>
@@ -77,18 +97,7 @@ const locale = getLocaleFromPath(Astro.url.pathname);
     <link rel="preload" as="font" type="font/woff2" href={manropeFont} crossorigin="anonymous" />
     <link rel="preload" as="font" type="font/woff2" href={outfitFont} crossorigin="anonymous" />
 
-    {siteConfig.articleFeatures?.comments?.enabled && (
-      <link
-        rel="preconnect"
-        href={
-          siteConfig.articleFeatures?.comments?.provider === 'cusdis'
-            ? (siteConfig.articleFeatures?.comments?.cusdis?.host ??
-              'https://cusdis.com')
-            : 'https://giscus.app'
-        }
-        crossorigin
-      />
-    )}
+    {commentsPreconnectHref && <link rel="preconnect" href={commentsPreconnectHref} crossorigin />}
 
     <!-- Favicon. The SVG letter is outlined to a vector path at build time (see
          src/lib/favicon), and PNG/ICO fallbacks are provided so search-engine
@@ -126,7 +135,6 @@ const locale = getLocaleFromPath(Astro.url.pathname);
          data-reveal fades) and produced a visible post-fade "aftershake" on
          mobile. Each navigation now does a normal page load, so animations
          run cleanly from frame 0 every time. -->
-
 
     <!-- The favicon is a single static brand mark (see the Favicon block above).
          It intentionally does NOT re-tint to the active theme at runtime: the

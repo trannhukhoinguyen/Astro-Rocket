@@ -13,8 +13,17 @@
 import siteConfig from '@/config/site.config';
 import CommentsGiscus from './CommentsGiscus.astro';
 import CommentsCusdis from './CommentsCusdis.astro';
+import CommentsArtalk from './CommentsArtalk.astro';
 
 const provider = siteConfig.articleFeatures?.comments?.provider ?? 'giscus';
 ---
 
-{provider === 'cusdis' ? <CommentsCusdis /> : <CommentsGiscus />}
+{
+  provider === 'cusdis' ? (
+    <CommentsCusdis />
+  ) : provider === 'artalk' ? (
+    <CommentsArtalk />
+  ) : (
+    <CommentsGiscus />
+  )
+}

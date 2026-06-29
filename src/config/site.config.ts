@@ -88,12 +88,12 @@ export interface SiteConfig {
       /** Deepest heading level to include (2 = H2 only, 3 = H2+H3, etc.) */
       maxDepth?: 2 | 3 | 4;
     };
-    /** Comments at the bottom of blog posts (powered by Giscus or Cusdis) */
+    /** Comments at the bottom of blog posts (powered by Giscus, Cusdis, or Artalk) */
     comments?: {
       /** Master switch — set to true to enable site-wide */
       enabled: boolean;
       /** Comments provider — 'giscus' (GitHub Discussions) or 'cusdis'. */
-      provider?: 'giscus' | 'cusdis';
+      provider?: 'giscus' | 'cusdis' | 'artalk';
       /** Giscus configuration. Get values from https://giscus.app */
       giscus?: {
         repo: `${string}/${string}`;
@@ -142,6 +142,41 @@ export interface SiteConfig {
          * on Cusdis's language packs; an unknown code falls back to English.
          */
         lang?: string;
+      };
+      /** Artalk configuration. Requires your own Artalk server. */
+      artalk?: {
+        /**
+         * Artalk server address, for example:
+         * 'https://comments.example.com'
+         */
+        server: string;
+        /**
+         * Site name used by Artalk for multi-site isolation. This should match
+         * the site created in the Artalk dashboard/server config.
+         */
+        site: string;
+        /**
+         * Optional client JS URL. Defaults to `${server}/dist/Artalk.js`.
+         * Useful when serving the client from a CDN or custom asset path.
+         */
+        jsUrl?: string;
+        /**
+         * Optional client CSS URL. Defaults to `${server}/dist/Artalk.css`.
+         * Useful when serving the client from a CDN or custom asset path.
+         */
+        cssUrl?: string;
+        /**
+         * Dark mode. Leave empty (the default) to follow the site's own
+         * light/dark mode and keep it in sync live. Set 'auto' to follow the
+         * OS preference instead, or use true / false for a fixed mode.
+         */
+        darkMode?: boolean | 'auto';
+        /**
+         * Language. Leave empty (the default) to follow the site's current
+         * locale. Set a specific Artalk locale code such as 'zh-CN' or 'en'
+         * to override.
+         */
+        locale?: string;
       };
     };
   };
@@ -275,6 +310,21 @@ const siteConfig: SiteConfig = {
         // Empty → follow the site's light/dark mode and current locale.
         theme: '',
         lang: '',
+      },
+      // Used when provider is 'artalk'. Point `server` at your Artalk service
+      // and set `site` to the Artalk site name you configured there.
+      artalk: {
+        server: 'http://localhost:23366',
+        // The current local Artalk instance was initialised with the default
+        // site name. Keep this aligned unless you create a dedicated site in
+        // the Artalk dashboard.
+        site: 'Default Site',
+        // Optional: override the client asset URLs when needed.
+        // jsUrl: 'https://cdn.example.com/artalk/Artalk.js',
+        // cssUrl: 'https://cdn.example.com/artalk/Artalk.css',
+        // Leave undefined → follow the site's light/dark mode and locale.
+        // darkMode: 'auto',
+        // locale: 'en',
       },
     },
   },
