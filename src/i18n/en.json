@@ -161,7 +161,7 @@
   "pages": {
     "about": {
       "meta": {
-        "title": "About",
+        "title": "About — Astro 7 Starter Theme",
         "description": "Astro Rocket is a production-ready Astro 7 starter theme with 12 themes, 57+ components, built-in i18n, dark mode, and everything you need to launch fast."
       },
       "hero": {

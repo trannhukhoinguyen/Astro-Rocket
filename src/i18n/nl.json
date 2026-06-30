@@ -161,7 +161,7 @@
   "pages": {
     "about": {
       "meta": {
-        "title": "Over",
+        "title": "Over — Astro 7 starterthema",
         "description": "Astro Rocket is een productieklaar Astro 7 starterthema met 12 thema's, 57+ componenten, ingebouwde i18n, donkere modus en alles wat je nodig hebt om snel te lanceren."
       },
       "hero": {
