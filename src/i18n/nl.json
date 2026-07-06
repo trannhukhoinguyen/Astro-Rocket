@@ -439,28 +439,6 @@
         "primary": "Start een project",
         "secondary": "Meer over mij"
       }
-    },
-    "showcase": {
-      "meta": {
-        "title": "Showcase — Gebouwd met Astro Rocket",
-        "description": "Echte websites gebouwd en gelanceerd met het Astro Rocket-thema — ontdek live productiesites uit de community."
-      },
-      "hero": {
-        "badge": "Showcase",
-        "titleLead": "Gebouwd met",
-        "titleHighlight": "Astro Rocket.",
-        "description": "Echte websites, live in productie. Elke site hieronder is gebouwd met het Astro Rocket-thema en gelanceerd door iemand uit de community."
-      },
-      "visitLabel": "Bekijk site",
-      "byLabel": "door",
-      "screenshotPending": "Screenshot volgt binnenkort",
-      "submit": {
-        "badge": "Jouw site hier",
-        "heading": "Iets gebouwd met Astro Rocket?",
-        "description": "Ik zet je site er graag bij. Open een showcase-inzending op GitHub met je live URL en een korte omschrijving — meer is er niet nodig.",
-        "primary": "Dien je site in",
-        "secondary": "Bekijk op GitHub"
-      }
     }
   }
 }

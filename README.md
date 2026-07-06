@@ -40,7 +40,7 @@ It ships with a full blog, a complete component library, a built-in SEO layer, d
 
 ## Showcase
 
-Real sites built and shipped with Astro Rocket — see the **[live showcase](https://astrorocket.dev/showcase)** for the full gallery.
+Real sites built and shipped with Astro Rocket:
 
 | Site | Author | Notes |
 |------|--------|-------|

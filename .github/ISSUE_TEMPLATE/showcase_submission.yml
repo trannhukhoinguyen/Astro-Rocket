@@ -8,9 +8,9 @@ body:
       value: |
         Thanks for building with Astro Rocket! 🚀
 
-        Fill in the details below and your site can be featured on the
-        [showcase](https://astrorocket.dev/showcase) and in the README.
-        A live URL and a line about the project is all it takes.
+        Fill in the details below and your site can be featured in the
+        README's [Showcase](https://github.com/hansmartensdev/Astro-Rocket#showcase)
+        section. A live URL and a line about the project is all it takes.
   - type: input
     id: site-name
     attributes:
@@ -49,7 +49,7 @@ body:
       options:
         - label: The site is live and built with the Astro Rocket theme.
           required: true
-        - label: A screenshot of the site may be used on the showcase page and in related blog posts.
+        - label: A screenshot of the site may be used in the README and related blog posts.
           required: false
         - label: A short quote from this submission may be used as a testimonial.
           required: false

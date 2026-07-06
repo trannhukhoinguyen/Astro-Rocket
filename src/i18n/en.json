@@ -439,28 +439,6 @@
         "primary": "Start a project",
         "secondary": "More about me"
       }
-    },
-    "showcase": {
-      "meta": {
-        "title": "Showcase — Built with Astro Rocket",
-        "description": "Real sites built and shipped with the Astro Rocket theme — explore live production deployments from the community."
-      },
-      "hero": {
-        "badge": "Showcase",
-        "titleLead": "Built with",
-        "titleHighlight": "Astro Rocket.",
-        "description": "Real sites, live in production. Every entry below was built with the Astro Rocket theme and shipped by someone in the community."
-      },
-      "visitLabel": "Visit site",
-      "byLabel": "by",
-      "screenshotPending": "Screenshot coming soon",
-      "submit": {
-        "badge": "Your site here",
-        "heading": "Built something with Astro Rocket?",
-        "description": "I'd love to feature it. Open a showcase submission on GitHub with your live URL and a line about the project — that's all it takes to join the list.",
-        "primary": "Submit your site",
-        "secondary": "View on GitHub"
-      }
     }
   }
 }
