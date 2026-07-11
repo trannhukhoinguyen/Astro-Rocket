@@ -7,6 +7,10 @@ export type { I18nConfig };
 export interface SiteConfig {
   name: string;
   description: string;
+  /** Identity line under the logo in the centered footer */
+  tagline?: string;
+  /** Short facts line under the footer tagline (licensing, location, availability) */
+  footerNote?: string;
   url: string;
   ogImage: string;
   author: string;
@@ -243,6 +247,8 @@ const siteConfig: SiteConfig = {
   name: 'Astro Rocket',
   description:
     'Astro Rocket — A free, open-source Astro 7 theme: a complete component library for building beautiful websites, with 12 colour themes, 57+ components, built-in i18n, and dark mode.',
+  tagline: 'A complete component library for building beautiful websites',
+  footerNote: 'Free & open source · MIT licensed',
   url: SITE_URL || 'https://astrorocket.dev',
   ogImage: '/og-default.svg',
   author: 'Hans Martens',

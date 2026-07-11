@@ -53,7 +53,7 @@ export interface LegalLink {
 
 interface Props extends HTMLAttributes<'footer'> {
   /** Layout style */
-  layout?: 'simple' | 'columns' | 'minimal' | 'stacked';
+  layout?: 'simple' | 'columns' | 'minimal' | 'stacked' | 'centered';
   /** Number of columns (only for columns layout) */
   columns?: 2 | 3 | 4;
   /** Background variant */
@@ -139,6 +139,12 @@ const processedCopyright = copyrightTemplate
   .replace('{year}', String(currentYear))
   .replace('{siteName}', siteConfig.name);
 
+// Centered layout identity lines: the tagline prop wins, then
+// siteConfig.tagline; the note line underneath comes from
+// siteConfig.footerNote (licensing, location, availability — short facts).
+const footerTagline = tagline ?? siteConfig.tagline;
+const footerNote = siteConfig.footerNote;
+
 // Check slots
 const hasLogoSlot = Astro.slots.has('logo');
 const hasTaglineSlot = Astro.slots.has('tagline');
@@ -164,6 +170,67 @@ function getSocialIcon(platform: string): string {
 
 <footer class={footerClasses} data-pagefind-ignore {...attrs}>
   <div class={cn('mx-auto px-6', maxWidthClass)}>
+    {layout === 'centered' && (
+      <>
+        <!-- One centered axis, top to bottom: identity, then navigation. The
+             legal bar below shares the same centre line — no left-aligned
+             mass anywhere, matching centred page layouts. -->
+        <div class="flex flex-col items-center text-center gap-[var(--space-stack-lg)]">
+          {!hideLogo && (
+            <div class="flex flex-col items-center gap-3">
+              {hasLogoSlot ? (
+                <slot name="logo" />
+              ) : (
+                <a href={logoHref} class="flex items-center gap-2">
+                  <Logo size="md" class="bg-brand-600" />
+                  <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
+                    {siteConfig.name}
+                  </span>
+                </a>
+              )}
+              {(hasTaglineSlot || footerTagline) && (
+                <p class="text-sm font-medium text-foreground">
+                  {hasTaglineSlot ? <slot name="tagline" /> : footerTagline}
+                </p>
+              )}
+              {footerNote && <p class="text-sm text-foreground-muted">{footerNote}</p>}
+            </div>
+          )}
+
+          <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-3 text-sm font-medium text-foreground-muted">
+            {allNavItems.map((item) => (
+              <a
+                href={item.href}
+                class="transition-colors hover:text-foreground"
+                target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
+                rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        {(showCopyright || resolvedLegalLinks.length > 0) && (
+          <div class="mt-[var(--space-stack-lg)] pt-[var(--space-stack-lg)] border-t border-border flex flex-col items-center text-center gap-2">
+            {showCopyright && (
+              <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
+            )}
+            {resolvedLegalLinks.length > 0 && (
+              <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-2 text-xs text-foreground-muted">
+                {resolvedLegalLinks.map((link) => (
+                  <a href={link.href} class="transition-colors hover:text-foreground">
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            )}
+            {hasBottomSlot && <slot name="bottom" />}
+          </div>
+        )}
+      </>
+    )}
+
     {layout === 'simple' && (
       <>
       <div class="flex flex-col md:flex-row justify-between items-center gap-[var(--space-stack-lg)]">

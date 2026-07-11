@@ -15,6 +15,7 @@
     "items": {
       "home": "Home",
       "services": "Services",
+      "components": "Components",
       "projects": "Projects",
       "blog": "Blog",
       "about": "About",
