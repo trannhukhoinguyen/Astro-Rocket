@@ -27,7 +27,7 @@ import { footerVariants, footerColumnGridVariants } from './footer.variants';
 import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import siteConfig from '@/config/site.config';
-import { t, getLocaleFromPath } from '@/i18n';
+import { t, tData, getLocaleFromPath } from '@/i18n';
 
 export interface NavItem {
   label: string;
@@ -145,6 +145,11 @@ const processedCopyright = copyrightTemplate
 const footerTagline = tagline ?? siteConfig.tagline;
 const footerNote = siteConfig.footerNote;
 
+// Optional designer credit under the copyright line. Lives entirely in the
+// locale dictionaries (footer.credit) rather than in this component, so it
+// is per-locale content: reword it, or delete the key to remove the line.
+const footerCredit = tData<string>('footer.credit', locale);
+
 // Check slots
 const hasLogoSlot = Astro.slots.has('logo');
 const hasTaglineSlot = Astro.slots.has('tagline');
@@ -215,6 +220,9 @@ function getSocialIcon(platform: string): string {
           <div class="mt-[var(--space-stack-lg)] pt-[var(--space-stack-lg)] border-t border-border flex flex-col items-center text-center gap-2">
             {showCopyright && (
               <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
+            )}
+            {footerCredit && (
+              <p class="text-xs text-foreground-muted" set:html={footerCredit} />
             )}
             {resolvedLegalLinks.length > 0 && (
               <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-2 text-xs text-foreground-muted">

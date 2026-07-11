@@ -182,6 +182,7 @@
   },
   "footer": {
     "copyright": "© {year} {siteName}. Alle rechten voorbehouden.",
+    "credit": "Thema door <a href=\"https://hansmartens.dev\" class=\"transition-colors hover:text-foreground\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens</a>",
     "builtWith": "Gebouwd met Astro Rocket",
     "followOn": "Volg ons op {platform}"
   },
