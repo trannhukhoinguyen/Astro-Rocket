@@ -197,20 +197,56 @@
         "typingWords": ["Astro 7 Thema", "Componentbibliotheek", "12 Thema's", "57+ Componenten", "Donkere modus", "Ingebouwde i18n", "Zero-config SEO"],
         "description": "Een gratis, open-source Astro 7 thema — een complete componentbibliotheek om mooie websites mee te bouwen, zonder vanaf nul te beginnen."
       },
-      "intro": {
-        "badge": "Gratis & open source",
-        "heading": "Een stevige basis voor elk project",
-        "paragraphs": [
-          "Astro Rocket is een gratis, open-source thema gebouwd op Astro 7, ontworpen rond een complete componentbibliotheek: 57 ontworpen componenten, 12 met de hand gemaakte kleurthema's, donkere modus, ingebouwde i18n en een blog — zodat je een mooie website bouwt in plaats van boilerplate.",
-          "Het is gratis, MIT-gelicentieerd en vermeld in de officiële Astro-themamap. Kloon het, pas het aan en lanceer iets waar je trots op bent."
-        ],
-        "facts": [
-          { "icon": "rocket", "title": "Astro 7", "description": "Gebouwd op de nieuwste Astro-release." },
-          { "icon": "layout", "title": "12 thema's", "description": "Wissel van thema met één regel." },
-          { "icon": "code-2", "title": "57+ componenten", "description": "Samen te stellen, productieklaar." },
-          { "icon": "sparkles", "title": "Donkere modus", "description": "Ingebouwd, geen extra configuratie nodig." },
-          { "icon": "award", "title": "Ingebouwde i18n", "description": "Meertalige ondersteuning standaard." },
-          { "icon": "zap", "title": "Zero-config SEO", "description": "Gestructureerde data & metatags inbegrepen." }
+      "whatYouGet": {
+        "badge": "Wat je krijgt",
+        "heading": "Alles wat een echte website nodig heeft",
+        "lead": "De componentenbibliotheek is het hart van het thema. Al het andere dat een echte website nodig heeft, is al aan boord.",
+        "items": [
+          {
+            "icon": "component",
+            "title": "57 ontworpen componenten",
+            "description": "Van knoppen tot complete hero-secties: getypeerd, toegankelijk, consistent en gedocumenteerd in een live showcase."
+          },
+          {
+            "icon": "layout",
+            "title": "Pagina's om mee te starten",
+            "description": "Home, over, diensten, contact, blog, projecten en 404, volledig ontworpen en responsive, klaar om je eigen te maken."
+          },
+          {
+            "icon": "palette",
+            "title": "12 kleurthema's",
+            "description": "Wissel het complete kleurenpalet live vanuit de header. Inclusief lichte en donkere modus."
+          },
+          {
+            "icon": "book-open",
+            "title": "Blog met inhoudsopgave",
+            "description": "MDX, RSS, tags, reacties, gerelateerde posts en een scroll-spy inhoudsopgave. Schrijven en publiceren."
+          },
+          {
+            "icon": "image",
+            "title": "Projecten met galerijen",
+            "description": "Een portfoliosectie met fotogalerijen, videoslides, tags en een eigen inhoudsopgave."
+          },
+          {
+            "icon": "globe",
+            "title": "Volledige i18n, opt-in",
+            "description": "Blog, projecten, navigatie, formulieren en 404: allemaal per taal gelokaliseerd. Standaard uit, zonder kosten als je het niet gebruikt."
+          },
+          {
+            "icon": "search",
+            "title": "Zoeken op de site",
+            "description": "Snelle statische zoekfunctie (Pagefind) met een ⌘K-venster: nul JavaScript tot het opent."
+          },
+          {
+            "icon": "trending-up",
+            "title": "SEO-toolkit",
+            "description": "Metadata, sitemaps, structured data en OG-afbeeldingen, direct goed uit de doos."
+          },
+          {
+            "icon": "server",
+            "title": "Formulieren & deploy",
+            "description": "Spam-beschermde contact- en nieuwsbriefformulieren, en met één schakelaar deployen naar Vercel, Netlify of Cloudflare."
+          }
         ]
       },
       "principles": {

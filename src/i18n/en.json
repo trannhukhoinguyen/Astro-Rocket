@@ -197,20 +197,56 @@
         "typingWords": ["Astro 7 Theme", "Component Library", "12 Themes", "57+ Components", "Dark Mode", "Built-in i18n", "Zero Config SEO"],
         "description": "A free, open-source Astro 7 theme — a complete component library for building beautiful websites, without starting from zero."
       },
-      "intro": {
-        "badge": "Free & Open Source",
-        "heading": "A solid foundation for any project",
-        "paragraphs": [
-          "Astro Rocket is a free, open-source theme built on Astro 7, designed around a complete component library: 57 designed components, 12 hand-crafted colour themes, dark mode, built-in i18n, and a blog — so you can build a beautiful website instead of boilerplate.",
-          "It's free, MIT licensed, and listed on the official Astro themes directory. Clone it, customise it, and ship something you're proud of."
-        ],
-        "facts": [
-          { "icon": "rocket", "title": "Astro 7", "description": "Built on the latest Astro release." },
-          { "icon": "layout", "title": "12 themes", "description": "Switch themes with one line." },
-          { "icon": "code-2", "title": "57+ components", "description": "Composable, production-ready." },
-          { "icon": "sparkles", "title": "Dark mode", "description": "Built in, no extra setup needed." },
-          { "icon": "award", "title": "Built-in i18n", "description": "Multi-language support out of the box." },
-          { "icon": "zap", "title": "Zero config SEO", "description": "Structured data & meta tags included." }
+      "whatYouGet": {
+        "badge": "What you get",
+        "heading": "Everything a real website needs",
+        "lead": "The component library is the heart of the theme. Everything else a real website needs is already on board.",
+        "items": [
+          {
+            "icon": "component",
+            "title": "57 designed components",
+            "description": "From buttons to hero sections: typed, accessible, consistent, and documented in a live showcase."
+          },
+          {
+            "icon": "layout",
+            "title": "Pages to start from",
+            "description": "Home, about, services, contact, blog, projects, and 404, fully designed and responsive, ready to make your own."
+          },
+          {
+            "icon": "palette",
+            "title": "12 colour themes",
+            "description": "Switch the whole site's palette live from the header. Light and dark mode included."
+          },
+          {
+            "icon": "book-open",
+            "title": "Blog with table of contents",
+            "description": "MDX, RSS, tags, comments, related posts, and a scroll-spy table of contents. Write and publish."
+          },
+          {
+            "icon": "image",
+            "title": "Projects with galleries",
+            "description": "A portfolio section with image galleries, video slides, tags, and its own table of contents."
+          },
+          {
+            "icon": "globe",
+            "title": "Full i18n, opt-in",
+            "description": "Blog, projects, navigation, forms, and 404: all localized per locale. Off by default, at zero cost when unused."
+          },
+          {
+            "icon": "search",
+            "title": "Site search",
+            "description": "Fast static search (Pagefind) with a ⌘K modal: zero JavaScript until it's opened."
+          },
+          {
+            "icon": "trending-up",
+            "title": "SEO toolkit",
+            "description": "Metadata, sitemaps, structured data, and OG images, correct out of the box."
+          },
+          {
+            "icon": "server",
+            "title": "Forms & deploy",
+            "description": "Spam-protected contact and newsletter forms, and one-switch deploys to Vercel, Netlify, or Cloudflare."
+          }
         ]
       },
       "principles": {

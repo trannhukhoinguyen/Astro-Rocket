@@ -55,8 +55,8 @@ const hero = tData<{ badge: string; titleLead: string; typingWords: string[]; de
   'pages.about.hero',
   locale
 )!;
-const intro = tData<{ badge: string; heading: string; paragraphs: string[]; facts: IconText[] }>(
-  'pages.about.intro',
+const whatYouGet = tData<{ badge: string; heading: string; lead: string; items: IconText[] }>(
+  'pages.about.whatYouGet',
   locale
 )!;
 const principles = tData<{ badge: string; heading: string; lead: string; items: IconText[] }>(
@@ -96,37 +96,30 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     </p>
   </Hero>
 
-  <!-- About the theme -->
+  <!-- What you get -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12">
-        <!-- Left: text -->
-        <div class="flex flex-col justify-center gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal data-reveal-eager data-reveal-ease="smooth">
-          <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
-            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">{intro.badge}</Badge>
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground text-balance">
-              {intro.heading}
-            </h2>
-          </div>
-          {intro.paragraphs.map((paragraph) => (
-            <p class="text-lg text-foreground-muted leading-relaxed sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
-              {paragraph}
-            </p>
-          ))}
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-4 text-center" data-reveal data-reveal-eager data-reveal-ease="smooth">
+        <div class="flex flex-col items-center gap-6">
+          <Badge variant="brand" pill>
+            <Icon name="list-checks" size="sm" />
+            {whatYouGet.badge}
+          </Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            {whatYouGet.heading}
+          </h2>
         </div>
-        <!-- Right: theme fact tiles — standalone, no wrapping card, so they
-             read like every other tile grid and keep their full width on
-             phones. justify-center keeps the grid vertically centred against
-             the text column on desktop. -->
-        <div class="flex flex-col h-full justify-center">
-          <div class="grid grid-cols-1 sm:grid-cols-3 glitch:grid-cols-2 gap-3 auto-rows-fr">
-            {intro.facts.map((fact, i) => (
-              <ProofTile icon={fact.icon} title={fact.title} data-reveal data-reveal-delay={i % 2 || undefined}>
-                {fact.description}
-              </ProofTile>
-            ))}
-          </div>
-        </div>
+        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
+          {whatYouGet.lead}
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {whatYouGet.items.map((item, i) => (
+          <ProofTile icon={item.icon} title={item.title} data-reveal data-reveal-delay={i % 3 || undefined}>
+            {item.description}
+          </ProofTile>
+        ))}
       </div>
     </div>
   </section>
