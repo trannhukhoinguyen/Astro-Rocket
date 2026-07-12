@@ -195,7 +195,8 @@
       "hero": {
         "badge": "About",
         "titleLead": "Astro Rocket —",
-        "typingWords": ["Lightning-fast", "57+ Components", "12 Themes", "Dark Mode", "Built-in i18n"],
+        "typingWords": ["Lightning-fast", "Starter theme", "57 Components", "12 Themes", "Dark Mode", "Built-in i18n"],
+        "typingWordsMobile": ["Lightning-fast", "Starter theme", "12 Themes", "Dark Mode", "Built-in i18n"],
         "description": "A free, open-source Astro 7 starter\u00a0theme to build anything on."
       },
       "whatYouGet": {
