@@ -246,7 +246,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'Astro Rocket',
   description:
-    'Astro Rocket — A free, open-source Astro 7 theme: a complete component library for building beautiful websites, with 12 colour themes, 57+ components, built-in i18n, and dark mode.',
+    'Astro Rocket is a free, lightning-fast Astro 7 starter theme to build anything on — with 57+ designed components, 12 colour themes, dark mode, and built-in i18n on board.',
   tagline: 'Astro 7 starter theme to build anything on',
   footerNote: 'Free & open source · MIT licensed',
   url: SITE_URL || 'https://astrorocket.dev',

@@ -88,6 +88,8 @@ const hero = tData<{
   titleLine2: string;
   titleLine3: string;
   description: string;
+  /** Shorter variant shown below the `sm` breakpoint so the hero stays compact on phones. */
+  descriptionMobile: string;
   github: string;
   getStarted: string;
 }>('pages.home.hero', locale)!;
@@ -154,8 +156,9 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
       <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">{hero.titleLine2}</span><br class="md:hidden" /><span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">{' '}{hero.titleLine3}</span>
     </h1>
 
-    <p slot="description">
-      {hero.description}
+    <p slot="description" class="!text-balance">
+      <span class="sm:hidden">{hero.descriptionMobile}</span>
+      <span class="hidden sm:inline">{hero.description}</span>
     </p>
 
    <Fragment slot="actions">
