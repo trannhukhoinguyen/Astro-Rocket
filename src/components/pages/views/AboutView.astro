@@ -51,10 +51,14 @@ const { locale = defaultLocale } = Astro.props;
 
 const GITHUB_URL = 'https://github.com/hansmartensdev/astro-rocket';
 
-const hero = tData<{ badge: string; titleLead: string; typingWords: string[]; description: string }>(
-  'pages.about.hero',
-  locale
-)!;
+const hero = tData<{
+  badge: string;
+  titleLead: string;
+  typingWords: string[];
+  /** Shorter set for phones (below sm), dropping the one word wide enough to clip at the hero size. */
+  typingWordsMobile: string[];
+  description: string;
+}>('pages.about.hero', locale)!;
 const whatYouGet = tData<{ badge: string; heading: string; lead: string; items: IconText[] }>(
   'pages.about.whatYouGet',
   locale
@@ -86,7 +90,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     </Badge>
     <h1 slot="title">
       <span class="text-foreground [-webkit-text-fill-color:currentColor]">{hero.titleLead}</span><br />
-      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)]">
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] sm:hidden">
+        <TypingEffect words={hero.typingWordsMobile} />
+      </span>
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] hidden sm:inline">
         <TypingEffect words={hero.typingWords} />
       </span>
     </h1>
