@@ -62,13 +62,27 @@ const classes = cn(
 </Element>
 
 <style is:global>
-  /* Light mode: brand-700 fill, brand-800 hover. brand-700 is the lightest
-     brand step that keeps white label text at WCAG AA (>=4.5:1) across all
-     themes — brand-500/600 failed for the cooler hues (teal, cyan, sky…). */
+  /* Light mode: brand-600 fill, brand-700 hover — the brightest brand step
+     that keeps white label text at WCAG AA (>=4.5:1) on most themes. */
   html:not(.dark) .btn-primary {
-    background-color: var(--color-brand-700);
+    background-color: var(--color-brand-600);
   }
   html:not(.dark) .btn-primary:hover {
+    background-color: var(--color-brand-700);
+  }
+  /* The four cooler hues sit below 4.5:1 with white text at brand-600
+     (cyan 4.27, emerald 4.40, sky 4.45, teal 4.18), so they keep the
+     original brand-700/800 pair to stay WCAG AA. */
+  html:not(.dark)[data-theme="cyan"] .btn-primary,
+  html:not(.dark)[data-theme="emerald"] .btn-primary,
+  html:not(.dark)[data-theme="sky"] .btn-primary,
+  html:not(.dark)[data-theme="teal"] .btn-primary {
+    background-color: var(--color-brand-700);
+  }
+  html:not(.dark)[data-theme="cyan"] .btn-primary:hover,
+  html:not(.dark)[data-theme="emerald"] .btn-primary:hover,
+  html:not(.dark)[data-theme="sky"] .btn-primary:hover,
+  html:not(.dark)[data-theme="teal"] .btn-primary:hover {
     background-color: var(--color-brand-800);
   }
 
