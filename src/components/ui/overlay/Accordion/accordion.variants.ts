@@ -18,8 +18,9 @@ export const accordionItemVariants = cva(
 export const accordionTriggerVariants = cva(
   [
     'flex w-full items-center justify-between py-4 text-left',
-    'font-medium text-foreground',
-    'transition-colors hover:text-foreground-secondary',
+    // #551: clickable accordion triggers carry the brand foreground.
+    'font-medium text-brand-700 dark:text-brand-400',
+    'transition-colors hover:text-brand-800 dark:hover:text-brand-300',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:rounded-sm',
   ],
   {

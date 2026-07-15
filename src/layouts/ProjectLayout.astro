@@ -218,7 +218,9 @@ const languageAlternates = Object.fromEntries(
                       {project.data.tags.map((tag, i) => (
                         <>
                           {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
-                          <Badge variant="brand">#{tag}</Badge>
+                          <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
+                            #{tag}
+                          </span>
                         </>
                       ))}
                     </div>
@@ -281,7 +283,7 @@ const languageAlternates = Object.fromEntries(
 
   <Footer
     slot="footer"
-    layout="simple"
+    layout="centered"
     background="secondary"
     maxWidth="7xl"
   />

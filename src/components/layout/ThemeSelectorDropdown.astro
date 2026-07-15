@@ -91,7 +91,8 @@ const themes = [
 
 <style>
   .theme-swatch-dd[data-active] {
-    background-color: var(--color-secondary);
+    /* Brand-tinted background marks the current selection (#551). */
+    background-color: color-mix(in oklch, var(--color-brand-500) 12%, transparent);
   }
 
   .theme-swatch-dd[data-active] span:first-child {

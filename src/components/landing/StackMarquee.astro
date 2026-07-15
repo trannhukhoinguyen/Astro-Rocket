@@ -165,7 +165,10 @@ const rowConfigs = Array.from({ length: rowCount }, (_, r) => {
                       <Icon name={item.icon} size="lg" />
                     </span>
                     <span class="flex min-w-0 flex-col">
-                      <span class="font-display text-foreground truncate text-base leading-tight font-bold">
+                      <span class={cn(
+                        'font-display truncate text-base leading-tight font-bold',
+                        linked && item.url ? 'text-brand-700 dark:text-brand-400' : 'text-foreground'
+                      )}>
                         {item.name}
                       </span>
                       {showVersion && item.version && (

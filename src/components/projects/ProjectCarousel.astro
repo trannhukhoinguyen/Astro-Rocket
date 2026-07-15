@@ -86,7 +86,7 @@ const posters = await Promise.all(
     <div class="mt-4 flex items-center justify-between gap-3">
       <button
         type="button"
-        class="carousel-nav inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-strong bg-background text-foreground shadow-sm transition-colors hover:border-brand-500 hover:bg-background-secondary hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+        class="carousel-nav inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand-500/40 bg-background text-brand-700 dark:text-brand-400 shadow-sm transition-colors hover:border-brand-500/80 hover:bg-brand-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         data-carousel-prev
         aria-label="Previous slide"
         aria-controls={carouselId}
@@ -106,7 +106,7 @@ const posters = await Promise.all(
           {slides.map((_, i) => (
             <button
               type="button"
-              class="carousel-dot h-2 w-2 rounded-full bg-border transition-all hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[active=true]:w-6 data-[active=true]:bg-brand-500"
+              class="carousel-dot h-2 w-2 rounded-full bg-brand-500/30 transition-all hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[active=true]:w-6 data-[active=true]:bg-brand-500"
               data-carousel-dot
               data-index={i}
               role="tab"
@@ -127,7 +127,7 @@ const posters = await Promise.all(
 
       <button
         type="button"
-        class="carousel-nav inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-strong bg-background text-foreground shadow-sm transition-colors hover:border-brand-500 hover:bg-background-secondary hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+        class="carousel-nav inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand-500/40 bg-background text-brand-700 dark:text-brand-400 shadow-sm transition-colors hover:border-brand-500/80 hover:bg-brand-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         data-carousel-next
         aria-label="Next slide"
         aria-controls={carouselId}
