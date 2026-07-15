@@ -907,22 +907,26 @@ const buttonId = `${menuId}-button`;
     color: var(--color-foreground);
   }
 
-  /* Nav pills — the same treatment the fixed bar uses (bg-secondary pill on
-     the active item, softer pill on hover). While the capsule floats over the
-     hero gradient the pill is a translucent tint of the current text colour,
-     so it reads on the brand blue; once the header gains its solid background
-     on scroll ([data-scrolled]) it switches to the fixed bar's exact colours. */
+  /* Nav pills — brand marks the current page (#551), like the fixed bar.
+     While the capsule floats at rest its backdrop is dark glass in both
+     modes, so the active pill is a stronger brand-400 tint under the
+     near-white text; once the header gains its solid background on scroll
+     ([data-scrolled]) it switches to the fixed bar's exact brand colours. */
   [data-header-shape="floating"] .nav-link:hover {
     background: color-mix(in srgb, currentColor 12%, transparent);
   }
   [data-header-shape="floating"] .nav-link.hdr-nav-active {
-    background: color-mix(in srgb, currentColor 16%, transparent);
+    background: color-mix(in oklch, var(--color-brand-400) 30%, transparent);
   }
   [data-header-shape="floating"][data-scrolled] .nav-link:hover {
     background: color-mix(in srgb, var(--color-secondary) 70%, transparent);
   }
   [data-header-shape="floating"][data-scrolled] .nav-link.hdr-nav-active {
-    background: var(--color-secondary);
+    background: color-mix(in oklch, var(--color-brand-500) 12%, transparent);
+    color: var(--color-brand-700);
+  }
+  html.dark [data-header-shape="floating"][data-scrolled] .nav-link.hdr-nav-active {
+    color: var(--color-brand-400);
   }
 
   [data-header-shape="floating"][data-header-color-scheme="invert"] .hdr-invert-cta {
