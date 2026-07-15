@@ -518,7 +518,7 @@ const buttonId = `${menuId}-button`;
                         rel="noopener noreferrer"
                         aria-label={label}
                         title={label}
-                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-strong text-foreground-muted transition-colors"
+                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-500/40 text-brand-700 dark:text-brand-400 transition-colors"
                         style={`--stagger-index: ${navItems.length + (showThemeSelector ? 1 : 0) + (showLanguageSwitcher ? 1 : 0) + sIdx}`}
                       >
                         <Icon name={icon} size="md" />
@@ -1174,13 +1174,20 @@ const buttonId = `${menuId}-button`;
     height: 2.25rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    background-color: color-mix(in oklch, var(--color-secondary) 70%, transparent);
-    color: var(--color-foreground-muted);
+    /* #551: the icon tiles carry the row's brand foreground on a soft tint. */
+    background-color: color-mix(in oklch, var(--color-brand-500) 10%, transparent);
+    color: var(--color-brand-700);
     transition: background-color 200ms ease, color 200ms ease;
   }
+  html.dark .mobile-menu-tile {
+    color: var(--color-brand-400);
+  }
   .mobile-menu-row-inactive:hover .mobile-menu-tile {
-    background-color: var(--color-secondary);
-    color: var(--color-foreground);
+    background-color: color-mix(in oklch, var(--color-brand-500) 16%, transparent);
+    color: var(--color-brand-800);
+  }
+  html.dark .mobile-menu-row-inactive:hover .mobile-menu-tile {
+    color: var(--color-brand-300);
   }
   .mobile-menu-row-active .mobile-menu-tile {
     background-color: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
@@ -1210,12 +1217,12 @@ const buttonId = `${menuId}-button`;
   }
 
   .mobile-menu-social {
-    border-color: var(--color-border-strong);
+    border-color: color-mix(in oklch, var(--color-brand-500) 40%, transparent);
   }
   html:not(.dark) .mobile-menu-social:hover {
-    color: var(--color-foreground);
-    border-color: var(--color-border-strong);
-    background-color: color-mix(in oklch, var(--color-secondary) 60%, transparent);
+    color: var(--color-brand-800);
+    border-color: color-mix(in oklch, var(--color-brand-500) 80%, transparent);
+    background-color: color-mix(in oklch, var(--color-brand-500) 10%, transparent);
   }
   html.dark .mobile-menu-social:hover {
     color: var(--color-brand-300);

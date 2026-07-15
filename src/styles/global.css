@@ -1437,6 +1437,21 @@ html.dark .hdr-hamburger,
 html.dark #back-to-top {
   color: var(--color-brand-400);
 }
+/* Their pill borders join the brand border language of cards and the
+   brand-outline button (brand-500/40). The floating header's at-rest
+   glass rules are more specific and keep their tuned borders. */
+.search-trigger,
+.ttg-trigger,
+.lang-trigger,
+.theme-dropdown-wrapper > button {
+  border-color: color-mix(in oklch, var(--color-brand-500) 40%, transparent);
+}
+.search-trigger:hover,
+.ttg-trigger:hover,
+.lang-trigger:hover,
+.theme-dropdown-wrapper > button:hover {
+  border-color: color-mix(in oklch, var(--color-brand-500) 80%, transparent);
+}
 
 /* #551: enabled form elements signal interactivity with a brand border;
    checks, radios, and ranges pick up the brand accent colour. */
