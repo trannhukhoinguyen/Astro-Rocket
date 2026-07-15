@@ -1267,4 +1267,36 @@ const buttonId = `${menuId}-button`;
     position: relative;
     z-index: 60;
   }
+
+  /* #551: the floating capsule's nav links carry the brand foreground in
+     both states. At rest the capsule is dark glass in both modes, so
+     brand-400 does the work (matching the capsule's control pills); once
+     the header solidifies on scroll they switch to the fixed bar's pair.
+     The active link keeps bright text so it stays readable on its brand
+     pill. Placed last in this block, with selectors mirroring the
+     hdr-invert-text colour rules' specificity, so these win the cascade. */
+  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link,
+  html.dark [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link {
+    color: var(--color-brand-400);
+  }
+  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link:hover,
+  html.dark [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link:hover {
+    color: var(--color-brand-300);
+  }
+  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link.hdr-nav-active,
+  html.dark [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link.hdr-nav-active {
+    color: oklch(94% 0.008 250);
+  }
+  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link {
+    color: var(--color-brand-700);
+  }
+  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link:hover {
+    color: var(--color-brand-800);
+  }
+  html.dark [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link {
+    color: var(--color-brand-400);
+  }
+  html.dark [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link:hover {
+    color: var(--color-brand-300);
+  }
 </style>
