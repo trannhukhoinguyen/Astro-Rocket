@@ -1466,15 +1466,40 @@ input[type='range'] {
   accent-color: var(--color-brand-500);
 }
 
-/* #551: in dark mode the project hero's live-site button and the mobile
-   menu's CTA keep their light primary fill, but the text and icon go brand
-   for consistency. brand-700 at rest and brand-800 on the darker hover fill
-   clear WCAG AA on every theme (worst case teal: 4.62:1 / 6.21:1). */
+/* The project hero's live-site button and the mobile menu's CTA are solid
+   brand in dark mode too, mirroring the light-mode primary: brand-600 fill,
+   brand-700 hover, white label. The same four cooler hues as light mode
+   (cyan/emerald/sky/teal) sit on brand-700/800 so the white text keeps
+   WCAG AA — worst case across all 12 themes is 4.54:1 (green, at rest). */
 html.dark .btn-primary.project-live-btn,
 html.dark .mobile-menu-cta-wrap .btn-primary {
-  color: var(--color-brand-700);
+  background-color: var(--color-brand-600);
+  background-image: none;
+  border-color: transparent;
+  color: white;
 }
 html.dark .btn-primary.project-live-btn:hover,
 html.dark .mobile-menu-cta-wrap .btn-primary:hover {
-  color: var(--color-brand-800);
+  background-color: var(--color-brand-700);
+  background-image: none;
+}
+html.dark[data-theme="cyan"] .btn-primary.project-live-btn,
+html.dark[data-theme="emerald"] .btn-primary.project-live-btn,
+html.dark[data-theme="sky"] .btn-primary.project-live-btn,
+html.dark[data-theme="teal"] .btn-primary.project-live-btn,
+html.dark[data-theme="cyan"] .mobile-menu-cta-wrap .btn-primary,
+html.dark[data-theme="emerald"] .mobile-menu-cta-wrap .btn-primary,
+html.dark[data-theme="sky"] .mobile-menu-cta-wrap .btn-primary,
+html.dark[data-theme="teal"] .mobile-menu-cta-wrap .btn-primary {
+  background-color: var(--color-brand-700);
+}
+html.dark[data-theme="cyan"] .btn-primary.project-live-btn:hover,
+html.dark[data-theme="emerald"] .btn-primary.project-live-btn:hover,
+html.dark[data-theme="sky"] .btn-primary.project-live-btn:hover,
+html.dark[data-theme="teal"] .btn-primary.project-live-btn:hover,
+html.dark[data-theme="cyan"] .mobile-menu-cta-wrap .btn-primary:hover,
+html.dark[data-theme="emerald"] .mobile-menu-cta-wrap .btn-primary:hover,
+html.dark[data-theme="sky"] .mobile-menu-cta-wrap .btn-primary:hover,
+html.dark[data-theme="teal"] .mobile-menu-cta-wrap .btn-primary:hover {
+  background-color: var(--color-brand-800);
 }
