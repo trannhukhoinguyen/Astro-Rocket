@@ -267,8 +267,8 @@ const buttonId = `${menuId}-button`;
                         ? 'hdr-nav-active font-semibold'
                         : 'font-medium')
                     : (isActive(href)
-                        ? 'nav-link-active font-semibold text-brand-700 dark:text-brand-400 bg-brand-500/10'
-                        : 'nav-link-inactive font-medium text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 hover:bg-brand-500/10')
+                        ? 'nav-link-active font-semibold text-foreground bg-secondary'
+                        : 'nav-link-inactive font-medium text-foreground-muted hover:text-foreground hover:bg-secondary/70')
                 )}
                 aria-current={isActive(href) ? 'page' : undefined}
               >
@@ -518,7 +518,7 @@ const buttonId = `${menuId}-button`;
                         rel="noopener noreferrer"
                         aria-label={label}
                         title={label}
-                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-500/40 text-brand-700 dark:text-brand-400 transition-colors"
+                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-strong text-foreground-muted transition-colors"
                         style={`--stagger-index: ${navItems.length + (showThemeSelector ? 1 : 0) + (showLanguageSwitcher ? 1 : 0) + sIdx}`}
                       >
                         <Icon name={icon} size="md" />
@@ -907,26 +907,22 @@ const buttonId = `${menuId}-button`;
     color: var(--color-foreground);
   }
 
-  /* Nav pills — brand marks the current page (#551), like the fixed bar.
-     While the capsule floats at rest its backdrop is dark glass in both
-     modes, so the active pill is a stronger brand-400 tint under the
-     near-white text; once the header gains its solid background on scroll
-     ([data-scrolled]) it switches to the fixed bar's exact brand colours. */
+  /* Nav pills — the same treatment the fixed bar uses (bg-secondary pill on
+     the active item, softer pill on hover). While the capsule floats over the
+     hero gradient the pill is a translucent tint of the current text colour,
+     so it reads on the brand blue; once the header gains its solid background
+     on scroll ([data-scrolled]) it switches to the fixed bar's exact colours. */
   [data-header-shape="floating"] .nav-link:hover {
     background: color-mix(in srgb, currentColor 12%, transparent);
   }
   [data-header-shape="floating"] .nav-link.hdr-nav-active {
-    background: color-mix(in oklch, var(--color-brand-400) 30%, transparent);
+    background: color-mix(in srgb, currentColor 16%, transparent);
   }
   [data-header-shape="floating"][data-scrolled] .nav-link:hover {
     background: color-mix(in srgb, var(--color-secondary) 70%, transparent);
   }
   [data-header-shape="floating"][data-scrolled] .nav-link.hdr-nav-active {
-    background: color-mix(in oklch, var(--color-brand-500) 12%, transparent);
-    color: var(--color-brand-700);
-  }
-  html.dark [data-header-shape="floating"][data-scrolled] .nav-link.hdr-nav-active {
-    color: var(--color-brand-400);
+    background: var(--color-secondary);
   }
 
   [data-header-shape="floating"][data-header-color-scheme="invert"] .hdr-invert-cta {
@@ -994,37 +990,35 @@ const buttonId = `${menuId}-button`;
     color: oklch(91% 0.008 250);
   }
 
-  /* #551: the floating capsule's controls carry the brand foreground too.
-     The capsule is dark glass in both modes, so brand-400 does the work. */
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper > .ttg-trigger,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper > button,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .search-wrapper > .search-trigger {
-    border-color: color-mix(in oklch, var(--color-brand-400) 45%, transparent);
-    color: var(--color-brand-400);
+    border-color: oklch(58% 0.008 250 / 0.6);
+    color: oklch(68% 0.01 250);
     box-shadow: none;
   }
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper > .ttg-trigger:hover,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper > button:hover,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .search-wrapper > .search-trigger:hover {
-    border-color: color-mix(in oklch, var(--color-brand-400) 85%, transparent);
-    background-color: color-mix(in oklch, var(--color-brand-400) 15%, transparent);
-    color: var(--color-brand-300);
+    border-color: oklch(58% 0.008 250 / 0.85);
+    background-color: rgb(255 255 255 / 0.06);
+    color: oklch(91% 0.008 250);
   }
 
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger,
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger svg {
-    color: var(--color-brand-400);
+    color: oklch(68% 0.01 250);
   }
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger:hover,
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger:hover svg {
-    background-color: color-mix(in oklch, var(--color-brand-400) 15%, transparent);
-    color: var(--color-brand-300);
+    background-color: rgb(255 255 255 / 0.06);
+    color: oklch(91% 0.008 250);
   }
 
-  .dark [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper button,
-  .dark [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper .ttg-trigger,
-  .dark [data-header-shape="floating"]:not([data-scrolled]) .search-wrapper .search-trigger {
-    border-color: color-mix(in oklch, var(--color-brand-400) 45%, transparent);
+  .dark [data-header-shape="floating"] .theme-dropdown-wrapper button,
+  .dark [data-header-shape="floating"] .ttg-wrapper .ttg-trigger,
+  .dark [data-header-shape="floating"] .search-wrapper .search-trigger {
+    border-color: var(--color-foreground-subtle);
   }
 
   [data-header-shape="floating"][data-header-color-scheme="invert"][data-scrolled] .hdr-logo-text {
@@ -1147,11 +1141,7 @@ const buttonId = `${menuId}-button`;
   }
 
   .mobile-menu-row {
-    /* #551: clickable rows carry the brand foreground. */
-    color: var(--color-brand-700);
-  }
-  html.dark .mobile-menu-row {
-    color: var(--color-brand-400);
+    color: var(--color-foreground-muted);
   }
   .mobile-menu-row-inactive:hover {
     background-color: color-mix(in oklch, var(--color-secondary) 60%, transparent);
@@ -1176,20 +1166,13 @@ const buttonId = `${menuId}-button`;
     height: 2.25rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    /* #551: the icon tiles carry the row's brand foreground on a soft tint. */
-    background-color: color-mix(in oklch, var(--color-brand-500) 10%, transparent);
-    color: var(--color-brand-700);
+    background-color: color-mix(in oklch, var(--color-secondary) 70%, transparent);
+    color: var(--color-foreground-muted);
     transition: background-color 200ms ease, color 200ms ease;
   }
-  html.dark .mobile-menu-tile {
-    color: var(--color-brand-400);
-  }
   .mobile-menu-row-inactive:hover .mobile-menu-tile {
-    background-color: color-mix(in oklch, var(--color-brand-500) 16%, transparent);
-    color: var(--color-brand-800);
-  }
-  html.dark .mobile-menu-row-inactive:hover .mobile-menu-tile {
-    color: var(--color-brand-300);
+    background-color: var(--color-secondary);
+    color: var(--color-foreground);
   }
   .mobile-menu-row-active .mobile-menu-tile {
     background-color: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
@@ -1219,12 +1202,12 @@ const buttonId = `${menuId}-button`;
   }
 
   .mobile-menu-social {
-    border-color: color-mix(in oklch, var(--color-brand-500) 40%, transparent);
+    border-color: var(--color-border-strong);
   }
   html:not(.dark) .mobile-menu-social:hover {
-    color: var(--color-brand-800);
-    border-color: color-mix(in oklch, var(--color-brand-500) 80%, transparent);
-    background-color: color-mix(in oklch, var(--color-brand-500) 10%, transparent);
+    color: var(--color-foreground);
+    border-color: var(--color-border-strong);
+    background-color: color-mix(in oklch, var(--color-secondary) 60%, transparent);
   }
   html.dark .mobile-menu-social:hover {
     color: var(--color-brand-300);
@@ -1266,37 +1249,5 @@ const buttonId = `${menuId}-button`;
   .mobile-menu-stagger:has(.ttg-panel:not(.hidden)) {
     position: relative;
     z-index: 60;
-  }
-
-  /* #551: the floating capsule's nav links carry the brand foreground in
-     both states. At rest the capsule is dark glass in both modes, so
-     brand-400 does the work (matching the capsule's control pills); once
-     the header solidifies on scroll they switch to the fixed bar's pair.
-     The active link keeps bright text so it stays readable on its brand
-     pill. Placed last in this block, with selectors mirroring the
-     hdr-invert-text colour rules' specificity, so these win the cascade. */
-  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link,
-  html.dark [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link {
-    color: var(--color-brand-400);
-  }
-  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link:hover,
-  html.dark [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link:hover {
-    color: var(--color-brand-300);
-  }
-  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link.hdr-nav-active,
-  html.dark [data-header-shape="floating"][data-header-color-scheme]:not([data-scrolled]) .nav-link.hdr-nav-active {
-    color: oklch(94% 0.008 250);
-  }
-  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link {
-    color: var(--color-brand-700);
-  }
-  html:not(.dark) [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link:hover {
-    color: var(--color-brand-800);
-  }
-  html.dark [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link {
-    color: var(--color-brand-400);
-  }
-  html.dark [data-header-shape="floating"][data-header-color-scheme][data-scrolled] .nav-link:hover {
-    color: var(--color-brand-300);
   }
 </style>

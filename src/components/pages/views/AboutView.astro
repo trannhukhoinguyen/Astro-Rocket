@@ -197,9 +197,9 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
             <div class="w-full">
               {card.items.map((item) => (
                 <details class="border-b border-border last:border-0" name={`faq-${cardIndex}`}>
-                  <summary class="flex w-full items-center justify-between text-sm py-4 text-left font-medium text-brand-700 dark:text-brand-400 transition-colors hover:text-brand-800 dark:hover:text-brand-300 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <summary class="flex w-full items-center justify-between text-sm py-4 text-left font-medium text-foreground transition-colors hover:text-foreground-secondary cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     {item.question}
-                    <Icon name="chevron-down" size="sm" class="faq-icon shrink-0 transition-transform duration-200" />
+                    <Icon name="chevron-down" size="sm" class="faq-icon shrink-0 text-foreground-muted transition-transform duration-200" />
                   </summary>
                   <div class="pb-4 text-sm text-foreground-muted leading-relaxed" set:html={item.answer} />
                 </details>

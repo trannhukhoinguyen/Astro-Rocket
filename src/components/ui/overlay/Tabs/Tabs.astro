@@ -40,7 +40,7 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
           'px-4 py-2.5 text-sm font-medium -mb-px border-b-2 transition-colors',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           tab.id === defaultValue
-            ? 'border-brand-500 text-brand-700 dark:text-brand-400'
+            ? 'border-foreground text-foreground'
             : 'border-transparent text-foreground-muted hover:text-foreground hover:border-border'
         )}
         data-tab-trigger={tab.id}
@@ -85,10 +85,10 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
           trigger.setAttribute('tabindex', isActive ? '0' : '-1');
 
           if (isActive) {
-            trigger.classList.add('border-brand-500', 'text-brand-700', 'dark:text-brand-400');
+            trigger.classList.add('border-foreground', 'text-foreground');
             trigger.classList.remove('border-transparent', 'text-foreground-muted');
           } else {
-            trigger.classList.remove('border-brand-500', 'text-brand-700', 'dark:text-brand-400');
+            trigger.classList.remove('border-foreground', 'text-foreground');
             trigger.classList.add('border-transparent', 'text-foreground-muted');
           }
         });

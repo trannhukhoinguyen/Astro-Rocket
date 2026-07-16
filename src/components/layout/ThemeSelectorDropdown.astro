@@ -77,8 +77,7 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 
 <style>
   .theme-swatch-dd[data-active] {
-    /* Brand-tinted background marks the current selection (#551). */
-    background-color: color-mix(in oklch, var(--color-brand-500) 12%, transparent);
+    background-color: var(--color-secondary);
   }
 
   .theme-swatch-dd[data-active] span:first-child {

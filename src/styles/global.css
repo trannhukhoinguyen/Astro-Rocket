@@ -859,27 +859,16 @@
   }
 
   .prose a {
-    /* #551: content links carry the brand foreground. */
-    color: var(--color-brand-700);
+    color: var(--color-foreground);
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-color: var(--color-brand-500);
-    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+    transition: text-decoration-color var(--transition-fast);
   }
 
   .prose a:hover {
-    color: var(--color-brand-800);
-    text-decoration-color: var(--color-brand-800);
-  }
-
-  html.dark .prose a {
-    color: var(--color-brand-400);
-  }
-
-  html.dark .prose a:hover {
-    color: var(--color-brand-300);
-    text-decoration-color: var(--color-brand-300);
+    text-decoration-color: var(--color-foreground);
   }
 
   .prose strong {
@@ -1416,54 +1405,6 @@ button:not(:disabled),
 [role='button']:not([aria-disabled='true']),
 summary {
   cursor: pointer;
-}
-
-/* #551: the brand foreground marks clickable controls — header pickers,
-   search, hamburger, and the back-to-top button. The floating header's
-   at-rest glass rules are more specific and keep their tuned colours. */
-.search-trigger,
-.ttg-trigger,
-.lang-trigger,
-.theme-dropdown-wrapper > button,
-.hdr-hamburger,
-#back-to-top {
-  color: var(--color-brand-700);
-}
-html.dark .search-trigger,
-html.dark .ttg-trigger,
-html.dark .lang-trigger,
-html.dark .theme-dropdown-wrapper > button,
-html.dark .hdr-hamburger,
-html.dark #back-to-top {
-  color: var(--color-brand-400);
-}
-/* Their pill borders join the brand border language of cards and the
-   brand-outline button (brand-500/40). The floating header's at-rest
-   glass rules are more specific and keep their tuned borders. */
-.search-trigger,
-.ttg-trigger,
-.lang-trigger,
-.theme-dropdown-wrapper > button {
-  border-color: color-mix(in oklch, var(--color-brand-500) 40%, transparent);
-}
-.search-trigger:hover,
-.ttg-trigger:hover,
-.lang-trigger:hover,
-.theme-dropdown-wrapper > button:hover {
-  border-color: color-mix(in oklch, var(--color-brand-500) 80%, transparent);
-}
-
-/* #551: enabled form elements signal interactivity with a brand border;
-   checks, radios, and ranges pick up the brand accent colour. */
-input:not([type='checkbox']):not([type='radio']):not([type='range']):not(:disabled),
-textarea:not(:disabled),
-select:not(:disabled) {
-  border-color: color-mix(in oklch, var(--color-brand-500) 40%, transparent);
-}
-input[type='checkbox'],
-input[type='radio'],
-input[type='range'] {
-  accent-color: var(--color-brand-500);
 }
 
 /* The project hero's live-site button and the mobile menu's CTA are solid

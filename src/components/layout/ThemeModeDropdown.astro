@@ -170,8 +170,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
   }
 
   .ttg-row[aria-checked='true'] {
-    /* Brand-tinted background marks the current selection (#551). */
-    background-color: color-mix(in oklch, var(--color-brand-500) 12%, transparent);
+    background-color: var(--color-secondary);
     color: var(--color-foreground);
   }
 
