@@ -8,10 +8,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.1.0] — 2026-07-16
+
 ### Added
 
 - **Community showcase in the README** — a new **Showcase** section listing real sites built and shipped with Astro Rocket, opening with [LinkPress](https://linkpress.app/) by Mithun A. Sridharan. Submissions come in through a new structured issue form (`.github/ISSUE_TEMPLATE/showcase_submission.yml` — live URL, project description, credit line, and opt-in checkboxes for screenshot/testimonial use). The showcase deliberately lives in the README only: no `/showcase` page ships in the theme, so user sites are completely unaffected.
 - **About page → showcase button** — the "Built in the open" section gained an optional second button ("See what others built") next to "View on GitHub", pointing at the README's Showcase anchor on GitHub. Driven by a new `pages.about.openSource.showcaseButton` key in `en.json`/`nl.json`; the button only renders when the key exists, so removing the key hides it with no template edit.
+- **Artalk comment provider** — the pluggable blog-comments system gained a third option alongside Giscus and Cusdis: [Artalk](https://artalk.js.org), a self-hosted comment system, wired with the same care as the existing providers and hardened in a follow-up pass. Existing sites are unaffected; the provider defaults stay unchanged.
+- **Cloudflare as a first-class deploy target** — alongside Vercel (default) and Netlify, the theme now ships a Cloudflare deploy path via `@astrojs/cloudflare`.
+- **Built-in i18n for the main pages** — the home, About, Services, and Contact pages moved their copy into the locale dictionaries, the remaining hardcoded chrome strings and blog/projects UI strings were localized, and blog/article dates now follow the active locale.
+- **Brand-outline button variant** — a new `Button` variant with a brand border and brand text on a transparent fill, used for secondary actions across the demo. Text shades chosen to hold WCAG AA in both modes.
+- **Section pill icons** — every section badge pill across the demo pages now carries a matching icon.
+- **Theme-picker curation flag** — `src/lib/themes.ts` now single-sources the picker list for both the swatch row and the dropdown. A `showInSelector` flag per theme lets a site offer a subset of the pickers while all twelve palettes keep shipping (and keep working for visitors who saved one earlier).
+- **Official design variants as archive branches** — two documented, frozen branches now accompany `main`: `archive/original-design` (the design before the #551 consistency system) and `archive/brand-consistency-design` (the full #551 brand look). Each carries a `DESIGN-ARCHIVE.md` explaining what it holds and how to build on it.
+- **Configurable consent-banner aria-labels** — the cookie-consent banner's accessibility labels are now driven from config.
+
+### Changed
+
+- **Updated to Astro 7.1.0** — `astro` `7.0.0` → `7.1.0` (a purely additive minor release: opt-in `deferRender` for large collections, experimental chunked collection storage, finer-grained CSP directives, a `format()` option for `paginate`, plus the 7.0.1–7.0.9 patch fixes in between). Integrations updated alongside: `@astrojs/mdx` `7.0.0` → `7.0.3`, `@astrojs/react` `6.0.0` → `6.0.1`. No breaking changes; the full site builds clean and key pages were smoke-tested in a rendered build.
+- **Deeper card elevation** — cards drop the brand ring for a cleaner `shadow-lg` resting state with a `shadow-xl` hover; blog hero images and project screenshots float on a new media shadow; the stack marquee cards and the LetterGlitch band received matching treatments (including a dark-mode brand glow for the band, where grey shadows can't register).
+- **Primary buttons read brand** — the primary button uses a brand-600 fill in light mode (the four cooler hues — cyan, emerald, sky, teal — sit on brand-700/800 so white label text keeps WCAG AA), and the project hero's live-site button and the mobile menu CTA are solid brand in dark mode too.
+- **Unified tag pills** — project-card, blog-card, and archive tags share one pill design.
+- **Services page rebalance** — restructured sections with five points per service card and the per-section CTA buttons removed in favour of one closing CTA.
+- **Sharper positioning and the true origin story** — the theme copy settles on "a lightning-fast Astro 7 starter theme to build anything on", Velocity is credited as the fork origin the theme evolved beyond, and the demo's own project page now tells the full story: the fork became a personal website first, the theme split off before that site was finished, and the two evolved side by side.
+- **The #551 design-consistency round trip** — the brand-consistency system proposed in #551 (thank you @Dixin) shipped as the default, and after user feedback the default returned to the original look the same day the feedback arrived. The system lives on in full as the `archive/brand-consistency-design` variant. Kept in the default permanently: the hand cursor on every enabled control and the centered footer on project pages.
+- **Footer refinements** — the designer credit merged into the copyright line, and the footer menu and legal links settled on muted grey with a foreground hover.
+
+### Fixed
+
+- **Build crash when the default locale is not `"en"`** — the build no longer assumes an English default locale.
+- **Blog reading time** — computed from the real post body, counts CJK text correctly, and the label is localized.
+- **Doubled site name in page titles** — page titles no longer repeat the site name; the About page keeps a descriptive title.
+- **Light hairline on the LetterGlitch band** — the band showed a 1px line of the page background through its transparent border in light mode; it now paints its own background.
 
 ## [2.0.0] — 2026-06-22
 
