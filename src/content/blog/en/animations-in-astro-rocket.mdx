@@ -281,7 +281,7 @@ Both use `var(--color-brand-500)`, so they re-colour instantly whenever the visi
 
 ## The typing effect
 
-The [hero typing effect](/blog/hero-typing-effect) on the About page cycles through words one character at a time. It is a `setTimeout` loop with three non-obvious fixes: the element width is locked to the widest word up front (via an off-screen measuring span) so nothing reflows as words of different lengths cycle; it restarts on `astro:page-load` so it survives client navigation; and `overflow: hidden` was removed because it clipped descenders at large heading sizes.
+The [hero typing effect](/blog/hero-typing-effect) component cycles through words one character at a time. It is a `setTimeout` loop with three non-obvious fixes: the element width is locked to the widest word up front (via an off-screen measuring span) so nothing reflows as words of different lengths cycle; it restarts on `astro:page-load` so it survives client navigation; and `overflow: hidden` was removed because it clipped descenders at large heading sizes.
 
 ## Why no view transitions
 

@@ -50,7 +50,7 @@ Built on Astro 7 and Tailwind CSS v4.
 | **57 Components** | 33 UI, 7 patterns, 1 hero, 4 layout, 4 blog, 7 landing, 3 SEO — all accessible with TypeScript |
 | **Auto Logo & Favicon** | First letter of your site name on brand color — generated automatically from `site.config.ts`, no design tools needed. Prefer your own logo? Set `branding.logo.image` to a file in `public/`. |
 | **Icon System** | Unified `Icon` component (Astro + React) — 350+ [Lucide](https://lucide.dev) UI icons and 3000+ [Simple Icons](https://simpleicons.org) brand icons via Iconify |
-| **Typing Effect** | Animated typing effect in the hero section |
+| **Typing Effect** | Animated typing headline component, ready to drop into any hero |
 | **Page Animations** | Smooth page transitions via Astro View Transitions, scroll-triggered counter and score animations, scroll-reactive header, card hover effects, and a full suite of UI micro-animations — all with reduced-motion support |
 | **SEO Toolkit** | Meta tags, JSON-LD structured data, sitemap, and robots.txt |
 | **Static OG Image** | A polished default Open Graph image serves as social preview for all pages — no build-time generation required |
@@ -558,7 +558,7 @@ Astro Rocket includes 57 components across 7 categories. All UI components use [
 
 | Category | Count | Components |
 |----------|-------|------------|
-| Hero | 1 | Hero section with centered/split layouts, grid pattern, and typing effect |
+| Hero | 1 | Hero section with centered/split layouts and grid pattern |
 | Layout | 6 | Header (with scroll progress bar), Footer, ThemeModeDropdown, ThemeSelector, ThemeSelectorDropdown, Analytics |
 | Blog | 4 | ArticleHero, BlogCard, ShareButtons, RelatedPosts |
 | Landing | 5 | Credibility, LighthouseScores, TechStack, FeatureTabs, and more |
