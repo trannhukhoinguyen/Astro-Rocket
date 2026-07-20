@@ -1399,20 +1399,6 @@ html.dark .media-shadow {
     0 20px 40px -12px rgb(0 0 0 / 0.6);
 }
 
-/* Softer lift for pale device mockups: media-shadow's tight ambient ring
-   wrapped the rounded corners in a dark rim against the light stage, so
-   this variant keeps only a low, offset drop shadow — clean corners. */
-.media-shadow-soft {
-  box-shadow:
-    0 16px 40px -16px rgb(0 0 0 / 0.25),
-    0 4px 12px -6px rgb(0 0 0 / 0.1);
-}
-html.dark .media-shadow-soft {
-  box-shadow:
-    0 0 32px -10px color-mix(in oklab, var(--color-brand-500) 15%, transparent),
-    0 16px 32px -16px rgb(0 0 0 / 0.45);
-}
-
 /* Clickable affordance (#551): every enabled control gets the hand cursor,
    including buttons that browsers default to an arrow cursor. */
 button:not(:disabled),
