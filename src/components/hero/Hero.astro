@@ -66,9 +66,11 @@ const sectionClasses = cn(
   heroSectionVariants({ size }),
   // Full-viewport hero: stretch to at least the viewport height. Uses svh (stable
   // small viewport) rather than dvh so the hero does NOT resize as the mobile
-  // browser's address bar shows/hides on scroll; capped so it never grows too tall
-  // on large monitors.
-  fullHeight && 'min-h-[min(100svh,60rem)]',
+  // browser's address bar shows/hides on scroll. No upper cap — a 60rem cap used
+  // to cut the hero short on viewports taller than 960px (portrait tablets), so
+  // the next section bled into the first screen; the floored bottom slot absorbs
+  // extra height by design.
+  fullHeight && 'min-h-[100svh]',
   // Floored bottom slot (e.g. the homepage tech-stack marquee): flex column so the
   // slot floats to the floor with a guaranteed minimum gap above it.
   isFlooredBottom && 'flex flex-col gap-[var(--hero-floor-gap,4rem)]',
