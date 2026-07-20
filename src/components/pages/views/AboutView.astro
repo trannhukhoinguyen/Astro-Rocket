@@ -107,9 +107,9 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     </p>
 
     {/* Last hero item: the theme on every device — the pair swaps with the
-        visitor's colour mode. */}
+        visitor's colour mode. Framed like the blog hero images. */}
     <div class="mt-4 w-full max-w-4xl">
-      <div class="rounded-xl overflow-hidden border border-brand-500/40 shadow-lg">
+      <div class="rounded-xl overflow-hidden media-shadow">
         <Image src={trioLight} alt={hero.mockupAlt} class="w-full dark:hidden" />
         <Image src={trioDark} alt={hero.mockupAltDark} class="w-full hidden dark:block" />
       </div>
