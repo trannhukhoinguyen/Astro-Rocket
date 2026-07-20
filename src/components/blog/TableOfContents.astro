@@ -11,6 +11,7 @@
  */
 import type { MarkdownHeading } from 'astro';
 import { t, getLocaleFromPath } from '@/i18n';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
 interface Props {
   headings: MarkdownHeading[];
@@ -48,14 +49,21 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
 
 {shouldRender && (
   <nav
-    class:list={['toc not-prose', sticky && 'toc-sticky']}
+    class:list={[
+      // The theme's card frame (rounded-xl + brand border + card surface),
+      // deliberately without shadow or hover: the TOC is a reading aid —
+      // its links are interactive, the box itself is not.
+      'toc not-prose rounded-xl border border-brand-500/40 bg-card p-5',
+      sticky && 'toc-sticky',
+    ]}
     aria-labelledby={headingId}
     data-toc
   >
     <p
       id={headingId}
-      class="text-xs font-semibold uppercase tracking-wider text-foreground-muted mb-3"
+      class="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground"
     >
+      <Icon name="list" size="sm" class="text-brand-500" />
       {tocTitle}
     </p>
     <ul class="space-y-1.5 text-sm border-l border-border">
