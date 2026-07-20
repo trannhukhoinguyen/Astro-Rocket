@@ -87,7 +87,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
   description={t('pages.about.meta.description', locale)}
   footerBackground="secondary"
 >
-  <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
+  {/* The mockup at the hero's bottom edge needs the same breathing room the
+      sections below keep between each other, so the sm-hero's tighter bottom
+      padding steps up to the page-wide section-md rhythm. */}
+  <Hero layout="centered" size="sm" class="isolate !pb-[var(--space-section-md)]" showHeroHalo>
     <Badge slot="badge" variant="brand" pill>
       <Icon name="rocket" size="sm" />
       {hero.badge}
@@ -107,9 +110,9 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     </p>
 
     {/* Last hero item: the theme on every device — the pair swaps with the
-        visitor's colour mode. Framed like the blog hero images. */}
+        visitor's colour mode. */}
     <div class="mt-4 w-full max-w-4xl">
-      <div class="rounded-xl overflow-hidden media-shadow">
+      <div class="rounded-xl overflow-hidden">
         <Image src={trioLight} alt={hero.mockupAlt} class="w-full dark:hidden" />
         <Image src={trioDark} alt={hero.mockupAltDark} class="w-full hidden dark:block" />
       </div>
