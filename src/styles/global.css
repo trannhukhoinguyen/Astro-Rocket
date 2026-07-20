@@ -1399,20 +1399,6 @@ html.dark .media-shadow {
     0 20px 40px -12px rgb(0 0 0 / 0.6);
 }
 
-/* Hero mockup frame: the cards' brand border with a shadow scaled to hero
-   size — depth grows with the element, the border keeps the family. No
-   ambient ring, so the rounded corners stay clean. */
-.mockup-frame {
-  box-shadow:
-    0 24px 48px -20px rgb(0 0 0 / 0.3),
-    0 6px 16px -8px rgb(0 0 0 / 0.12);
-}
-html.dark .mockup-frame {
-  box-shadow:
-    0 0 36px -12px color-mix(in oklab, var(--color-brand-500) 18%, transparent),
-    0 20px 40px -20px rgb(0 0 0 / 0.5);
-}
-
 /* Clickable affordance (#551): every enabled control gets the hand cursor,
    including buttons that browsers default to an arrow cursor. */
 button:not(:disabled),
