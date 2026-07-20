@@ -201,9 +201,7 @@
         "titleHighlight": "The free Astro starter theme",
         "description": "A lightning-fast Astro\u00a07 starter\u00a0theme to build anything\u00a0on. The site you're reading right now is built on it too.",
         "ctaDemo": "View the demo",
-        "ctaGithub": "View on GitHub",
-        "mockupAlt": "The Astro Rocket demo shown on a desktop monitor, a tablet, and a smartphone, on a light studio background",
-        "mockupAltDark": "The Astro Rocket demo in dark mode, shown on a desktop monitor, a tablet, and a smartphone, on a dark studio background"
+        "ctaGithub": "View on GitHub"
       },
       "whatYouGet": {
         "badge": "What you get",

@@ -201,9 +201,7 @@
         "titleHighlight": "Het gratis Astro starter-thema",
         "description": "Een razendsnel Astro\u00a07 starter-thema om alles op te bouwen. De site die je nu leest, is er zelf op gebouwd.",
         "ctaDemo": "Bekijk de demo",
-        "ctaGithub": "Bekijk op GitHub",
-        "mockupAlt": "De Astro Rocket-demo op een monitor, een tablet en een smartphone, op een lichte studioachtergrond",
-        "mockupAltDark": "De Astro Rocket-demo in donkere modus, op een monitor, een tablet en een smartphone, op een donkere studioachtergrond"
+        "ctaGithub": "Bekijk op GitHub"
       },
       "whatYouGet": {
         "badge": "Wat je krijgt",

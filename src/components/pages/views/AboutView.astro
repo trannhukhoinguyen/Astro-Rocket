@@ -12,7 +12,6 @@
  * before this was extracted.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
-import { Image } from 'astro:assets';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
@@ -22,9 +21,6 @@ import { Hero } from '@/components/hero';
 import TechStack from '@/components/landing/TechStack.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { t, tData, defaultLocale, localizedPath } from '@/i18n';
-// The theme on a monitor, a tablet, and a phone — light and dark stage.
-import trioLight from '@/assets/projects/astrorocket-trio-light.jpg';
-import trioDark from '@/assets/projects/astrorocket-trio-dark.jpg';
 
 interface Props {
   /** Locale whose copy this page renders. Defaults to the site default. */
@@ -61,8 +57,6 @@ const hero = tData<{
   description: string;
   ctaDemo: string;
   ctaGithub: string;
-  mockupAlt: string;
-  mockupAltDark: string;
 }>('pages.about.hero', locale)!;
 const whatYouGet = tData<{ badge: string; heading: string; lead: string; items: IconText[] }>(
   'pages.about.whatYouGet',
@@ -111,19 +105,6 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
       </Button>
     </Fragment>
   </Hero>
-
-  <!-- ─── The theme on every screen ────────────────────────────────────────── -->
-  <section class="pb-[var(--space-section-md)] bg-background">
-    <div class="mx-auto max-w-5xl px-6" data-reveal>
-      {/* The pair swaps with the visitor's colour mode — the image itself
-          demonstrates the theme's dark mode while they read about it.
-          Framed exactly like the cards below it (static — not clickable). */}
-      <div class="rounded-xl overflow-hidden border border-brand-500/40 shadow-lg">
-        <Image src={trioLight} alt={hero.mockupAlt} class="w-full dark:hidden" />
-        <Image src={trioDark} alt={hero.mockupAltDark} class="w-full hidden dark:block" />
-      </div>
-    </div>
-  </section>
 
   <!-- What you get -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
