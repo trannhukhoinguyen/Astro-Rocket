@@ -235,9 +235,13 @@ const buttonId = `${menuId}-button`;
         ) : (
           <a href={logoHref} class="flex items-center gap-2">
             <Logo size={size === 'sm' ? 'md' : 'lg'} forceDark={isInvert} class="bg-brand-600" />
+            {/* One line at every width: the wordmark never wraps, and it eases
+                20px → 16px between 345px and 320px so it clears the header
+                icons on the smallest screens. From 345px up the clamp
+                resolves to exactly text-xl (20px). */}
             <span
               class={cn(
-                'font-display text-xl font-bold tracking-tight',
+                'font-display text-[clamp(1rem,16vw_-_2.2rem,1.25rem)] font-bold tracking-tight whitespace-nowrap',
                 isFloating ? 'hdr-logo-text' : (isInvert ? 'text-brand-600 dark:text-foreground lg:text-on-invert' : 'text-brand-600 dark:text-foreground')
               )}
             >
@@ -285,8 +289,12 @@ const buttonId = `${menuId}-button`;
           <slot name="actions" />
         ) : (
           <>
+            {/* On phones the search trigger lives in the menu drawer instead —
+                three icons squeezed the brand onto two lines below 390px. The
+                modal itself stays mounted here at every size: the drawer row
+                clicks this (hidden) trigger. */}
             {showSearch && (
-              <div class="flex">
+              <div class="hidden lg:flex">
                 <SearchModal class={isFloating ? 'hdr-invert-text' : undefined} />
               </div>
             )}
@@ -448,6 +456,23 @@ const buttonId = `${menuId}-button`;
             'mobile-menu-body py-3',
             isFloating ? 'px-3' : cn('mx-auto px-4', maxWidthClass)
           )}>
+            {showSearch && (
+              <section class="mobile-menu-section">
+                <button
+                  type="button"
+                  class="mobile-menu-search mobile-menu-stagger flex w-full items-center gap-3 rounded-xl border border-border-strong px-3 py-3 text-base text-foreground-muted transition-colors hover:text-foreground hover:border-brand-500"
+                  style="--stagger-index: 0"
+                  aria-haspopup="dialog"
+                >
+                  <span class="mobile-menu-tile">
+                    <Icon name="search" size="sm" />
+                  </span>
+                  <span class="flex-1 text-left">{t('nav.searchSite', locale)}</span>
+                  <kbd class="hidden sm:inline-block rounded border border-border-strong px-1.5 py-0.5 text-xs text-foreground-muted">⌘K</kbd>
+                </button>
+              </section>
+            )}
+
             <section class="mobile-menu-section">
               <p class="mobile-menu-label">{t('nav.sectionNavigate', locale)}</p>
               <ul class="space-y-0.5">
@@ -689,6 +714,20 @@ const buttonId = `${menuId}-button`;
       menu.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', close);
       });
+
+      // The in-menu search row closes the drawer and opens the site search
+      // modal (the same modal the desktop header trigger uses — clicking its
+      // hidden trigger reuses all of its logic).
+      const searchRow = menu.querySelector<HTMLButtonElement>('.mobile-menu-search');
+      if (searchRow) {
+        searchRow.addEventListener('click', () => {
+          close();
+          window.setTimeout(() => {
+            const trigger = document.querySelector<HTMLButtonElement>('.search-trigger');
+            trigger?.click();
+          }, 210);
+        });
+      }
     });
   }
 
