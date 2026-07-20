@@ -200,7 +200,9 @@
         "titleLead": "Astro Rocket —",
         "typingWords": ["Razendsnel", "Starter-thema", "57 Componenten", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
         "typingWordsMobile": ["Razendsnel", "Starter-thema", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
-        "description": "Een gratis, open-source Astro 7 starter-thema om alles op te bouwen."
+        "description": "Een gratis, open-source Astro 7 starter-thema om alles op te bouwen.",
+        "mockupAlt": "De Astro Rocket-demo op een monitor, een tablet en een smartphone, op een lichte studioachtergrond",
+        "mockupAltDark": "De Astro Rocket-demo in donkere modus, op een monitor, een tablet en een smartphone, op een donkere studioachtergrond"
       },
       "whatYouGet": {
         "badge": "Wat je krijgt",

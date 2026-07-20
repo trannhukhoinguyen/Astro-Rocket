@@ -200,7 +200,9 @@
         "titleLead": "Astro Rocket —",
         "typingWords": ["Lightning-fast", "Starter theme", "57 Components", "12 Themes", "Dark Mode", "Built-in i18n"],
         "typingWordsMobile": ["Lightning-fast", "Starter theme", "12 Themes", "Dark Mode", "Built-in i18n"],
-        "description": "A free, open-source Astro 7 starter\u00a0theme to build anything on."
+        "description": "A free, open-source Astro 7 starter\u00a0theme to build anything on.",
+        "mockupAlt": "The Astro Rocket demo shown on a desktop monitor, a tablet, and a smartphone, on a light studio background",
+        "mockupAltDark": "The Astro Rocket demo in dark mode, shown on a desktop monitor, a tablet, and a smartphone, on a dark studio background"
       },
       "whatYouGet": {
         "badge": "What you get",
