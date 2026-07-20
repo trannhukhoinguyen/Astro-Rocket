@@ -82,7 +82,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
   description={t('pages.about.meta.description', locale)}
   footerBackground="secondary"
 >
-  <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
+  {/* Bottom padding steps up to section-md so the buttons get the same
+      96px of air below as above — the sm token alone leaves the hero
+      bottom-tight (64px). */}
+  <Hero layout="centered" size="sm" class="isolate !pb-[var(--space-section-md)]" showHeroHalo>
     <Badge slot="badge" variant="brand" pill>
       <Icon name="rocket" size="sm" />
       {hero.badge}
