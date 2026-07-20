@@ -159,9 +159,9 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
       <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">{hero.titleLine2}</span><br class="md:hidden" /><span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">{' '}{hero.titleLine3}</span>
     </h1>
 
-    {/* Balance only from sm up: on phones the description wraps naturally so
-        each line fills the column, matching the title and buttons. */}
-    <p slot="description" class="sm:!text-balance">
+    {/* Balanced on every size: this description is short, and natural wrap
+        strands a two-word last line — balancing spreads it into even lines. */}
+    <p slot="description" class="!text-balance">
       <span class="sm:hidden">{hero.descriptionMobile}</span>
       <span class="hidden sm:inline">{hero.description}</span>
     </p>
