@@ -192,6 +192,17 @@ const languageAlternates = Object.fromEntries(
       <!-- Breadcrumbs -->
       <Breadcrumbs items={breadcrumbs} class="mb-8" />
 
+      {sidebarActive && (
+        <div class="xl:hidden mb-10">
+          <TableOfContents
+            headings={headings}
+            maxDepth={tocConfig?.maxDepth ?? 3}
+            minHeadings={tocConfig?.minHeadings ?? 3}
+            collapsible
+          />
+        </div>
+      )}
+
       {inlineActive && (
         <div class="mb-10 rounded-xl border border-border bg-background-secondary p-5">
           <TableOfContents

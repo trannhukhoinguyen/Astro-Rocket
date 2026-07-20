@@ -23,6 +23,13 @@ interface Props {
   title?: string;
   /** When true, the TOC card sticks to the top of its scrolling container */
   sticky?: boolean;
+  /**
+   * Collapsed-card variant for small screens: a closed card with a
+   * localized Show/Hide hint and a chevron that unfolds on tap (native
+   * details/summary — the same pattern as accordion FAQs). Links
+   * auto-close the panel.
+   */
+  collapsible?: boolean;
 }
 
 const {
@@ -31,12 +38,16 @@ const {
   minHeadings = 3,
   title,
   sticky = false,
+  collapsible = false,
 } = Astro.props;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
-// Default the heading to the localized "On this page"; an explicit `title`
-// prop still overrides it.
-const tocTitle = title ?? t('blog.onThisPage', locale);
+// A closed card must name its contents; an always-visible list only needs
+// a label. An explicit `title` prop still overrides either default.
+const tocTitle =
+  title ?? t(collapsible ? 'blog.tableOfContents' : 'blog.onThisPage', locale);
+const showLabel = t('blog.tocShow', locale);
+const hideLabel = t('blog.tocHide', locale);
 
 const items = headings.filter((h) => h.depth >= 2 && h.depth <= maxDepth);
 const shouldRender = items.length >= minHeadings;
@@ -47,44 +58,73 @@ const shouldRender = items.length >= minHeadings;
 const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
-{shouldRender && (
-  <nav
-    class:list={[
-      // The theme's card frame (rounded-xl + brand border + card surface),
-      // deliberately without shadow or hover: the TOC is a reading aid —
-      // its links are interactive, the box itself is not.
-      'toc not-prose rounded-xl border border-brand-500/40 bg-card p-5',
-      sticky && 'toc-sticky',
-    ]}
-    aria-labelledby={headingId}
-    data-toc
-  >
-    <p
-      id={headingId}
-      class="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground"
+{shouldRender && (() => {
+  // The theme's card frame (rounded-xl + brand border + card surface),
+  // deliberately without shadow or hover: the TOC is a reading aid —
+  // its links are interactive, the box itself is not.
+  const Wrapper = collapsible ? 'details' : 'nav';
+  return (
+    <Wrapper
+      class:list={[
+        'toc not-prose rounded-xl border border-brand-500/40 bg-card',
+        !collapsible && 'p-5',
+        sticky && 'toc-sticky',
+      ]}
+      aria-labelledby={collapsible ? undefined : headingId}
+      data-toc
     >
-      <Icon name="list" size="sm" class="text-brand-500" />
-      {tocTitle}
-    </p>
-    <ul class="space-y-1.5 text-sm border-l border-border">
-      {items.map((h) => (
-        <li
-          class="toc-item"
-          data-depth={h.depth}
-          style={`padding-left: ${(h.depth - 2) * 0.875}rem`}
+      {collapsible ? (
+        <summary class="flex cursor-pointer list-none items-center gap-2 p-5 text-sm font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+          <Icon name="list" size="sm" class="text-brand-500" />
+          {tocTitle}
+          <span class="toc-hint ml-auto flex shrink-0 items-center gap-1 text-xs font-medium text-foreground-muted">
+            <span class="toc-hint-show">{showLabel}</span>
+            <span class="toc-hint-hide">{hideLabel}</span>
+            <Icon
+              name="chevron-down"
+              size="sm"
+              class="toc-chevron transition-transform duration-200"
+            />
+          </span>
+        </summary>
+      ) : (
+        <p
+          id={headingId}
+          class="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground"
         >
-          <a
-            href={`#${h.slug}`}
-            data-toc-link={h.slug}
-            class="toc-link block py-1 pl-3 -ml-px border-l border-transparent text-foreground-muted hover:text-foreground hover:border-brand-500 transition-colors"
+          <Icon name="list" size="sm" class="text-brand-500" />
+          {tocTitle}
+        </p>
+      )}
+      <ul
+        class:list={[
+          'space-y-1.5 text-sm border-l border-border',
+          collapsible && 'mx-5 mb-5',
+        ]}
+      >
+        {items.map((h) => (
+          <li
+            class="toc-item"
+            data-depth={h.depth}
+            style={`padding-left: ${(h.depth - 2) * 0.875}rem`}
           >
-            {h.text}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-)}
+            <a
+              href={`#${h.slug}`}
+              data-toc-link={h.slug}
+              class:list={[
+                'toc-link block pl-3 -ml-px border-l border-transparent text-foreground-muted hover:text-foreground hover:border-brand-500 transition-colors',
+                // Roomier tap targets on the touch-first collapsed variant.
+                collapsible ? 'py-1.5' : 'py-1',
+              ]}
+            >
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Wrapper>
+  );
+})()}
 
 <style>
   /* Sticky positioning is opt-in (sidebar layout). The 6rem offset clears
@@ -101,6 +141,25 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
     color: var(--color-foreground);
     border-left-color: var(--color-brand-500);
     font-weight: 500;
+  }
+
+  /* Collapsed-card variant: the chevron flips when the panel unfolds —
+     the same motion accordion FAQs use — and the action hint swaps
+     between the localized Show and Hide labels to match. */
+  details[data-toc][open] .toc-chevron {
+    transform: rotate(180deg);
+  }
+
+  .toc-hint-hide {
+    display: none;
+  }
+
+  details[data-toc][open] .toc-hint-show {
+    display: none;
+  }
+
+  details[data-toc][open] .toc-hint-hide {
+    display: inline;
   }
 </style>
 
@@ -121,6 +180,58 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
     const headings = slugs
       .map((s) => document.getElementById(s))
       .filter((el): el is HTMLElement => el !== null);
+
+    // Jumping into a section whose scroll-reveal hasn't played yet lands
+    // short: the block still carries its entrance translate when the
+    // browser computes the scroll target, then rises out from under it.
+    // Settle the target's reveal state first (skipping its entrance
+    // animation — the reader is jumping straight to it anyway).
+    const settleTarget = (slug: string): HTMLElement | null => {
+      const el = document.getElementById(slug);
+      if (!el) return null;
+      const container = el.closest('[data-reveal-content]');
+      if (container) {
+        let child: HTMLElement = el;
+        while (child.parentElement && child.parentElement !== container) {
+          child = child.parentElement;
+        }
+        if (child.parentElement === container && !child.classList.contains('is-visible')) {
+          child.style.transition = 'none';
+          child.classList.add('is-visible');
+        }
+      }
+      const reveal = el.closest<HTMLElement>('[data-reveal]');
+      if (reveal && !reveal.classList.contains('is-visible')) {
+        reveal.style.transition = 'none';
+        reveal.classList.add('is-visible');
+      }
+      return el;
+    };
+
+    for (const a of links) {
+      const slug = a.getAttribute('data-toc-link')!;
+      if (toc.tagName === 'DETAILS') {
+        // Collapsed-card variant: fold the panel before navigating (an
+        // open panel above the target would make the scroll land short),
+        // then jump against the fully settled layout. The hash is written
+        // via pushState so the URL updates without a competing native
+        // scroll; scrollIntoView honours the html scroll-padding offset.
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          toc.removeAttribute('open');
+          requestAnimationFrame(() => {
+            const target = settleTarget(slug);
+            if (!target) return;
+            history.pushState(null, '', `#${slug}`);
+            target.scrollIntoView();
+          });
+        });
+      } else {
+        // Sidebar/inline variant: native navigation proceeds — settling
+        // the target first is enough for an exact landing.
+        a.addEventListener('click', () => settleTarget(slug));
+      }
+    }
 
     if (headings.length === 0) continue;
 
