@@ -11,7 +11,7 @@ svgSlug: "hero-typing-effect"
 imageAlt: "Rocket icon above the words 'typing effect' on a dark background"
 ---
 
-Open the Astro Rocket About page and the headline does not sit still. It types one word, pauses, deletes it, and types the next — looping forever. This post explains exactly how that effect is built, what each value controls, and how to make it faster, slower, or gone entirely.
+Astro Rocket ships a typing headline component: drop it into a heading and the text does not sit still. It types one word, pauses, deletes it, and types the next — looping forever. This post explains exactly how the effect is built, what each value controls, and how to make it faster, slower, or gone entirely.
 
 ## Where the component lives
 
@@ -23,9 +23,9 @@ src/components/ui/TypingEffect.astro
 
 It is a standard Astro component with a scoped `<style>` block for the cursor blink and a `<script>` block for the typing logic. No third-party library, no external dependency.
 
-## Where it is used
+## How to use it
 
-The component currently lives in the About page hero, inside a brand-coloured `<span>`:
+Drop the component into a hero title, inside a brand-coloured `<span>`:
 
 ```astro
 <h1 slot="title">
@@ -36,7 +36,7 @@ The component currently lives in the About page hero, inside a brand-coloured `<
 </h1>
 ```
 
-The homepage hero uses static text. The typing effect was kept on the About page where it acts as a personal "who am I" cycling statement rather than a product tagline.
+The demo's own heroes use static text — a deliberate choice for product pages, where the headline is a tagline that should hold still. The component is made for the other case: a personal "who am I" cycling statement, like the word list above.
 
 You can place `<TypingEffect>` inside any heading or inline context. The `words` prop is the only required value.
 
