@@ -19,10 +19,9 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import ProofTile from '@/components/ui/data-display/ProofTile/ProofTile.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
-import TypingEffect from '@/components/ui/TypingEffect.astro';
 import TechStack from '@/components/landing/TechStack.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
-import { t, tData, defaultLocale } from '@/i18n';
+import { t, tData, defaultLocale, localizedPath } from '@/i18n';
 // The theme on a monitor, a tablet, and a phone — light and dark stage.
 import trioLight from '@/assets/projects/astrorocket-trio-light.jpg';
 import trioDark from '@/assets/projects/astrorocket-trio-dark.jpg';
@@ -58,10 +57,12 @@ const GITHUB_URL = 'https://github.com/hansmartensdev/astro-rocket';
 const hero = tData<{
   badge: string;
   titleLead: string;
-  typingWords: string[];
-  /** Shorter set for phones (below sm), dropping the one word wide enough to clip at the hero size. */
-  typingWordsMobile: string[];
+  titleHighlight: string;
   description: string;
+  ctaDemo: string;
+  ctaGithub: string;
+  mockupAlt: string;
+  mockupAltDark: string;
 }>('pages.about.hero', locale)!;
 const whatYouGet = tData<{ badge: string; heading: string; lead: string; items: IconText[] }>(
   'pages.about.whatYouGet',
@@ -87,37 +88,41 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
   description={t('pages.about.meta.description', locale)}
   footerBackground="secondary"
 >
-  {/* The mockup at the hero's bottom edge needs the same breathing room the
-      sections below keep between each other, so the sm-hero's tighter bottom
-      padding steps up to the page-wide section-md rhythm. */}
-  <Hero layout="centered" size="sm" class="isolate !pb-[var(--space-section-md)]" showHeroHalo>
+  <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
     <Badge slot="badge" variant="brand" pill>
       <Icon name="rocket" size="sm" />
       {hero.badge}
     </Badge>
     <h1 slot="title">
       <span class="text-foreground [-webkit-text-fill-color:currentColor]">{hero.titleLead}</span><br />
-      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] sm:hidden">
-        <TypingEffect words={hero.typingWordsMobile} />
-      </span>
-      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] hidden sm:inline">
-        <TypingEffect words={hero.typingWords} />
-      </span>
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)]">{hero.titleHighlight}</span>
     </h1>
-
     <p slot="description" class="!text-balance">
       {hero.description}
     </p>
+    <Fragment slot="actions">
+      <Button href={localizedPath('/', locale)} class="cta-btn-brand">
+        {hero.ctaDemo}
+        <Icon name="arrow-right" size="sm" />
+      </Button>
+      <Button variant="brand-outline" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+        <Icon name="github" size="sm" />
+        {hero.ctaGithub}
+      </Button>
+    </Fragment>
+  </Hero>
 
-    {/* Last hero item: the theme on every device — the pair swaps with the
-        visitor's colour mode. */}
-    <div class="mt-4 w-full max-w-4xl">
-      <div class="rounded-xl overflow-hidden">
+  <!-- ─── The theme on every screen ────────────────────────────────────────── -->
+  <section class="pb-[var(--space-section-md)] bg-background">
+    <div class="mx-auto max-w-5xl px-6" data-reveal>
+      {/* The pair swaps with the visitor's colour mode — the image itself
+          demonstrates the theme's dark mode while they read about it. */}
+      <div class="rounded-xl overflow-hidden media-shadow">
         <Image src={trioLight} alt={hero.mockupAlt} class="w-full dark:hidden" />
         <Image src={trioDark} alt={hero.mockupAltDark} class="w-full hidden dark:block" />
       </div>
     </div>
-  </Hero>
+  </section>
 
   <!-- What you get -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
