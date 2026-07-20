@@ -151,7 +151,11 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
   <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight>
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">{hero.badge}</Badge>
 
-    <h1 slot="title" class="!text-[clamp(2rem,11.2vw,3rem)] sm:!text-5xl md:!text-6xl lg:!text-7xl">
+    {/* 12.6vw fills the mobile column (~95-98% at 320-390px), sized to the
+        English demo strings — translated hero copy is the site owner's to
+        refit. The 3rem cap keeps the size continuous with sm:text-5xl at
+        the 640px boundary. */}
+    <h1 slot="title" class="!text-[clamp(2rem,12.6vw,3rem)] sm:!text-5xl md:!text-6xl lg:!text-7xl">
       <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor] whitespace-nowrap">{hero.titleLine1}</span><br />
       <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">{hero.titleLine2}</span><br class="md:hidden" /><span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">{' '}{hero.titleLine3}</span>
     </h1>
