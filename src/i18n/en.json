@@ -196,12 +196,11 @@
         "description": "What Astro Rocket is and how it's built: a free, lightning-fast Astro 7 starter theme with 57 designed components, 12 colour themes, built-in i18n, and dark mode."
       },
       "hero": {
-        "badge": "Free & open source · MIT",
+        "badge": "About",
         "titleLead": "Astro Rocket —",
-        "titleHighlight": "The free Astro starter theme",
-        "description": "A lightning-fast Astro\u00a07 starter\u00a0theme to build anything\u00a0on. The site you're reading right now is built on it too.",
-        "ctaDemo": "View the demo",
-        "ctaGithub": "View on GitHub"
+        "typingWords": ["Lightning-fast", "Starter theme", "57 Components", "12 Themes", "Dark Mode", "Built-in i18n"],
+        "typingWordsMobile": ["Lightning-fast", "Starter theme", "12 Themes", "Dark Mode", "Built-in i18n"],
+        "description": "A free, open-source Astro 7 starter\u00a0theme to build anything on."
       },
       "whatYouGet": {
         "badge": "What you get",
