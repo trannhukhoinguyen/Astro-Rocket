@@ -196,12 +196,11 @@
         "description": "Wat Astro Rocket is en hoe het gebouwd is: een gratis, razendsnel Astro 7 starter-thema met 57 ontworpen componenten, 12 kleurthema's, ingebouwde i18n en donkere modus."
       },
       "hero": {
-        "badge": "Gratis & open source · MIT",
+        "badge": "Over",
         "titleLead": "Astro Rocket —",
-        "titleHighlight": "Het gratis Astro starter-thema",
-        "description": "Een razendsnel Astro\u00a07 starter-thema om alles op te bouwen. De site die je nu leest, is er zelf op gebouwd.",
-        "ctaDemo": "Bekijk de demo",
-        "ctaGithub": "Bekijk op GitHub"
+        "typingWords": ["Razendsnel", "Starter-thema", "57 Componenten", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
+        "typingWordsMobile": ["Razendsnel", "Starter-thema", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
+        "description": "Een gratis, open-source Astro 7 starter-thema om alles op te bouwen."
       },
       "whatYouGet": {
         "badge": "Wat je krijgt",
