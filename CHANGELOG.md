@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **"Work with me" homepage section** — a new four-card section (custom design, a lightning-fast website, found by Google and AI, zero maintenance) between the services cards and the portfolio, closing with a "Read my services page" button. Driven by new `pages.home.workWithMe` keys in `en.json`/`nl.json`. The homepage zebra rebalances around it: the sections below flip shade and the landing footer returns to the default background.
+- **Questions & answers on the services page** — a two-card FAQ accordion with ten buying questions (pricing, timelines, ownership, maintenance) between the process and the closing CTA, in the same pattern as the About page FAQ. New `pages.services.faq` keys in both locale files, and the services footer flips to `secondary` to keep the page's alternation intact.
+
+### Changed
+
+- **The demo speaks as a complete freelance business** — the services page and the homepage services cards are rewritten with the full content of a real freelance Astro practice: three service deep-dives with concrete "what you get" lists, a four-step project process with fixed-price framing, and honest buying answers. All copy ships in English and Dutch. Sites pulling this update should take the view files and the locale dictionaries together, since the views read the new keys.
+
 ## [2.1.0] — 2026-07-16
 
 ### Added

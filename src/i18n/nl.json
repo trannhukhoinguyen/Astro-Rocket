@@ -318,44 +318,44 @@
     },
     "services": {
       "meta": {
-        "title": "Diensten — Webdesign, ontwikkeling & prestaties",
-        "description": "Drie kerndiensten voor moderne websites: doordacht ontwerp, schone Astro-ontwikkeling en meetbare prestaties & SEO."
+        "title": "Diensten — Webdesign, webdevelopment & weboptimalisatie",
+        "description": "Freelance webdesign, webdevelopment en weboptimalisatie: strakke, razendsnelle custom Astro-websites. Een gratis eerste gesprek, één helder voorstel, één vaste prijs."
       },
       "includedLabel": "Wat je krijgt",
       "hero": {
         "badge": "Diensten",
-        "titleLead": "Wat ik bied —",
-        "titleHighlight": "ontworpen, gebouwd en afgesteld.",
-        "description": "Drie kerndiensten, één consistente standaard. Van de eerste wireframe tot de uiteindelijke Lighthouse-score krijgt elk project dezelfde aandacht voor detail.",
-        "jumpLabels": ["Webdesign", "Ontwikkeling", "Prestaties"]
+        "titleLead": "Webdesign, webdevelopment,",
+        "titleHighlight": "en weboptimalisatie",
+        "description": "Drie diensten, één product: een strakke, razendsnelle custom Astro-website waar je trots je naam op zet.",
+        "jumpLabels": ["Webdesign", "Webdevelopment", "Weboptimalisatie"]
       },
       "design": {
         "badge": "Design",
         "heading": "Webdesign",
         "paragraphs": [
-          "Goed design begint bij de mensen die het gaan gebruiken. Ik vorm lay-outs rond jouw content en jouw publiek — typografie, witruimte en kleur gekozen voor helderheid, niet voor effect.",
-          "Elk scherm telt mee, van een breed beeldscherm tot de telefoon in iemands hand, en zowel light als dark mode horen vanaf dag één bij het ontwerp."
+          "Webdesign is hoe je website eruitziet en aanvoelt: de lay-out, de kleuren, de beelden en de manier waarop bezoekers hun weg vinden.",
+          "Ik ontwerp elke website rond jouw bedrijf — je merk, je content en de klanten die je wilt bereiken — zodat hij een sterke eerste indruk maakt en mensen direct naar de kern leidt. Strak, modern en gemaakt om te werken op elk scherm, van beeldscherm tot telefoon."
         ],
         "included": [
           {
-            "lead": "Een ontwerp rond jouw content",
-            "text": "lay-outs gebouwd voor wat jij wilt vertellen, niet in een template geperst."
+            "lead": "Een ontwerp dat van jou is",
+            "text": "gevormd rond je bedrijf, je merk en de klanten die je wilt bereiken."
           },
           {
-            "lead": "Een site voor elk scherm",
-            "text": "telefoon, tablet, desktop en ultrawide, met een lay-out die bewust meebeweegt."
+            "lead": "Een sterke eerste indruk",
+            "text": "een strakke, moderne uitstraling die mensen meteen laat zien wie je bent."
           },
           {
-            "lead": "Light en dark mode",
-            "text": "één ontwerp, twee sferen, allebei tot hetzelfde niveau afgewerkt."
+            "lead": "Heldere navigatie",
+            "text": "een lay-out die bezoekers direct naar wat voor hen belangrijk is leidt."
           },
           {
-            "lead": "Een heldere typografische hiërarchie",
-            "text": "leesbaar van paginatitel tot bijschrift."
+            "lead": "Een ontwerp voor elk scherm",
+            "text": "oogt en werkt prachtig op telefoon, tablet en desktop."
           },
           {
-            "lead": "Beweging met beleid",
-            "text": "interacties die begeleiden, nooit afleiden, met respect voor reduced-motion-instellingen."
+            "lead": "Jouw content op z'n best",
+            "text": "je woorden en beelden in een lay-out die prettig leest en er goed uitziet."
           }
         ],
         "ctaLabel": "Bespreek een ontwerpproject"
@@ -364,80 +364,109 @@
         "badge": "Development",
         "heading": "Webdevelopment",
         "paragraphs": [
-          "Ik bouw met Astro omdat het alleen levert wat nodig is: schone HTML, minimale JavaScript en pagina's die direct aanvoelen.",
-          "De architectuur is gemaakt om later weer op te pakken — getypeerde content, duidelijke componentgrenzen en een deploy-pipeline die elke keer hetzelfde werkt."
+          "Webdevelopment is het bouwen van je website: het ontwerp omzetten in de code die in de browser van je bezoeker draait.",
+          "Ik bouw met Astro, een modern framework dat vertrouwd wordt voor een aantal van de snelste websites online. Dat maakt je site snel, veilig en jarenlang eenvoudig te onderhouden. En hij is vanaf dag één van jou, met de code, het domein en de hosting op jouw naam."
         ],
         "included": [
           {
-            "lead": "Een moderne Astro + Tailwind stack",
-            "text": "minimale JavaScript en schone, leesbare HTML."
+            "lead": "Een razendsnelle website",
+            "text": "gebouwd met Astro, het framework achter een aantal van de snelste websites online."
           },
           {
-            "lead": "Getypeerde content collections",
-            "text": "kapotte content breekt de build in plaats van je bezoekers te bereiken."
+            "lead": "Een veilige, betrouwbare website",
+            "text": "eentje die veilig blijft en blijft werken, jaar na jaar."
           },
           {
-            "lead": "Een deploy-pipeline",
-            "text": "preview-builds voor elke wijziging, op Netlify, Vercel of Cloudflare."
+            "lead": "Volledig eigendom",
+            "text": "de code, het domein en de hosting vanaf dag één op jouw naam."
           },
           {
-            "lead": "Formulieren die gewoon werken",
-            "text": "beveiligd, AVG-proof en rechtstreeks in je inbox of CRM."
+            "lead": "Zorg na de lancering",
+            "text": "je website bijgehouden en beveiligd met het maandelijkse onderhoudsplan, terwijl jij onderneemt."
           },
           {
-            "lead": "Een nette overdracht",
-            "text": "de code, de sleutels en een README die echt uitlegt hoe het zit."
+            "lead": "Ruimte om te groeien",
+            "text": "plek voor nieuwe pagina's en functies wanneer je bedrijf ze nodig heeft."
           }
         ],
         "ctaLabel": "Bekijk recente projecten"
       },
       "performance": {
-        "badge": "Performance",
-        "heading": "Webperformance",
+        "badge": "Optimalisatie",
+        "heading": "Weboptimalisatie",
         "paragraphs": [
-          "Snelheid en vindbaarheid zijn randvoorwaarden vanaf de eerste commit, geen polijstwerk achteraf. Elke extra seconde kost aandacht, ranking en vertrouwen.",
-          "Ik werk naar meetbare doelen — Core Web Vitals, technische SEO en toegankelijkheid worden vóór livegang afgesteld en gecontroleerd."
+          "Weboptimalisatie is het werk dat je website laat presteren: snel laden, goed scoren in zoekmachines en werken voor iedereen.",
+          "Ik bouw snelheid, SEO en toegankelijkheid vanaf de allereerste regel in, niet als sluitstuk. Zo is je website makkelijk te vinden en te begrijpen voor Google, opent hij snel voor elke bezoeker en kan iedereen die binnenkomt hem gebruiken."
         ],
         "included": [
           {
-            "lead": "Groene Core Web Vitals",
-            "text": "LCP, INP en CLS binnen de drempels van Google."
+            "lead": "Een website die Google en AI vinden",
+            "text": "gebouwd zodat zoekmachines en AI-assistenten je pagina's kunnen lezen, begrijpen en aanraden."
           },
           {
-            "lead": "Een snelle image-pipeline",
-            "text": "moderne formaten, responsive maten en standaard lazy loading."
+            "lead": "Snelheid op elk apparaat",
+            "text": "pagina's die snel blijven, ook op een telefoon of een tragere verbinding."
           },
           {
-            "lead": "Technische SEO, aangesloten",
-            "text": "metadata, sitemaps, structured data en OG-images."
+            "lead": "Een website voor iedereen",
+            "text": "toegankelijk voor elke bezoeker, welk apparaat of welke beperking dan ook."
           },
           {
-            "lead": "Een toegankelijke website",
-            "text": "getest met toetsenbord en schermlezer, niet alleen met een contrastchecker."
+            "lead": "Hoge prestatiescores",
+            "text": "sterke resultaten op Googles eigen snelheids- en kwaliteitschecks (Lighthouse)."
           },
           {
-            "lead": "Herhaalbare Lighthouse-audits",
-            "text": "scores gemeten in CI, zodat ze na livegang niet wegzakken."
+            "lead": "Optimalisatie vanaf dag één",
+            "text": "snelheid, SEO en toegankelijkheid vanaf de allereerste regel ingebouwd."
           }
         ],
         "ctaLabel": "Start een project"
       },
       "process": {
         "badge": "Hoe het werkt",
-        "heading": "Een helder, eerlijk proces",
-        "lead": "Vier fasen, één aanspreekpunt, geen verrassingen.",
+        "heading": "Hoe een project verloopt",
+        "lead": "Van je eerste bericht tot een live website.",
         "steps": [
-          { "title": "Kennismaking", "description": "Een gesprek over je doelen, je publiek en hoe succes eruitziet. Vrijblijvend." },
-          { "title": "Voorstel", "description": "Een heldere scope, planning en kosten. Eén pagina, gewone taal, vaste prijs." },
-          { "title": "Ontwerp & bouw", "description": "Korte cycli met regelmatige afstemming. Je ziet de site groeien terwijl hij wordt gebouwd." },
-          { "title": "Lancering & ondersteuning", "description": "Deployen, overdragen, beschikbaar blijven. Itereren na livegang is eenvoudig." }
+          { "title": "Eerste contact", "description": "Je stuurt een bericht via het contactformulier. Ik reageer binnen een werkdag en we plannen een gratis, informatief gesprek over wat je nodig hebt. Vrijblijvend." },
+          { "title": "Voorstel", "description": "Na ons gesprek krijg je één helder document: wat ik bouw, wanneer het klaar is en de vaste prijs. Jij beslist met alles op tafel." },
+          { "title": "Ontwerp & bouw", "description": "Ik werk in korte cycli. Je volgt de voortgang op een staging-link en ziet je website vorm krijgen." },
+          { "title": "Lancering & ondersteuning", "description": "Je website gaat live op je eigen domein en hosting, op jouw naam. Daarna blijf ik bereikbaar, en voor regelmatige updates is er het maandelijkse onderhoudsplan." }
+        ]
+      },
+      "faq": {
+        "badge": "Vragen",
+        "heading": "Vragen en antwoorden",
+        "lead": "De dingen die klanten vragen voordat we beginnen.",
+        "cards": [
+          {
+            "icon": "tag",
+            "title": "Voordat we beginnen",
+            "items": [
+              { "question": "Wat kost een website?", "answer": "Elk project krijgt één vaste prijs, afgesproken voordat we beginnen. Geen uurtje-factuurtje, geen verrassingen achteraf. Het gratis gesprek — en de gratis check, als er al een website is — vertelt me wat je project nodig heeft, en je krijgt de prijs in één helder voorstel." },
+              { "question": "Hoe lang duurt een project?", "answer": "Dat hangt af van de omvang van de website. Het voorstel noemt de planning samen met de prijs, zodat je beide kent voordat we beginnen." },
+              { "question": "Wat gebeurt er met mijn huidige website?", "answer": "Die blijft online tot de nieuwe klaar is. Je content, je webadres en je Google-posities gaan mee. Ik bekijk je huidige website vóór ons eerste gesprek, zodat je vanaf het begin duidelijke antwoorden krijgt." },
+              { "question": "Moet ik zelf hosting of een domein regelen?", "answer": "Nee. Ik zet de hosting en het domein voor je op, op jouw eigen naam. Heb je al een domein, dan houden we dat gewoon." },
+              { "question": "Moeten we elkaar in persoon ontmoeten?", "answer": "Dat hoeft niet. De meeste projecten verlopen volledig via telefoon, video en e-mail. Ik werk met klanten wereldwijd, en tijdzones zijn zelden een probleem." }
+            ]
+          },
+          {
+            "icon": "user",
+            "title": "Samenwerken met mij",
+            "items": [
+              { "question": "Ben je een bedrijf of bureau?", "answer": "Ik ben een eenmansbedrijf: een freelancer, geen bureau. Je werkt rechtstreeks met degene die het werk doet, van het eerste gesprek tot de afgeronde website. Geen salesteam, geen accountmanagers, geen overdrachten." },
+              { "question": "Kan ik de website zelf aanpassen na de lancering?", "answer": "Je kunt je wijzigingen simpelweg naar mij sturen, en daar is het maandelijkse onderhoudsplan precies voor. Wil je de website zelf bewerken, zeg het dan in het eerste gesprek en ik richt de site daarop in." },
+              { "question": "Bouw je ook webshops?", "answer": "Nee. Grote webwinkels zijn het enige dat ik niet bouw. Al het andere dat een custom Astro-website nodig heeft, bouw ik: vertel me in het eerste gesprek wat je voor ogen hebt, en ik ben eerlijk over of ik de juiste bouwer ervoor ben." },
+              { "question": "Is de website echt van mij?", "answer": "Helemaal. Het domein, de hosting en de code staan vanaf dag één op jouw naam. Wil je ooit verder, dan neem je alles mee: je zit nergens aan vast." },
+              { "question": "Wat als er na de lancering iets kapotgaat?", "answer": "Er kan maar weinig kapot: de website heeft geen plugins en geen database die kunnen falen. En ik blijf bereikbaar na de lancering; voor regelmatige updates en monitoring is er het maandelijkse onderhoudsplan." }
+            ]
+          }
         ]
       },
       "cta": {
         "badge": "Laten we praten",
-        "heading": "Heb je een project in gedachten?",
-        "description": "Stuur een kort bericht over wat je bouwt en wat je nodig hebt. Ik lees elk bericht en reageer binnen een werkdag.",
-        "primary": "Start een project",
+        "heading": "Laten we het over jouw wensen hebben",
+        "description": "Het eerste gesprek is gratis en informatief, geheel vrijblijvend: per telefoon, video of e-mail. Je krijgt eerlijke antwoorden, en na het gesprek één helder voorstel met een planning en een vaste prijs.",
+        "primary": "Stuur een bericht",
         "secondary": "Meer over mij"
       }
     },
@@ -476,15 +505,27 @@
         "getStarted": "Aan de slag"
       },
       "services": {
-        "badge": "Diensten",
-        "heading": "Wat ik doe",
-        "lead": "Van concept tot lancering.",
+        "badge": "Wat ik doe",
+        "heading": "Ontwerpen, bouwen, optimaliseren",
+        "lead": "Elk project krijgt alle drie de diensten.",
         "learnMore": "Meer weten",
         "cards": [
-          { "icon": "layout", "title": "Webdesign", "description": "Doordachte lay-outs die jouw content vooropstellen. Ontworpen voor helderheid, balans en de manier waarop mensen echt lezen op het web." },
-          { "icon": "code", "title": "Webontwikkeling", "description": "Moderne sites gebouwd met Astro en Tailwind. Compact, toegankelijk en klaar om mee te groeien met je bedrijf — geen template-lock-in." },
-          { "icon": "zap", "title": "SEO & prestaties", "description": "Pagina's die direct laden en vanaf de lancering goed scoren. Core Web Vitals, metadata en gestructureerde data, goed gedaan." }
+          { "icon": "layout", "title": "Webdesign", "description": "Interfaces die vanzelfsprekend aanvoelen. Lay-outs gevormd rond je content, je merk en hoe mensen echt lezen op een scherm." },
+          { "icon": "code", "title": "Webdevelopment", "description": "Sites gebouwd om lang mee te gaan. Astro, Tailwind en een schone architectuur: snel op dag één, eenvoudig te onderhouden op dag 500." },
+          { "icon": "trending-up", "title": "Weboptimalisatie", "description": "SEO, Core Web Vitals en toegankelijkheid, vanaf dag één ingebouwd, zodat je site scoort, snel laadt en werkt voor elke bezoeker." }
         ]
+      },
+      "workWithMe": {
+        "badge": "Samenwerken",
+        "heading": "Laten we jouw website bouwen",
+        "lead": "Wat je krijgt als we samenwerken.",
+        "cards": [
+          { "icon": "palette", "title": "Custom design", "description": "Ontworpen rond je bedrijf, je content en je klanten." },
+          { "icon": "zap", "title": "Een razendsnelle website", "description": "Pagina's die direct openen, op elke telefoon en elke verbinding." },
+          { "icon": "search", "title": "Gevonden door Google en AI", "description": "Elke pagina zo gebouwd dat zoekmachines en AI-assistenten hem goed lezen en klanten je vinden." },
+          { "icon": "shield-check", "title": "Geen onderhoud", "description": "Bijgehouden en beveiligd met het onderhoudsplan, zodat jij je op je bedrijf kunt richten." }
+        ],
+        "cta": "Lees mijn dienstenpagina"
       },
       "portfolio": {
         "badge": "Geselecteerd werk",

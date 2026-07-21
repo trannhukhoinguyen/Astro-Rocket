@@ -38,6 +38,15 @@ interface ProcessStep {
   title: string;
   description: string;
 }
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+interface FaqCard {
+  icon: string;
+  title: string;
+  items: FaqItem[];
+}
 
 const { locale = defaultLocale } = Astro.props;
 
@@ -53,6 +62,7 @@ const processSection = tData<{ badge: string; heading: string; lead: string; ste
   'pages.services.process',
   locale
 )!;
+const faq = tData<{ badge: string; heading: string; lead: string; cards: FaqCard[] }>('pages.services.faq', locale)!;
 const cta = tData<{ badge: string; heading: string; description: string; primary: string; secondary: string }>(
   'pages.services.cta',
   locale
@@ -64,6 +74,7 @@ const aboutUrl = localizedPath('/about', locale);
 <PageLayout
   title={t('pages.services.meta.title', locale)}
   description={t('pages.services.meta.description', locale)}
+  footerBackground="secondary"
 >
   <Hero layout="centered" size="sm" class="isolate services-hero" showHeroHalo>
     <Badge slot="badge" variant="brand" pill>
@@ -261,8 +272,52 @@ const aboutUrl = localizedPath('/about', locale);
     </div>
   </section>
 
+  <!-- Questions & answers -->
+  <section id="faq" class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
+        <div class="flex flex-col items-center gap-6">
+          <Badge variant="brand" pill>
+            <Icon name="info" size="sm" />
+            {faq.badge}
+          </Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground text-balance">
+            {faq.heading}
+          </h2>
+        </div>
+        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
+          {faq.lead}
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {faq.cards.map((card, cardIndex) => (
+          <Card variant="elevated" padding="lg" data-reveal data-reveal-delay={cardIndex + 1}>
+            <div class="flex items-center gap-3 pb-4 border-b border-border">
+              <div class="w-11 h-11 rounded-lg bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                <Icon name={card.icon} size="md" />
+              </div>
+              <h3 class="font-display text-base font-semibold text-foreground">{card.title}</h3>
+            </div>
+            <div class="w-full">
+              {card.items.map((item) => (
+                <details class="border-b border-border last:border-0" name={`services-faq-${cardIndex}`}>
+                  <summary class="flex w-full items-center justify-between text-sm py-4 text-left font-medium text-foreground transition-colors hover:text-foreground-secondary cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                    <Icon name="chevron-down" size="sm" class="faq-icon shrink-0 text-foreground-muted transition-transform duration-200" />
+                  </summary>
+                  <div class="pb-4 text-sm text-foreground-muted leading-relaxed" set:html={item.answer} />
+                </details>
+              ))}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
       <Badge variant="brand" pill class="mb-6">
@@ -310,6 +365,11 @@ const aboutUrl = localizedPath('/about', locale);
 </PageLayout>
 
 <style is:global>
+  /* FAQ accordion: rotate the chevron while an item is open. */
+  details[open] > summary .faq-icon {
+    transform: rotate(180deg);
+  }
+
   /* Gentle "scroll down" bounce on the hero jump-button arrows — same motion
      language as the homepage hero scroll indicator. */
   .services-hero .hero-jump-arrow {
