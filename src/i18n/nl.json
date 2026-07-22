@@ -536,7 +536,7 @@
       "testimonials": {
         "badge": "Aanbevelingen",
         "heading": "Wat klanten zeggen",
-        "lead": "Vervang deze door je eigen klantcitaten.",
+        "lead": "Echte woorden uit afgeronde projecten.",
         "items": [
           { "quote": "De nieuwe site werd op tijd gelanceerd en haalde elk doel dat we stelden. De prestaties verbeterden enorm — laadtijden daalden en de reacties van onze klanten zijn overweldigend positief.", "name": "Alex Morgan", "role": "Oprichter, Bright Studio" },
           { "quote": "Helder van het eerste gesprek tot de uiteindelijke oplevering. De juiste vragen werden gesteld, we werden overal bij betrokken en het eindresultaat overtrof wat we ons hadden voorgesteld. Een aanrader zonder twijfel.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }

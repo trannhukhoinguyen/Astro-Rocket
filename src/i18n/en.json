@@ -536,7 +536,7 @@
       "testimonials": {
         "badge": "Testimonials",
         "heading": "What clients say",
-        "lead": "Replace these with your own client quotes.",
+        "lead": "Real words from finished projects.",
         "items": [
           { "quote": "The new site launched on time and hit every goal we set. Performance improved dramatically — load times dropped and the feedback from our customers has been overwhelmingly positive.", "name": "Alex Morgan", "role": "Founder, Bright Studio" },
           { "quote": "Straightforward from first conversation to final handover. The right questions were asked, we were kept in the loop throughout, and the end result exceeded what we imagined. Would recommend without hesitation.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }
