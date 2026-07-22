@@ -106,9 +106,9 @@
     "backToProjects": "Terug naar projecten",
     "moreProjects": "Meer projecten",
     "ctaBadge": "Laten we praten",
-    "ctaHeading": "Wil je iets soortgelijks?",
-    "ctaLead": "Ik bouw met dezelfde zorg en vakmanschap die je hier ziet. Heb je een project? Laten we kijken wat we samen kunnen maken.",
-    "ctaPrimary": "Start een project",
+    "ctaHeading": "Laten we het over jouw wensen hebben",
+    "ctaLead": "Elke website die ik bouw is een eigen custom ontwerp, gemaakt met de zorg die je hier ziet. Vertel me wat je in gedachten hebt.",
+    "ctaPrimary": "Stuur een bericht",
     "ctaSecondary": "Meer over mij",
     "closingHeading": "Heb je een project in gedachten?",
     "closingLead": "Of het nu een nieuwe build is of iets dat een frisse blik nodig heeft — ik hoor er graag over."
@@ -563,9 +563,9 @@
       },
       "cta": {
         "badge": "Laten we praten",
-        "heading": "Iets nieuws beginnen?",
-        "description": "Ik ontwerp en bouw nieuwe websites vanaf nul — elk project, van begin tot eind, door mij. Vertel me wat je in gedachten hebt.",
-        "primary": "Start een project",
+        "heading": "Laten we het over jouw wensen hebben",
+        "description": "Het eerste gesprek is gratis en informatief, geheel vrijblijvend. En van het eerste gesprek tot de uiteindelijke oplevering: je werkt met mij.",
+        "primary": "Stuur een bericht",
         "secondary": "Meer over mij"
       }
     }

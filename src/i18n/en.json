@@ -106,9 +106,9 @@
     "backToProjects": "Back to Projects",
     "moreProjects": "More projects",
     "ctaBadge": "Let's talk",
-    "ctaHeading": "Want something like this?",
-    "ctaLead": "I build with the same care and craft you see here. If you've got a project, let's see what we can make together.",
-    "ctaPrimary": "Start a project",
+    "ctaHeading": "Let's talk about what you need",
+    "ctaLead": "Every website I build is its own custom design, made with the care you see here. Tell me what you have in mind.",
+    "ctaPrimary": "Send a message",
     "ctaSecondary": "More about me",
     "closingHeading": "Have a project in mind?",
     "closingLead": "Whether it's a new build or something that needs a fresh perspective — I'd love to hear about it."
@@ -563,9 +563,9 @@
       },
       "cta": {
         "badge": "Let's talk",
-        "heading": "Starting something new?",
-        "description": "I design and build new websites from scratch — every project, start to finish, by me. Tell me what you have in mind.",
-        "primary": "Start a project",
+        "heading": "Let's talk about what you need",
+        "description": "The first talk is free and informative, with no obligations. And from the first conversation to the final delivery, it's me.",
+        "primary": "Send a message",
         "secondary": "More about me"
       }
     }
