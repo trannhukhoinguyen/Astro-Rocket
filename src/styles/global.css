@@ -1383,6 +1383,13 @@ html:not(.dark) .bg-background-secondary .bg-background-tertiary {
   background-color: var(--color-background);
 }
 
+/* Exception: inside a card the swap inverts the problem — the card surface
+   is already page-white, so page-white tiles would disappear on it. One
+   nesting level deeper, tiles keep the tertiary tint. */
+html:not(.dark) .bg-background-secondary .bg-card .bg-background-tertiary {
+  background-color: var(--color-background-tertiary);
+}
+
 /* Media frames (blog hero images, project screenshots): saturated or dark
    artwork can't take the theme's grey-wash shadow tiers — the same physics
    as the LetterGlitch band. Light mode gets a heavy drop shadow with a soft
