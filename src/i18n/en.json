@@ -106,9 +106,9 @@
     "backToProjects": "Back to Projects",
     "moreProjects": "More projects",
     "ctaBadge": "Let's talk",
-    "ctaHeading": "Want something like this?",
-    "ctaLead": "I build with the same care and craft you see here. If you've got a project, let's see what we can make together.",
-    "ctaPrimary": "Start a project",
+    "ctaHeading": "Let's talk about what you need",
+    "ctaLead": "Every website I build is its own custom design, made with the care you see here. Tell me what you have in mind.",
+    "ctaPrimary": "Send a message",
     "ctaSecondary": "More about me",
     "closingHeading": "Have a project in mind?",
     "closingLead": "Whether it's a new build or something that needs a fresh perspective — I'd love to hear about it."
@@ -318,44 +318,44 @@
     },
     "services": {
       "meta": {
-        "title": "Services — Web Design, Development & Performance",
-        "description": "Three core services for modern websites: thoughtful design, clean Astro development, and measurable performance & SEO."
+        "title": "Services — Web Design, Development & Optimisation",
+        "description": "Freelance web design, development, and optimisation: sleek, lightning-fast custom Astro websites. A free first talk, one clear proposal, one fixed price."
       },
       "includedLabel": "What you get",
       "hero": {
         "badge": "Services",
-        "titleLead": "What I offer —",
-        "titleHighlight": "designed, built, and tuned.",
-        "description": "Three core services, one consistent standard. From the first wireframe to the final Lighthouse score, every project gets the same attention to detail.",
-        "jumpLabels": ["Web Design", "Development", "Performance"]
+        "titleLead": "Web design, development,",
+        "titleHighlight": "and optimisation",
+        "description": "Three services, one product: a sleek, lightning-fast custom Astro website you're proud to put your name on.",
+        "jumpLabels": ["Web design", "Web development", "Web optimisation"]
       },
       "design": {
         "badge": "Design",
         "heading": "Web design",
         "paragraphs": [
-          "Great design starts with the people who'll use it. I shape layouts around your content and your audience — typography, spacing, and colour chosen for clarity, not novelty.",
-          "Every screen is considered, from a wide desktop to the phone in someone's hand, and both light and dark mode are part of the design from day one."
+          "Web design is how your website looks and feels: the layout, the colours, the images, and the way visitors find their way around.",
+          "I design every website around your business — your brand, your content, and the customers you want to reach — so it makes a strong first impression and guides people straight to what matters. Clean, modern, and made to work on every screen, from a desktop monitor to a phone."
         ],
         "included": [
           {
-            "lead": "A design around your content",
-            "text": "layouts built for what you want to say, not squeezed into a template."
+            "lead": "A design that's yours",
+            "text": "shaped around your business, your brand, and the customers you want to reach."
           },
           {
-            "lead": "A site for every screen",
-            "text": "phone, tablet, desktop, and ultrawide, reflowing with intent."
+            "lead": "A strong first impression",
+            "text": "a clean, modern look that shows people who you are the moment your page opens."
           },
           {
-            "lead": "Light and dark mode",
-            "text": "one design, two moods, both finished to the same standard."
+            "lead": "Clear navigation",
+            "text": "a layout that guides visitors straight to what matters to them."
           },
           {
-            "lead": "A clear typographic hierarchy",
-            "text": "readable from page title down to caption."
+            "lead": "A design for every screen",
+            "text": "looks and works beautifully on phone, tablet, and desktop."
           },
           {
-            "lead": "Motion with a purpose",
-            "text": "interactions that guide, never distract, and respect reduced-motion settings."
+            "lead": "Your content at its best",
+            "text": "your words and images given a layout that makes them easy to read and good to look at."
           }
         ],
         "ctaLabel": "Discuss a design project"
@@ -364,80 +364,109 @@
         "badge": "Development",
         "heading": "Web development",
         "paragraphs": [
-          "I build with Astro because it ships what's needed and nothing else: clean HTML, minimal JavaScript, and pages that feel instant.",
-          "The architecture is made to be picked up later — typed content, clear component boundaries, and a deploy pipeline that works the same every time."
+          "Web development is the building of your website: turning the design into the code that runs in your visitor's browser.",
+          "I build with Astro, a modern framework trusted for some of the fastest websites online. That makes your site quick to load, safe, and easy to look after for years to come. And it's yours from day one, with the code, the domain, and the hosting all in your name."
         ],
         "included": [
           {
-            "lead": "A modern Astro + Tailwind stack",
-            "text": "minimal JavaScript and clean, readable HTML."
+            "lead": "A lightning-fast website",
+            "text": "built with Astro, the framework behind some of the fastest websites online."
           },
           {
-            "lead": "Typed content collections",
-            "text": "broken content fails the build instead of reaching your visitors."
+            "lead": "A secure, reliable website",
+            "text": "one that stays safe and keeps working, year after year."
           },
           {
-            "lead": "A deploy pipeline",
-            "text": "preview builds for every change, on Netlify, Vercel, or Cloudflare."
+            "lead": "Full ownership",
+            "text": "the code, the domain, and the hosting all in your name from day one."
           },
           {
-            "lead": "Forms that just work",
-            "text": "protected, GDPR-aware, and delivered straight to your inbox or CRM."
+            "lead": "Care after launch",
+            "text": "your website kept updated and secure with the monthly care plan, while you run your business."
           },
           {
-            "lead": "A clean handover",
-            "text": "the code, the keys, and a README that actually explains things."
+            "lead": "Room to grow",
+            "text": "space to add new pages and features whenever your business needs them."
           }
         ],
         "ctaLabel": "See recent projects"
       },
       "performance": {
-        "badge": "Performance",
-        "heading": "Web performance",
+        "badge": "Optimisation",
+        "heading": "Web optimisation",
         "paragraphs": [
-          "Speed and search visibility are constraints from the first commit, not polish at the end. Every extra second costs attention, ranking, and trust.",
-          "I work to measurable targets — Core Web Vitals, technical SEO, and accessibility are tuned and verified before launch."
+          "Web optimisation is the work that makes your website perform: loading quickly, ranking well in search, and working for everyone.",
+          "I build speed, SEO, and accessibility in from the very first line, not as an afterthought. That means your website is easy for Google to find and understand, opens fast for every visitor, and can be used by everyone who lands on it."
         ],
         "included": [
           {
-            "lead": "Green Core Web Vitals",
-            "text": "LCP, INP, and CLS held to Google's thresholds."
+            "lead": "A website Google and AI can find",
+            "text": "built so search engines and AI assistants can read, understand, and recommend your pages."
           },
           {
-            "lead": "A fast image pipeline",
-            "text": "modern formats, responsive sizes, and lazy loading by default."
+            "lead": "Speed on every device",
+            "text": "pages that stay quick, even on a phone or a slower connection."
           },
           {
-            "lead": "Technical SEO, wired up",
-            "text": "metadata, sitemaps, structured data, and OG images."
+            "lead": "A website for everyone",
+            "text": "accessible for every visitor, whatever their device or ability."
           },
           {
-            "lead": "An accessible website",
-            "text": "tested with the keyboard and a screen reader, not just a contrast checker."
+            "lead": "High performance scores",
+            "text": "strong marks on Google's own speed and quality checks (Lighthouse)."
           },
           {
-            "lead": "Repeatable Lighthouse audits",
-            "text": "scores measured in CI, so they don't drift after launch."
+            "lead": "Optimisation from day one",
+            "text": "speed, SEO, and accessibility built in from the very first line."
           }
         ],
         "ctaLabel": "Start a project"
       },
       "process": {
         "badge": "How it works",
-        "heading": "A clear, honest process",
-        "lead": "Four stages, one point of contact, no surprises.",
+        "heading": "How a project runs",
+        "lead": "From your first message to a live website.",
         "steps": [
-          { "title": "Discovery", "description": "A conversation about your goals, your audience, and what success looks like. No obligation." },
-          { "title": "Proposal", "description": "A clear scope, timeline, and cost. One page, plain language, fixed price." },
-          { "title": "Design & Build", "description": "Short cycles with regular check-ins. You see the site evolve as it's built." },
-          { "title": "Launch & Support", "description": "Deploy, hand over, stay available. Iteration after launch is straightforward." }
+          { "title": "First contact", "description": "You send a message through the contact form. I reply within a working day, and we plan a free, informational talk about what you need. No obligations." },
+          { "title": "Proposal", "description": "After our talk you get one clear document: what I'll build, when it's ready, and the fixed price. You decide with everything on the table." },
+          { "title": "Design & build", "description": "I work in short cycles. You follow the progress on a staging link, and you see your website take shape." },
+          { "title": "Launch & support", "description": "Your website goes live on your own domain and hosting, in your name. Afterwards I stay reachable, and there's a monthly care plan if you want regular updates." }
+        ]
+      },
+      "faq": {
+        "badge": "Questions",
+        "heading": "Questions and answers",
+        "lead": "The things clients ask before we start.",
+        "cards": [
+          {
+            "icon": "tag",
+            "title": "Before we start",
+            "items": [
+              { "question": "What does a website cost?", "answer": "Every project gets one fixed price, agreed before we start. No hourly billing, no surprises afterwards. The free talk — and the free check, if there's already a website — tells me what your project needs, and you get the price in one clear proposal." },
+              { "question": "How long does a project take?", "answer": "That depends on the size of the website. The proposal names the timeline together with the price, so you know both before we start." },
+              { "question": "What happens with my current website?", "answer": "It stays online until the new one is ready. Your content, your web address, and your Google rankings come along. I check your current website before our first talk, so you get clear answers from the start." },
+              { "question": "Do I need to arrange hosting or a domain?", "answer": "No. I set up the hosting and the domain for you, in your own name. If you already have a domain, we simply keep it." },
+              { "question": "Do we need to meet in person?", "answer": "It's not needed. Most projects run entirely by phone, video, and email. I work with clients worldwide, and time zones are rarely a problem." }
+            ]
+          },
+          {
+            "icon": "user",
+            "title": "Working with me",
+            "items": [
+              { "question": "Are you a company or agency?", "answer": "I'm a one-person business: a freelancer, not an agency. You work directly with the person doing the work, from the first talk to the finished website. No sales team, no account managers, no handoffs." },
+              { "question": "Can I change the website myself after launch?", "answer": "You can simply send me your changes, and the monthly care plan exists exactly for that. If you want to edit the website yourself, say so in the first talk and I set the site up for it." },
+              { "question": "Do you also build webshops?", "answer": "No. Big online shops are the one thing I don't build. Everything else that needs a custom Astro website, I build: tell me in the first talk what you have in mind, and I'll be honest about whether I'm the right builder for it." },
+              { "question": "Is the website really mine?", "answer": "Completely. The domain, the hosting, and the code are in your name from day one. If you ever want to move on, you take everything with you: you're never locked in." },
+              { "question": "What happens if something breaks after launch?", "answer": "Very little can break: the website has no plugins and no database to fail. And I stay reachable after launch; for regular updates and monitoring there is the monthly care plan." }
+            ]
+          }
         ]
       },
       "cta": {
         "badge": "Let's talk",
-        "heading": "Have a project in mind?",
-        "description": "Send a short note about what you're building and what you need. I read every message and reply within a working day.",
-        "primary": "Start a project",
+        "heading": "Let's talk about what you need",
+        "description": "The first talk is free and informative, with no obligations: by phone, video, or email. You get honest answers, and after the talk one clear proposal with a timeline and a fixed price.",
+        "primary": "Send a message",
         "secondary": "More about me"
       }
     },
@@ -476,15 +505,27 @@
         "getStarted": "Get started"
       },
       "services": {
-        "badge": "Services",
-        "heading": "What I do",
-        "lead": "From concept to launch.",
+        "badge": "What I do",
+        "heading": "Design, build, optimise",
+        "lead": "Every project gets all three services.",
         "learnMore": "Learn more",
         "cards": [
-          { "icon": "layout", "title": "Web Design", "description": "Thoughtful layouts that put your content first. Designed for clarity, balance, and the way people actually read on the web." },
-          { "icon": "code", "title": "Web Development", "description": "Modern sites built with Astro and Tailwind. Lean, accessible, and ready to scale with your business — no template lock-in." },
-          { "icon": "zap", "title": "SEO & Performance", "description": "Pages that load instantly and rank well from launch. Core Web Vitals, metadata, and structured data, done properly." }
+          { "icon": "layout", "title": "Web Design", "description": "Interfaces that feel obvious. Layouts shaped around your content, your brand, and how people actually read on a screen." },
+          { "icon": "code", "title": "Web Development", "description": "Sites built to last. Astro, Tailwind, and a clean architecture: fast on day one, easy to maintain on day 500." },
+          { "icon": "trending-up", "title": "Web Optimisation", "description": "SEO, Core Web Vitals, and accessibility, built in from day one so your site ranks, loads well, and works for every visitor." }
         ]
+      },
+      "workWithMe": {
+        "badge": "Work with me",
+        "heading": "Let's build your website",
+        "lead": "What you get when we work together.",
+        "cards": [
+          { "icon": "palette", "title": "Custom design", "description": "Designed around your business, your content, and your customers." },
+          { "icon": "zap", "title": "A lightning-fast website", "description": "Pages that open instantly, on every phone and every connection." },
+          { "icon": "search", "title": "Found by Google and AI", "description": "Every page built so search engines and AI assistants read it cleanly and customers can find you." },
+          { "icon": "shield-check", "title": "Zero maintenance", "description": "Kept up to date and secure with the care plan, so you can focus on your business." }
+        ],
+        "cta": "Read my services page"
       },
       "portfolio": {
         "badge": "Selected work",
@@ -495,7 +536,7 @@
       "testimonials": {
         "badge": "Testimonials",
         "heading": "What clients say",
-        "lead": "Replace these with your own client quotes.",
+        "lead": "Real words from finished projects.",
         "items": [
           { "quote": "The new site launched on time and hit every goal we set. Performance improved dramatically — load times dropped and the feedback from our customers has been overwhelmingly positive.", "name": "Alex Morgan", "role": "Founder, Bright Studio" },
           { "quote": "Straightforward from first conversation to final handover. The right questions were asked, we were kept in the loop throughout, and the end result exceeded what we imagined. Would recommend without hesitation.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }
@@ -522,9 +563,9 @@
       },
       "cta": {
         "badge": "Let's talk",
-        "heading": "Starting something new?",
-        "description": "I design and build new websites from scratch — every project, start to finish, by me. Tell me what you have in mind.",
-        "primary": "Start a project",
+        "heading": "Let's talk about what you need",
+        "description": "The first talk is free and informative, with no obligations. And from the first conversation to the final delivery, it's me.",
+        "primary": "Send a message",
         "secondary": "More about me"
       }
     }
