@@ -15,7 +15,13 @@ const maxWidthClass = maxWidth === '7xl' ? 'max-w-7xl' : 'max-w-6xl';
   <div class="relative isolate">
     <div class="lgb-band invert-section relative overflow-hidden rounded-3xl bg-background border border-transparent dark:border-white/10">
       <div class="absolute inset-0" aria-hidden="true">
-        <TangThucGlitch client:visible outerVignette />
+          <TangThucGlitch
+            glitchColors={TANG_THUC_PALETTE}
+            glitchSpeed={40}
+            outerVignette
+            useBrandTokens={false} // Tắt màu mặc định để dùng dải màu Tạng Thức
+            client:visible
+          />
       </div>
       <div class="relative z-10 px-6 py-16 sm:py-24" data-reveal>
         <div class="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-brand-900/85 px-6 py-10 sm:px-10 text-center shadow-xl backdrop-blur-md">
