@@ -58,8 +58,14 @@ const LetterGlitch = ({
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
   ];
 
+  // Chữ Phạn / Siddham (Phạn tự / Chú Âm): 
+  const sankritAndSiddham = ['Om', 'Ah', 'Hum', 'Tram', 'Hrih', 'Ah', '☸', '卍', '☯', ...];
+
+  // Chữ Hán Cổ / Chiết tự Duy Thức: Ancient Chinese Characters / Character Decomposition (Yogacara Perspective)
+  const ancientChineseAndYogacara = ['種', '子', '識', '藏', '緣', '現', '行', '念', '滅', '空', '無', '心'];
+
   const getRandomChar = () => {
-    return lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
+    return [...sankritAndSiddham, ...ancientChineseAndYogacara][Math.floor(Math.random() * [...sankritAndSiddham, ...ancientChineseAndYogacara].length)];
   };
 
   const getRandomColor = () => {
